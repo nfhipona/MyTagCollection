@@ -6,3 +6,103 @@
 //
 
 import Foundation
+
+public
+class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
+    public let identifier: String
+    public var isAppendable: Bool
+    public var items: [MyTagItemProtocol]
+    public let dimension: MyTagSectionDimension
+    
+    public init(identifier: String,
+                isAppendable: Bool = true,
+                items: [MyTagItemProtocol],
+                dimension: MyTagSectionDimension) {
+        self.identifier = identifier
+        self.isAppendable = isAppendable
+        self.items = items
+        self.dimension = dimension
+    }
+}
+
+public
+extension MyTagCollectionViewModel {
+    enum ItemPosition {
+        case first
+        case last
+        case byIndex(index: Int)
+    }
+}
+
+public
+extension MyTagCollectionViewModel {
+    func appendItem(tagItem: MyTagItemProtocol, position: ItemPosition) {
+        guard isAppendable else { return }
+        switch position {
+        case .first:
+            items.insert(tagItem, at: 0)
+            
+        case let .byIndex(index):
+            items.insert(tagItem, at: index)
+            
+        default: // last
+            items.append(tagItem)
+        }
+    }
+    
+    func setItems(tagItems: [MyTagItemProtocol]) {
+        items = tagItems
+    }
+    
+    func addItem(tagItem: MyTagItemProtocol,
+                 position: ItemPosition,
+                 replaceOld: Bool) {
+        if replaceOld {
+            removeItem(tagItem: tagItem)
+        }
+        
+        appendItem(tagItem: tagItem, position: position)
+    }
+    
+    func addItems(tagItems: [MyTagItemProtocol],
+                  position: ItemPosition,
+                  replaceOld: Bool) {
+        if replaceOld {
+            removeItems(tagItems: tagItems)
+        }
+        
+        for tagItem in tagItems {
+            appendItem(tagItem: tagItem, position: position)
+        }
+    }
+    
+    func updateItem(isMultiple: Bool,
+                    tagItem: MyTagItemProtocol,
+                    isSelected: Bool) {
+        items = items.map({ item in
+            if isMultiple {
+                if item.identifier == tagItem.identifier {
+                    return item.updateSelected(isSelected: isSelected)
+                } else {
+                    return item
+                }
+            } else {
+                let isSelected = item.identifier == tagItem.identifier ? isSelected : false
+                return item.updateSelected(isSelected: isSelected)
+            }
+        })
+    }
+    
+    func removeItem(tagItem: MyTagItemProtocol) {
+        items.removeAll { $0.identifier == tagItem.identifier }
+    }
+
+    func removeItems(tagItems: [MyTagItemProtocol]) {
+        items.removeAll {
+            for tagItem in tagItems where $0.identifier == tagItem.identifier {
+                return true
+            }
+            return false
+        }
+    }
+}

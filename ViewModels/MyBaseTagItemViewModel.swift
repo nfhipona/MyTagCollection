@@ -32,3 +32,12 @@ struct MyBaseTagItemViewModel: MyTagItemProtocol {
         self.isSelected = isSelected
     }
 }
+
+public
+extension MyBaseTagItemViewModel {
+    func updateSelected(isSelected: Bool) -> MyBaseTagItemViewModel {
+        var mutated = self
+        mutated.isSelected = isSelected
+        return mutated
+    }
+}
