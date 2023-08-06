@@ -15,4 +15,6 @@ protocol MyTagItemProtocol {
     var attribute: MyTagItemAttributeProtocol { get }
     var section: Int { get set }
     var isSelected: Bool { get set }
+    
+    func updateSelected(isSelected: Bool) -> Self
 }
