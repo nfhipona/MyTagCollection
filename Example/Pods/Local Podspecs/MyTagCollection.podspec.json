@@ -1,0 +1,22 @@
+{
+  "name": "MyTagCollection",
+  "version": "0.1.0",
+  "summary": "A short description of MyTagCollection.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Neil Francis Ramirez Hipona/MyTagCollection",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Neil Francis Ramirez Hipona": "enef.devops@protonmail.ch"
+  },
+  "source": {
+    "git": "https://github.com/Neil Francis Ramirez Hipona/MyTagCollection.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "MyTagCollection/Classes/**/*"
+}

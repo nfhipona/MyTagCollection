@@ -1,0 +1,6 @@
+framework module MyTagCollection {
+  umbrella header "MyTagCollection-umbrella.h"
+
+  export *
+  module * { export * }
+}

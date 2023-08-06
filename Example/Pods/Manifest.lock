@@ -1,0 +1,16 @@
+PODS:
+  - MyTagCollection (0.1.0)
+
+DEPENDENCIES:
+  - MyTagCollection (from `../`)
+
+EXTERNAL SOURCES:
+  MyTagCollection:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MyTagCollection: f6cad165538c242fae1052f7fdb29dae66aca0b6
+
+PODFILE CHECKSUM: 6f7e583314d2650cb6869f6d92d91e0a25aeb93c
+
+COCOAPODS: 1.12.1
