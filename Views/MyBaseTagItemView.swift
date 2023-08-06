@@ -74,11 +74,11 @@ class MyBaseTagItemView: UIView, MyTagItemViewProtocol {
     
     public func shouldDrawInNewRow(itemsInRow: [MyTagItemViewProtocol],
                                    dimension: MyTagSectionDimensionProtocol) -> Bool {
-        var rowItemWidth = itemsInRow.reduce(into: CGFloat(0.0)) { partialResult, tagItem in
-            partialResult += tagItem.itemCanvas.width
+        var rowItemWidth = itemsInRow.reduce(CGFloat(0.0)) { partialResult, tagItem in
+            partialResult + tagItem.itemCanvas.width
         }
         
-        let interItemSpacing = dimension.interItemSpacing * CGFloat(itemsInRow.count)
+        let interItemSpacing = dimension.interItemSpacing * CGFloat(itemsInRow.count - 1)
         let sidePadding = dimension.columnSpacing * 2
         rowItemWidth += interItemSpacing
         rowItemWidth += sidePadding

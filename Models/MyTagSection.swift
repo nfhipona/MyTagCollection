@@ -33,3 +33,29 @@ extension MyTagSection {
         case right
     }
 }
+
+public
+extension MyTagSection {
+    var tallestItemInRow: MyTagItemViewProtocol? {
+        var tallestItem: MyTagItemViewProtocol? = rows.first
+        for rowItem in rows {
+            if let item = tallestItem, item.itemCanvas.height < rowItem.itemCanvas.height {
+                tallestItem = rowItem
+            }
+        }
+        return tallestItem
+    }
+    
+    var totalItemSpacing: CGFloat {
+        return dimension.interItemSpacing * CGFloat(rows.count - 1)
+    }
+    
+    var centerItemPadding: CGFloat {
+        let totalItemWidth = rows.reduce(CGFloat(0.0)) { partialResult, rowItem in
+            partialResult + rowItem.itemCanvas.width
+        }
+        let contentItemWidth = totalItemWidth + totalItemSpacing
+        let contentWidth = dimension.contentCanvas.width - contentItemWidth
+        return contentWidth / 2
+    }
+}
