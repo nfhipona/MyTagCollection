@@ -97,13 +97,13 @@
 		BE500B95FA708A43BC9D201666ABA64E /* MyTagCollection-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MyTagCollection-Info.plist"; sourceTree = "<group>"; };
 		CCDF227FDC870C7BEC19B561AF3525D2 /* Pods-MyTagCollection_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MyTagCollection_Example.modulemap"; sourceTree = "<group>"; };
 		CE97D3E71F815A3C54967152D8856318 /* Pods-MyTagCollection_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyTagCollection_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DCA4E6224520908C9BEA8395987B1784 /* MyTagCollection */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MyTagCollection; path = MyTagCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCA4E6224520908C9BEA8395987B1784 /* MyTagCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyTagCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B6825C11CDCCF916823096550C94DE /* Pods-MyTagCollection_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyTagCollection_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E470144B834D1863E4815461DBBAC103 /* MyTagCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyTagCollection.debug.xcconfig; sourceTree = "<group>"; };
 		E7F7E738D3ED17F0B9D8B014CBA5D9EF /* Pods-MyTagCollection_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyTagCollection_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		EEB400839C230786842B4B7989620B65 /* Pods-MyTagCollection_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyTagCollection_Example-frameworks.sh"; sourceTree = "<group>"; };
-		F46F1E98F0B8DEDF49A8F631E48AD369 /* Pods-MyTagCollection_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MyTagCollection_Example"; path = Pods_MyTagCollection_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC0B37C614CF7ED77E60B48B3A1A6F0B /* Pods-MyTagCollection_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MyTagCollection_Tests"; path = Pods_MyTagCollection_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46F1E98F0B8DEDF49A8F631E48AD369 /* Pods_MyTagCollection_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTagCollection_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0B37C614CF7ED77E60B48B3A1A6F0B /* Pods_MyTagCollection_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTagCollection_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,9 +224,9 @@
 		6EE24EEF21D7CC91CF31065715ED989B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DCA4E6224520908C9BEA8395987B1784 /* MyTagCollection */,
-				F46F1E98F0B8DEDF49A8F631E48AD369 /* Pods-MyTagCollection_Example */,
-				FC0B37C614CF7ED77E60B48B3A1A6F0B /* Pods-MyTagCollection_Tests */,
+				DCA4E6224520908C9BEA8395987B1784 /* MyTagCollection.framework */,
+				F46F1E98F0B8DEDF49A8F631E48AD369 /* Pods_MyTagCollection_Example.framework */,
+				FC0B37C614CF7ED77E60B48B3A1A6F0B /* Pods_MyTagCollection_Tests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 			);
 			name = MyTagCollection;
 			productName = MyTagCollection;
-			productReference = DCA4E6224520908C9BEA8395987B1784 /* MyTagCollection */;
+			productReference = DCA4E6224520908C9BEA8395987B1784 /* MyTagCollection.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		735BC17CC85F9733F44A72E2BA1D75CE /* Pods-MyTagCollection_Example */ = {
@@ -370,7 +370,7 @@
 			);
 			name = "Pods-MyTagCollection_Example";
 			productName = Pods_MyTagCollection_Example;
-			productReference = F46F1E98F0B8DEDF49A8F631E48AD369 /* Pods-MyTagCollection_Example */;
+			productReference = F46F1E98F0B8DEDF49A8F631E48AD369 /* Pods_MyTagCollection_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		AA0C9283ADE3E238A3EE627EC2E40B45 /* Pods-MyTagCollection_Tests */ = {
@@ -389,7 +389,7 @@
 			);
 			name = "Pods-MyTagCollection_Tests";
 			productName = Pods_MyTagCollection_Tests;
-			productReference = FC0B37C614CF7ED77E60B48B3A1A6F0B /* Pods-MyTagCollection_Tests */;
+			productReference = FC0B37C614CF7ED77E60B48B3A1A6F0B /* Pods_MyTagCollection_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -400,6 +400,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					548061F703A9D69199A7FB01D0C01F76 = {
+						LastSwiftMigration = "";
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -522,7 +527,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MyTagCollection/MyTagCollection-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MyTagCollection/MyTagCollection-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MyTagCollection/MyTagCollection.modulemap";
 				PRODUCT_MODULE_NAME = MyTagCollection;
@@ -530,7 +535,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -553,7 +558,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MyTagCollection_Tests/Pods-MyTagCollection_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MyTagCollection_Tests/Pods-MyTagCollection_Tests.modulemap";
@@ -586,7 +591,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MyTagCollection_Example/Pods-MyTagCollection_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MyTagCollection_Example/Pods-MyTagCollection_Example.modulemap";
@@ -680,7 +685,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MyTagCollection_Tests/Pods-MyTagCollection_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MyTagCollection_Tests/Pods-MyTagCollection_Tests.modulemap";
@@ -780,7 +785,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MyTagCollection/MyTagCollection-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MyTagCollection/MyTagCollection-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MyTagCollection/MyTagCollection.modulemap";
 				PRODUCT_MODULE_NAME = MyTagCollection;
@@ -788,7 +793,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -812,7 +817,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MyTagCollection_Example/Pods-MyTagCollection_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MyTagCollection_Example/Pods-MyTagCollection_Example.modulemap";
