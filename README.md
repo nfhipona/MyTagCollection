@@ -27,11 +27,21 @@ pod 'MyTagCollection'
 
 [Video Demo](https://youtu.be/SZFJh5bu4iQ)
 
-![ss-left](https://github.com/nfhipona/MyTagCollection/assets/8805997/cd806000-0d6e-4c69-94c2-23f13c6106e1)
+<video width="99%" height="540" autoplay loop muted markdown="1">
+  <source src="https://youtu.be/SZFJh5bu4iQ" type="video/mp4" markdown="1">
+</video>
 
-![ss-center](https://github.com/nfhipona/MyTagCollection/assets/8805997/f9f23a9b-1c96-4ca0-917a-b4792411eb65)
+<a href="https://youtu.be/SZFJh5bu4iQ" target="_blank">
+  <img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/cd806000-0d6e-4c69-94c2-23f13c6106e1" data-canonical-src="https://github.com/nfhipona/MyTagCollection/assets/8805997/cd806000-0d6e-4c69-94c2-23f13c6106e1" width="300" atl="ss-left" />
+</a>
 
-![ss-right](https://github.com/nfhipona/MyTagCollection/assets/8805997/b9ce76ce-cb59-4c2c-aaf0-e6b83524ca10)
+<a href="https://youtu.be/SZFJh5bu4iQ" target="_blank">
+  <img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/f9f23a9b-1c96-4ca0-917a-b4792411eb65" data-canonical-src="https://github.com/nfhipona/MyTagCollection/assets/8805997/f9f23a9b-1c96-4ca0-917a-b4792411eb65" width="300" atl="ss-center" />
+</a>
+
+<a href="https://youtu.be/SZFJh5bu4iQ" target="_blank">
+  <img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/b9ce76ce-cb59-4c2c-aaf0-e6b83524ca10" data-canonical-src="https://github.com/nfhipona/MyTagCollection/assets/8805997/b9ce76ce-cb59-4c2c-aaf0-e6b83524ca10" width="300" atl="ss-right" />
+</a>
 
 ## Author
 
