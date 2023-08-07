@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		088F252C2A80C462008F0ED1 /* MyTagCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F252B2A80C462008F0ED1 /* MyTagCollectionViewController.swift */; };
 		088F252E2A80C841008F0ED1 /* MyTagCollectionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F252D2A80C841008F0ED1 /* MyTagCollectionContainerView.swift */; };
+		088F25302A80DC5F008F0ED1 /* MyTagInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F252F2A80DC5F008F0ED1 /* MyTagInputField.swift */; };
 		5790A08DC0D50F0B134D50DE /* Pods_MyTagCollection_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1755174F8BE74B40800BA64E /* Pods_MyTagCollection_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		088F252B2A80C462008F0ED1 /* MyTagCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewController.swift; sourceTree = "<group>"; };
 		088F252D2A80C841008F0ED1 /* MyTagCollectionContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionContainerView.swift; sourceTree = "<group>"; };
+		088F252F2A80DC5F008F0ED1 /* MyTagInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagInputField.swift; sourceTree = "<group>"; };
 		1755174F8BE74B40800BA64E /* Pods_MyTagCollection_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTagCollection_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F12839211BB52057800AD3 /* MyTagCollection.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MyTagCollection.podspec; path = ../MyTagCollection.podspec; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MyTagCollection_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTagCollection_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				088F252D2A80C841008F0ED1 /* MyTagCollectionContainerView.swift */,
 				088F252B2A80C462008F0ED1 /* MyTagCollectionViewController.swift */,
+				088F252F2A80DC5F008F0ED1 /* MyTagInputField.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -339,6 +342,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				088F252E2A80C841008F0ED1 /* MyTagCollectionContainerView.swift in Sources */,
+				088F25302A80DC5F008F0ED1 /* MyTagInputField.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				088F252C2A80C462008F0ED1 /* MyTagCollectionViewController.swift in Sources */,
 			);

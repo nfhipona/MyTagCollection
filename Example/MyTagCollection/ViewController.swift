@@ -19,8 +19,7 @@ class ViewController: UIViewController {
         return label.usingAutolayout()
     }()
     
-    private
-    lazy var proceedButton: UIButton = {
+    private let proceedButton: UIButton = {
         let button = UIButton()
         button.setTitle("Proceed to Sample", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16,

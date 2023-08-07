@@ -22,6 +22,22 @@ class MyTagCollectionViewController: UIViewController {
         return label.usingAutolayout()
     }()
     
+    private let inputTextField: MyTagInputField = {
+        let textField = MyTagInputField()
+        textField.placeholder = "Add Tag"
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+        return textField.usingAutolayout()
+    }()
+    
+    private let addButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "plus"), for: .normal)
+        button.clipsToBounds = true
+        return button.usingAutolayout()
+    }()
+    
     private
     lazy var myTagCollectionViewModel: MyTagCollectionViewModel = {
         .init(identifier: UUID().uuidString,
@@ -51,10 +67,11 @@ class MyTagCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubviews([titleLabel, myTagCollectionView])
+        view.addSubviews([titleLabel, inputTextField, addButton, myTagCollectionView])
         setConstraints()
+        setBindings()
     }
-
+    
     private func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
@@ -62,11 +79,35 @@ class MyTagCollectionViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
             
-            myTagCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            inputTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            inputTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            inputTextField.trailingAnchor.constraint(equalTo: addButton.leadingAnchor, constant: -8),
+            inputTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            addButton.centerYAnchor.constraint(equalTo: inputTextField.centerYAnchor),
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            addButton.widthAnchor.constraint(equalToConstant: 40),
+            addButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            myTagCollectionView.topAnchor.constraint(equalTo: inputTextField.bottomAnchor, constant: 40),
             myTagCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             myTagCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             myTagCollectionView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
         ])
+    }
+    
+    private func setBindings() {
+        addButton.addTarget(self, action: #selector(addTagAction), for: .touchUpInside)
+    }
+    
+    @objc
+    private func addTagAction() {
+        myTagCollectionViewModel.addItem(tagItem: MyTagItemCustomViewModel(identifier: UUID().uuidString,
+                                                                           model: MyTagItemModel(title: inputTextField.cleanText(),
+                                                                                                 value: inputTextField.cleanText()),
+                                                                           attribute: MyTagItemAttribute.defaultStub),
+                                         position: .last,
+                                         replaceOld: true)
     }
 }
 
