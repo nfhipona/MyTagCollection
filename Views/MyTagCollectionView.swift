@@ -176,4 +176,10 @@ extension MyTagCollectionView {
         
         prepareTags(items: viewModel.items)
     }
+    
+    // force reload tags
+    func reloadTags() {
+        guard let viewModel else { return }
+        prepareTags(items: viewModel.items)
+    }
 }

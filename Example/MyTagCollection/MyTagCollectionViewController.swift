@@ -102,12 +102,15 @@ class MyTagCollectionViewController: UIViewController {
     
     @objc
     private func addTagAction() {
+        guard inputTextField.cleanText().count > 0 else { return }
         myTagCollectionViewModel.addItem(tagItem: MyTagItemCustomViewModel(identifier: UUID().uuidString,
                                                                            model: MyTagItemModel(title: inputTextField.cleanText(),
                                                                                                  value: inputTextField.cleanText()),
                                                                            attribute: MyTagItemAttribute.defaultStub),
                                          position: .last,
                                          replaceOld: true)
+        myTagCollectionView.reloadTags()
+        inputTextField.text = nil
     }
 }
 
