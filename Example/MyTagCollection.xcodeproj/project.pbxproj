@@ -43,7 +43,7 @@
 		088F25342A80E22E008F0ED1 /* ss-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ss-center.png"; sourceTree = "<group>"; };
 		088F25382A80E237008F0ED1 /* Demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Demo.mp4; sourceTree = "<group>"; };
 		1755174F8BE74B40800BA64E /* Pods_MyTagCollection_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTagCollection_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27F12839211BB52057800AD3 /* MyTagCollection.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MyTagCollection.podspec; path = ../MyTagCollection.podspec; sourceTree = "<group>"; };
+		27F12839211BB52057800AD3 /* MyTagCollection.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MyTagCollection.podspec; path = ../MyTagCollection.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* MyTagCollection_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTagCollection_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
