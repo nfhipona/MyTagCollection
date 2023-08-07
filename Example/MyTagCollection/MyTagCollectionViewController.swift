@@ -16,7 +16,7 @@ class MyTagCollectionViewController: UIViewController {
     private
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "My Tags Collection: \(alignment.description)"
+        label.text = alignment.description
         label.font = UIFont.systemFont(ofSize: 30,
                                        weight: .bold)
         return label.usingAutolayout()
@@ -40,6 +40,8 @@ class MyTagCollectionViewController: UIViewController {
         self.alignment = alignment
         self.initialItems = initialItems
         super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = .white
+        title = "My Tags Collection"
     }
     
     required init?(coder: NSCoder) {

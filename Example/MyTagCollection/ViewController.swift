@@ -20,6 +20,17 @@ class ViewController: UIViewController {
     }()
     
     private
+    lazy var proceedButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Proceed to Sample", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16,
+                                                    weight: .semibold)
+        button.backgroundColor = .blue
+        button.clipsToBounds = true
+        return button.usingAutolayout()
+    }()
+    
+    private
     lazy var initialItems: [MyTagItemCustomViewModel] = {
         [
             .init(identifier: UUID().uuidString,
@@ -71,6 +82,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         view.addSubviews([titleLabel, segmentControl])
         view.addSubviews(containerViews)
+        view.addSubview(proceedButton)
         setConstraints()
         setBindings()
     }
@@ -78,6 +90,12 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        proceedButton.layer.cornerRadius = proceedButton.frame.height / 2
     }
     
     private func setConstraints() {
@@ -98,23 +116,45 @@ class ViewController: UIViewController {
                 containerView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 20),
                 containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
                 containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -40),
+                containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -100),
             ])
         }
+        
+        NSLayoutConstraint.activate([
+            proceedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            proceedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            proceedButton.widthAnchor.constraint(equalToConstant: 250),
+            proceedButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     private func setBindings() {
         segmentControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
+        proceedButton.addTarget(self, action: #selector(proceedButtonAction(sender:)), for: .touchUpInside)
+    }
+    
+    private func selectedAlignment() -> MyTagSection.Alignment {
+        switch segmentControl.selectedSegmentIndex {
+        case 1: return .center
+        case 2: return .right
+        default: return .left
+        }
     }
     
     @objc
     private func segmentChange(sender: UISegmentedControl) {
-        print(sender.selectedSegmentIndex)
-        
+        let alignment = selectedAlignment()
         for containerView in containerViews {
-            let isVisible = containerView.viewIndex == sender.selectedSegmentIndex
+            let isVisible = containerView.alignment == alignment
             containerView.isHidden = !isVisible
         }
+    }
+    
+    @objc
+    private func proceedButtonAction(sender: UIButton) {
+        let viewController = MyTagCollectionViewController(alignment: selectedAlignment(),
+                                                           initialItems: initialItems)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

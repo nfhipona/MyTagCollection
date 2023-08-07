@@ -11,8 +11,7 @@ import UIKit
 import MyTagCollection
 
 class MyTagCollectionContainerView: UIView {
-    var viewIndex: Int
-    private var alignment: MyTagSection.Alignment
+    var alignment: MyTagSection.Alignment
     private var initialItems: [MyTagItemCustomViewModel]
 
     private
@@ -30,7 +29,6 @@ class MyTagCollectionContainerView: UIView {
     }()
     
     override init(frame: CGRect) {
-        self.viewIndex = 0
         self.alignment = .center
         self.initialItems = []
         super.init(frame: frame)
@@ -42,8 +40,6 @@ class MyTagCollectionContainerView: UIView {
                      alignment: MyTagSection.Alignment,
                      initialItems: [MyTagItemCustomViewModel]) {
         self.init(frame: .zero)
-        
-        self.viewIndex = viewIndex
         self.alignment = alignment
         self.initialItems = initialItems
         
