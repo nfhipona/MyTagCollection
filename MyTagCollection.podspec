@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'MyTagCollection'
-    s.version          = '0.1.0'
+    s.version          = '0.1.1'
     s.swift_version    = '5'
     s.platform         = :ios, '12.0'
     s.summary          = 'MyTagCollection is a utility helper for handling and managing user`s custom tags'
