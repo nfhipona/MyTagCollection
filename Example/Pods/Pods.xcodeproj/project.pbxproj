@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */; };
 		08E126D72A7FBEC000063655 /* MyTagItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */; };
 		08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */; };
 		08E126DB2A7FC18900063655 /* MyTagItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		0749135B9817AC4E21B459E55F5EC782 /* Pods-MyTagCollection_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyTagCollection_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomViewModel.swift; sourceTree = "<group>"; };
 		08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemProtocol.swift; sourceTree = "<group>"; };
 		08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModelProtocol.swift; sourceTree = "<group>"; };
 		08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemAttribute.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				08E126EB2A7FF49B00063655 /* MyTagBaseItemViewModel.swift */,
 				08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */,
+				088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				08E126DD2A7FD8C200063655 /* MyTagItemAttributeProtocol.swift in Sources */,
 				08E126E52A7FDE4D00063655 /* MyTagSectionDimension.swift in Sources */,
 				08E126E12A7FDD7C00063655 /* MyTagItemViewProtocol.swift in Sources */,
+				088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */,
 				08E126F82A80A50100063655 /* MyTagItemCustomView.swift in Sources */,
 				08E126EE2A7FF6C800063655 /* MyTagCollectionView.swift in Sources */,
 				08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */,
