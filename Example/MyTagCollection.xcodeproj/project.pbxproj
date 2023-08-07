@@ -83,7 +83,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		088F25312A80E1BA008F0ED1 /* Assets */ = {
+		08614C4D2A80E53F00B44F60 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				088F25382A80E237008F0ED1 /* Demo.mp4 */,
@@ -91,7 +91,7 @@
 				088F25332A80E22D008F0ED1 /* ss-left.png */,
 				088F25322A80E22D008F0ED1 /* ss-right.png */,
 			);
-			name = Assets;
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		2C1AE07C532B2ED847E42155 /* Pods */ = {
@@ -129,7 +129,7 @@
 		607FACD21AFB9204008FA782 /* Example for MyTagCollection */ = {
 			isa = PBXGroup;
 			children = (
-				088F25312A80E1BA008F0ED1 /* Assets */,
+				08614C4D2A80E53F00B44F60 /* Demo */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				088F252D2A80C841008F0ED1 /* MyTagCollectionContainerView.swift */,
