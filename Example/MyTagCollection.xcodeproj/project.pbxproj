@@ -10,6 +10,10 @@
 		088F252C2A80C462008F0ED1 /* MyTagCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F252B2A80C462008F0ED1 /* MyTagCollectionViewController.swift */; };
 		088F252E2A80C841008F0ED1 /* MyTagCollectionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F252D2A80C841008F0ED1 /* MyTagCollectionContainerView.swift */; };
 		088F25302A80DC5F008F0ED1 /* MyTagInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F252F2A80DC5F008F0ED1 /* MyTagInputField.swift */; };
+		088F25352A80E22E008F0ED1 /* ss-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 088F25322A80E22D008F0ED1 /* ss-right.png */; };
+		088F25362A80E22E008F0ED1 /* ss-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 088F25332A80E22D008F0ED1 /* ss-left.png */; };
+		088F25372A80E22E008F0ED1 /* ss-center.png in Resources */ = {isa = PBXBuildFile; fileRef = 088F25342A80E22E008F0ED1 /* ss-center.png */; };
+		088F25392A80E237008F0ED1 /* Demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 088F25382A80E237008F0ED1 /* Demo.mp4 */; };
 		5790A08DC0D50F0B134D50DE /* Pods_MyTagCollection_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1755174F8BE74B40800BA64E /* Pods_MyTagCollection_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -34,6 +38,10 @@
 		088F252B2A80C462008F0ED1 /* MyTagCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewController.swift; sourceTree = "<group>"; };
 		088F252D2A80C841008F0ED1 /* MyTagCollectionContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionContainerView.swift; sourceTree = "<group>"; };
 		088F252F2A80DC5F008F0ED1 /* MyTagInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagInputField.swift; sourceTree = "<group>"; };
+		088F25322A80E22D008F0ED1 /* ss-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ss-right.png"; sourceTree = "<group>"; };
+		088F25332A80E22D008F0ED1 /* ss-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ss-left.png"; sourceTree = "<group>"; };
+		088F25342A80E22E008F0ED1 /* ss-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ss-center.png"; sourceTree = "<group>"; };
+		088F25382A80E237008F0ED1 /* Demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Demo.mp4; sourceTree = "<group>"; };
 		1755174F8BE74B40800BA64E /* Pods_MyTagCollection_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTagCollection_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F12839211BB52057800AD3 /* MyTagCollection.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MyTagCollection.podspec; path = ../MyTagCollection.podspec; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MyTagCollection_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTagCollection_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		088F25312A80E1BA008F0ED1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				088F25382A80E237008F0ED1 /* Demo.mp4 */,
+				088F25342A80E22E008F0ED1 /* ss-center.png */,
+				088F25332A80E22D008F0ED1 /* ss-left.png */,
+				088F25322A80E22D008F0ED1 /* ss-right.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		2C1AE07C532B2ED847E42155 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +129,7 @@
 		607FACD21AFB9204008FA782 /* Example for MyTagCollection */ = {
 			isa = PBXGroup;
 			children = (
+				088F25312A80E1BA008F0ED1 /* Assets */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				088F252D2A80C841008F0ED1 /* MyTagCollectionContainerView.swift */,
@@ -255,6 +275,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				088F25362A80E22E008F0ED1 /* ss-left.png in Resources */,
+				088F25392A80E237008F0ED1 /* Demo.mp4 in Resources */,
+				088F25352A80E22E008F0ED1 /* ss-right.png in Resources */,
+				088F25372A80E22E008F0ED1 /* ss-center.png in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
