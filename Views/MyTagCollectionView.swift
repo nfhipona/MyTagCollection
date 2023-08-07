@@ -172,5 +172,7 @@ public
 extension MyTagCollectionView {
     func configure(viewModel: MyTagCollectionViewModelProtocol) {
         self.viewModel = viewModel
+        
+        prepareTags(items: viewModel.items)
     }
 }
