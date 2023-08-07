@@ -1,4 +1,3 @@
-![ss-right](https://github.com/nfhipona/MyTagCollection/assets/8805997/c88b2dfd-37e7-47e7-86d7-2bc4a932e55e)
 # MyTagCollection
 
 [![CI Status](https://img.shields.io/travis/nfhipona/MyTagCollection.svg?style=flat)](https://travis-ci.org/nfhiponaona/MyTagCollection)
@@ -27,6 +26,11 @@ pod 'MyTagCollection'
 ## Demo
 
 ![Demo](https://github.com/nfhipona/MyTagCollection/blob/main/Example/MyTagCollection/Demo/Demo.mp4)
+
+![ss-left](https://github.com/nfhipona/MyTagCollection/assets/8805997/cd806000-0d6e-4c69-94c2-23f13c6106e1)
+![ss-right](https://github.com/nfhipona/MyTagCollection/assets/8805997/b9ce76ce-cb59-4c2c-aaf0-e6b83524ca10)
+![Uploading ss-center.png…]()
+
 
 ## Author
 
