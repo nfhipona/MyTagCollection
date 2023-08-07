@@ -11,7 +11,6 @@ public
 extension MyTagItemCustomView {
     // MyTagItemAttribute.defaultStub
     enum CustomTagViewConstraint {
-        static let padding8: CGFloat = 8
         static let verticalPadding: CGFloat = 11
         static let horizontalPadding: CGFloat = 20
         static let titleLabelHeight: CGFloat = 18
@@ -23,6 +22,8 @@ class MyTagItemCustomView: MyTagBaseItemView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 14,
+                                       weight: .regular)
         return label.usingAutolayout()
     }()
     

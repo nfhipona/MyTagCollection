@@ -15,6 +15,7 @@ class MyTagCollectionView: UIView, MyTagCollectionViewProtocol {
     override
     init(frame: CGRect) {
         super.init(frame: frame)
+        usingAutolayout()
     }
     
     public required

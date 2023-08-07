@@ -80,13 +80,16 @@ extension MyTagItemAttribute {
               preDefinedConsumedSpace: 0,
               
               titleLabelHeight: 18,
-              titleAttributes: [:],
+              titleAttributes: [
+                .font: UIFont.systemFont(ofSize: 14,
+                                         weight: .regular)
+              ],
               
               cornerRadius: 20,
               borderWidth: 1.5,
               
-              borderColor: .clear,
-              backgroundColor: .white,
+              borderColor: .gray,
+              backgroundColor: .lightGray,
               selectedBorderColor: .blue,
               selectedBackgroundColor: .cyan,
               

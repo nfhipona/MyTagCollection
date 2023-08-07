@@ -15,7 +15,7 @@ class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
     override
     init(frame: CGRect) {
         super.init(frame: frame)
-        
+        usingAutolayout()
         setViews()
         setConstraints()
     }
@@ -60,7 +60,8 @@ class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
             
             let textSize = boundingSize(for: item.model.title,
                                         canvas: CGSize(width: allowedTextWidth,
-                                                       height: dimension.contentCanvas.height))
+                                                       height: dimension.contentCanvas.height),
+                                        attributes: attribute.titleAttributes)
             
             let itemCanvasWidth = ceil(textSize.width) + fixedItemWidth
             let canvasHeight = ceil(textSize.height) + verticalPadding
