@@ -25,7 +25,7 @@ pod 'MyTagCollection'
 
 ## Demo
 
-![Demo](https://youtu.be/SZFJh5bu4iQ)
+[Video Demo](https://youtu.be/SZFJh5bu4iQ)
 
 ![ss-left](https://github.com/nfhipona/MyTagCollection/assets/8805997/cd806000-0d6e-4c69-94c2-23f13c6106e1)
 
