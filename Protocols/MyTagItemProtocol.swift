@@ -10,7 +10,7 @@ import Foundation
 public
 protocol MyTagItemProtocol {
     var identifier: String { get }
-    var modelView: MyBaseTagItemView.Type { get }
+    var modelView: MyTagBaseItemView.Type { get }
     var model: MyTagItemModelProtocol { get }
     var attribute: MyTagItemAttributeProtocol { get }
     var isSelected: Bool { get set }

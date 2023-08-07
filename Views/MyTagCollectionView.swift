@@ -92,7 +92,7 @@ extension MyTagCollectionView {
             let dimension = tagSection.dimension
             var rowsTmp: [UIView] = []
             for (index, tagItem) in tagSection.rows.enumerated() {
-                guard let tagItemView = tagItem as? MyBaseTagItemView else { continue }
+                guard let tagItemView = tagItem as? MyTagBaseItemView else { continue }
                 addSubview(tagItemView)
                 
                 NSLayoutConstraint.activate([
@@ -108,7 +108,7 @@ extension MyTagCollectionView {
                     ])
                 } else {
                     if let tagSectionTmp = tagSectionsTmp.last,
-                       let tallestTagItemView = tagSectionTmp.tallestItemInRow as? MyBaseTagItemView {
+                       let tallestTagItemView = tagSectionTmp.tallestItemInRow as? MyTagBaseItemView {
                         tagItemView.topAnchor.constraint(equalTo: tallestTagItemView.bottomAnchor,
                                                          constant: dimension.rowSpacing)
                         .isActive = true
@@ -159,7 +159,7 @@ extension MyTagCollectionView {
             tagSectionsTmp.append(tagSection)
             
             if tagSections.isLastItem(with: index),
-               let tallestTagItemView = tagSection.tallestItemInRow as? MyBaseTagItemView {
+               let tallestTagItemView = tagSection.tallestItemInRow as? MyTagBaseItemView {
                 tallestTagItemView.bottomAnchor.constraint(equalTo: bottomAnchor,
                                                            constant: -dimension.inset.bottom)
                 .isActive = true

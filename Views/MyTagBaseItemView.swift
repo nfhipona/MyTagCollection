@@ -1,5 +1,5 @@
 //
-//  MyBaseTagItemView.swift
+//  MyTagBaseItemView.swift
 //  MyTagCollection
 //
 //  Created by Neil Francis Hipona on 8/6/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 public
-class MyBaseTagItemView: UIView, MyTagItemViewProtocol {
+class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
     public var item: MyTagItemProtocol?
     public var itemCanvas: CGSize = .zero
     
@@ -98,7 +98,7 @@ class MyBaseTagItemView: UIView, MyTagItemViewProtocol {
 }
 
 private
-extension MyBaseTagItemView {
+extension MyTagBaseItemView {
     func setViewAttributes() {
         if let item, let attribute = item.attribute as? MyTagItemAttribute {
             layer.cornerRadius = attribute.cornerRadius
@@ -116,7 +116,7 @@ extension MyBaseTagItemView {
 }
 
 public
-extension MyBaseTagItemView {
+extension MyTagBaseItemView {
     func boundingSize(for str: String,
                       canvas: CGSize,
                       options: NSStringDrawingOptions = [.usesLineFragmentOrigin, .usesFontLeading],
