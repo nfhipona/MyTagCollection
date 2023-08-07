@@ -45,26 +45,34 @@ class ViewController: UIViewController {
         ]
     }()
     
-    private
-    lazy var myTagCollectionViewModel: MyTagCollectionViewModel = {
-        .init(identifier: UUID().uuidString,
-              items: initialItems,
-              dimension: .defaultStub,
-              alignment: .left)
+    private let segmentControl: UISegmentedControl = {
+        let segmented = UISegmentedControl(items: ["Left Align", "Center Align", "Right Align"])
+        segmented.selectedSegmentIndex = 0
+        return segmented.usingAutolayout()
     }()
     
-    private lazy var myTagCollectionView: MyTagCollectionView = {
-        .init(viewModel: myTagCollectionViewModel)
-        .usingAutolayout()
+    private
+    lazy var containerViews: [MyTagCollectionContainerView] = {
+        [
+            .init(viewIndex: 0,
+                  alignment: .left,
+                  initialItems: initialItems),
+            .init(viewIndex: 1,
+                  alignment: .center,
+                  initialItems: initialItems),
+            .init(viewIndex: 2,
+                  alignment: .right,
+                  initialItems: initialItems)
+        ]
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        view.addSubviews([titleLabel, myTagCollectionView])
-        
+        view.addSubviews([titleLabel, segmentControl])
+        view.addSubviews(containerViews)
         setConstraints()
+        setBindings()
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,11 +87,34 @@ class ViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
             
-            myTagCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            myTagCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            myTagCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            myTagCollectionView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
+            segmentControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
+        
+        for (idx, containerView) in containerViews.enumerated() {
+            containerView.isHidden = idx != 0
+            NSLayoutConstraint.activate([
+                containerView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 20),
+                containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -40),
+            ])
+        }
+    }
+    
+    private func setBindings() {
+        segmentControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
+    }
+    
+    @objc
+    private func segmentChange(sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+        
+        for containerView in containerViews {
+            let isVisible = containerView.viewIndex == sender.selectedSegmentIndex
+            containerView.isHidden = !isVisible
+        }
     }
 }
 

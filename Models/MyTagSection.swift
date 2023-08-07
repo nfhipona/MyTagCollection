@@ -31,6 +31,14 @@ extension MyTagSection {
         case left
         case center
         case right
+        
+        public var description: String {
+            switch self {
+            case .left: return "Left Align"
+            case .center: return "Center Align"
+            case .right: return "Right Align"
+            }
+        }
     }
 }
 
