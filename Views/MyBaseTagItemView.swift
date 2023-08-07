@@ -20,8 +20,8 @@ class MyBaseTagItemView: UIView, MyTagItemViewProtocol {
         setConstraints()
     }
     
-    required convenience
-    public init(frame: CGRect = .zero,
+    public required
+    convenience init(frame: CGRect = .zero,
                      item: MyTagItemProtocol,
                      dimension: MyTagSectionDimensionProtocol) {
         self.init(frame: frame)
@@ -53,10 +53,9 @@ class MyBaseTagItemView: UIView, MyTagItemViewProtocol {
         } else {
             let horizontalPadding = attribute.leftPadding + attribute.rightPadding
             let verticalPadding = attribute.topPadding + attribute.bottomPadding
-            let sidePadding = dimension.columnSpacing * 2
             
             let fixedItemWidth = attribute.preDefinedConsumedSpace + horizontalPadding
-            let allowedTextWidth = dimension.contentCanvas.width - (fixedItemWidth + sidePadding)
+            let allowedTextWidth = dimension.contentCanvas.width - (fixedItemWidth + dimension.horizontalPadding)
             let itemDefaultHeight = verticalPadding + attribute.titleLabelHeight
             
             let textSize = boundingSize(for: item.model.title,
@@ -78,10 +77,9 @@ class MyBaseTagItemView: UIView, MyTagItemViewProtocol {
             partialResult + tagItem.itemCanvas.width
         }
         
-        let interItemSpacing = dimension.interItemSpacing * CGFloat(itemsInRow.count - 1)
-        let sidePadding = dimension.columnSpacing * 2
+        let interItemSpacing = dimension.columnSpacing * CGFloat(itemsInRow.count - 1)
         rowItemWidth += interItemSpacing
-        rowItemWidth += sidePadding
+        rowItemWidth += dimension.horizontalPadding
         rowItemWidth += itemCanvas.width
         
         return rowItemWidth > dimension.contentCanvas.width

@@ -20,6 +20,8 @@
 		08E126EE2A7FF6C800063655 /* MyTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126ED2A7FF6C800063655 /* MyTagCollectionView.swift */; };
 		08E126F02A80059300063655 /* MyTagCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */; };
 		08E126F22A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */; };
+		08E126F42A800F1E00063655 /* MyTagCollectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */; };
+		08E126F62A801AA500063655 /* MyTagHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F52A801AA500063655 /* MyTagHelper.swift */; };
 		2D1717F9B21206707373011801675621 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		3A7C0DD4E1F957FF747B94025A6880BF /* Pods-MyTagCollection_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6171CE7548EC0DD4DAA77DB05C766AFA /* Pods-MyTagCollection_Example-dummy.m */; };
 		7B7D3B51A2B9CC1F32D1951B29DA905D /* Pods-MyTagCollection_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 222D4301EEF3C7CD517BC4FD9D89C66D /* Pods-MyTagCollection_Tests-dummy.m */; };
@@ -63,6 +65,8 @@
 		08E126ED2A7FF6C800063655 /* MyTagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionView.swift; sourceTree = "<group>"; };
 		08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewModel.swift; sourceTree = "<group>"; };
 		08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewModelProtocol.swift; sourceTree = "<group>"; };
+		08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewProtocol.swift; sourceTree = "<group>"; };
+		08E126F52A801AA500063655 /* MyTagHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagHelper.swift; sourceTree = "<group>"; };
 		0F056B21D9D48A009EE1556B8F416C1A /* MyTagCollection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyTagCollection-prefix.pch"; sourceTree = "<group>"; };
 		13B26C1CB2A276C0E60250430DE7D687 /* MyTagCollection.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MyTagCollection.modulemap; sourceTree = "<group>"; };
 		1A3D3D56FB33462F6B492E714CEBD45C /* Pods-MyTagCollection_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyTagCollection_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */,
 				08E126DC2A7FD8C200063655 /* MyTagItemAttributeProtocol.swift */,
 				08E126E22A7FDE2000063655 /* MyTagSectionDimensionProtocol.swift */,
+				08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */,
 				08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */,
 			);
 			path = Protocols;
@@ -149,6 +154,7 @@
 		08E126D52A7FBE3100063655 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				08E126F52A801AA500063655 /* MyTagHelper.swift */,
 				08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */,
 				08E126E42A7FDE4D00063655 /* MyTagSectionDimension.swift */,
 				08E126E82A7FF21400063655 /* MyTagSection.swift */,
@@ -460,10 +466,12 @@
 				08E126E12A7FDD7C00063655 /* MyTagItemViewProtocol.swift in Sources */,
 				08E126EE2A7FF6C800063655 /* MyTagCollectionView.swift in Sources */,
 				08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */,
+				08E126F42A800F1E00063655 /* MyTagCollectionViewProtocol.swift in Sources */,
 				08E126F02A80059300063655 /* MyTagCollectionViewModel.swift in Sources */,
 				08E126E32A7FDE2000063655 /* MyTagSectionDimensionProtocol.swift in Sources */,
 				08E126DB2A7FC18900063655 /* MyTagItemAttribute.swift in Sources */,
 				08E126DF2A7FDD5500063655 /* MyBaseTagItemView.swift in Sources */,
+				08E126F62A801AA500063655 /* MyTagHelper.swift in Sources */,
 				08E126EC2A7FF49B00063655 /* MyBaseTagItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

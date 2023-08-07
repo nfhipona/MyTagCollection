@@ -10,12 +10,12 @@ import Foundation
 public
 struct MyTagSection {
     public let section: Int
-    public let rows: [MyTagItemViewProtocol]
+    public var rows: [MyTagItemViewProtocol]
     public let dimension: MyTagSectionDimension
     public let alignment: Alignment
     
     public init(section: Int,
-                rows: [MyTagItemViewProtocol] = [],
+                rows: [MyTagItemViewProtocol],
                 dimension: MyTagSectionDimension = .defaultStub,
                 alignment: Alignment = .center) {
         self.section = section
@@ -47,7 +47,7 @@ extension MyTagSection {
     }
     
     var totalItemSpacing: CGFloat {
-        return dimension.interItemSpacing * CGFloat(rows.count - 1)
+        return dimension.columnSpacing * CGFloat(rows.count - 1)
     }
     
     var centerItemPadding: CGFloat {
@@ -57,5 +57,9 @@ extension MyTagSection {
         let contentItemWidth = totalItemWidth + totalItemSpacing
         let contentWidth = dimension.contentCanvas.width - contentItemWidth
         return contentWidth / 2
+    }
+    
+    mutating func append(item: MyTagItemViewProtocol) {
+        rows.append(item)
     }
 }

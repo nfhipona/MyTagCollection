@@ -10,18 +10,21 @@ import Foundation
 public
 class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let identifier: String
-    public var isAppendable: Bool
     public var items: [MyTagItemProtocol]
     public let dimension: MyTagSectionDimension
-    
+    public let alignment: Alignment
+    public var isAppendable: Bool
+
     public init(identifier: String,
-                isAppendable: Bool = true,
                 items: [MyTagItemProtocol],
-                dimension: MyTagSectionDimension) {
+                dimension: MyTagSectionDimension,
+                alignment: Alignment,
+                isAppendable: Bool = true) {
         self.identifier = identifier
-        self.isAppendable = isAppendable
         self.items = items
         self.dimension = dimension
+        self.alignment = alignment
+        self.isAppendable = isAppendable
     }
 }
 
@@ -82,14 +85,17 @@ extension MyTagCollectionViewModel {
         items = items.map({ item in
             if isMultiple {
                 if item.identifier == tagItem.identifier {
-                    return item.updateSelected(isSelected: isSelected)
-                } else {
-                    return item
+                    var mutatedItem = item
+                    mutatedItem.isSelected = isSelected
+                    return mutatedItem
                 }
             } else {
                 let isSelected = item.identifier == tagItem.identifier ? isSelected : false
-                return item.updateSelected(isSelected: isSelected)
+                var mutatedItem = item
+                mutatedItem.isSelected = isSelected
+                return mutatedItem
             }
+            return item
         })
     }
     

@@ -9,8 +9,11 @@ import Foundation
 
 public
 protocol MyTagSectionDimensionProtocol {
-    var interItemSpacing: CGFloat { get }
     var columnSpacing: CGFloat { get }
     var rowSpacing: CGFloat { get }
     var contentCanvas: CGSize { get }
+    var inset: UIEdgeInsets { get }
+    
+    var verticalPadding: CGFloat { get }
+    var horizontalPadding: CGFloat { get }
 }
