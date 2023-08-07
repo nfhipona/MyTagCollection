@@ -145,7 +145,8 @@
 				08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */,
 				08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */,
 			);
-			path = Protocols;
+			name = Protocols;
+			path = MyTagCollection/Classes/Protocols;
 			sourceTree = "<group>";
 		};
 		08E126D42A7FBE2000063655 /* Views */ = {
@@ -155,7 +156,8 @@
 				08E126ED2A7FF6C800063655 /* MyTagCollectionView.swift */,
 				08E126F72A80A50100063655 /* MyTagItemCustomView.swift */,
 			);
-			path = Views;
+			name = Views;
+			path = MyTagCollection/Classes/Views;
 			sourceTree = "<group>";
 		};
 		08E126D52A7FBE3100063655 /* Models */ = {
@@ -167,7 +169,8 @@
 				08E126E82A7FF21400063655 /* MyTagSection.swift */,
 				088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */,
 			);
-			path = Models;
+			name = Models;
+			path = MyTagCollection/Classes/Models;
 			sourceTree = "<group>";
 		};
 		08E126EA2A7FF48700063655 /* ViewModels */ = {
@@ -177,7 +180,8 @@
 				08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */,
 				088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */,
 			);
-			path = ViewModels;
+			name = ViewModels;
+			path = MyTagCollection/Classes/ViewModels;
 			sourceTree = "<group>";
 		};
 		163693A0E4B128E8CF7D7FB929DA2769 /* MyTagCollection */ = {
