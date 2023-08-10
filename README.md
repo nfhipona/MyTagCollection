@@ -5,6 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/MyTagCollection.svg?style=flat)](https://cocoapods.org/pods/MyTagCollection)
 [![Platform](https://img.shields.io/cocoapods/p/MyTagCollection.svg?style=flat)](https://cocoapods.org/pods/MyTagCollection)
 
+`MyTagCollection` allows user to add custom tags on their project with custom views for each tags.
+
+Suports:
+* Mix matching of tags
+* Add, Remove, Selection of tags
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
