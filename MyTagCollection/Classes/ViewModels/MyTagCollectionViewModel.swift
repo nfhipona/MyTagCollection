@@ -14,7 +14,7 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let dimension: MyTagSectionDimension
     public var alignment: Alignment
     public var isAppendable: Bool
-    public let isMultiSelection: Bool
+    public var isMultiSelection: Bool
     
     public
     required init(identifier: String,
@@ -85,14 +85,17 @@ extension MyTagCollectionViewModel {
     
     func updateItem(with mutatedItem: MyTagItemProtocol) {
         items = items.map({ item in
-            if isMultiSelection {
-                let isMatched = item.identifier == mutatedItem.identifier
-                return isMatched ? mutatedItem : item
+            if item.identifier == mutatedItem.identifier {
+                return mutatedItem
             }
             
-            var mutatedItem = item
-            mutatedItem.isSelected = false
-            return mutatedItem
+            if isMultiSelection {
+                return item
+            } else {
+                var mutatedItem = item
+                mutatedItem.isSelected = false
+                return mutatedItem
+            }
         })
     }
     
