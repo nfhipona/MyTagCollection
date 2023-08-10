@@ -12,9 +12,15 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let identifier: String
     public var items: [MyTagItemProtocol]
     public let dimension: MyTagSectionDimension
-    public var alignment: Alignment
+    public var alignment: Alignment {
+        didSet {
+            reloadTags()
+        }
+    }
     public var isAppendable: Bool
     public var isMultiSelection: Bool
+    unowned
+    public var viewDelegate: MyTagCollectionUpdateProtocol?
     
     public
     required init(identifier: String,
@@ -32,16 +38,7 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     }
 }
 
-public
-extension MyTagCollectionViewModel {
-    enum ItemPosition {
-        case first
-        case last
-        case byIndex(index: Int)
-    }
-}
-
-public
+internal
 extension MyTagCollectionViewModel {
     func appendItem(tagItem: MyTagItemProtocol, position: ItemPosition) {
         guard isAppendable else { return }
@@ -54,32 +51,6 @@ extension MyTagCollectionViewModel {
             
         default: // last
             items.append(tagItem)
-        }
-    }
-    
-    func setItems(tagItems: [MyTagItemProtocol]) {
-        items = tagItems
-    }
-    
-    func addItem(tagItem: MyTagItemProtocol,
-                 position: ItemPosition,
-                 replaceOld: Bool) {
-        if replaceOld {
-            removeItem(tagItem: tagItem)
-        }
-        
-        appendItem(tagItem: tagItem, position: position)
-    }
-    
-    func addItems(tagItems: [MyTagItemProtocol],
-                  position: ItemPosition,
-                  replaceOld: Bool) {
-        if replaceOld {
-            removeItems(tagItems: tagItems)
-        }
-        
-        for tagItem in tagItems {
-            appendItem(tagItem: tagItem, position: position)
         }
     }
     
@@ -98,17 +69,67 @@ extension MyTagCollectionViewModel {
             }
         })
     }
+}
+
+public
+extension MyTagCollectionViewModel {
+    enum ItemPosition {
+        case first
+        case last
+        case byIndex(index: Int)
+    }
+}
+
+public
+extension MyTagCollectionViewModel {
+    func setItems(tagItems: [MyTagItemProtocol]) {
+        items = tagItems
+        reloadTags()
+    }
+    
+    func addItem(tagItem: MyTagItemProtocol,
+                 position: ItemPosition,
+                 replaceOld: Bool) {
+        defer { reloadTags() }
+        
+        if replaceOld {
+            removeItem(tagItem: tagItem)
+        }
+        
+        appendItem(tagItem: tagItem, position: position)
+    }
+    
+    func addItems(tagItems: [MyTagItemProtocol],
+                  position: ItemPosition,
+                  replaceOld: Bool) {
+        defer { reloadTags() }
+        
+        if replaceOld {
+            removeItems(tagItems: tagItems)
+        }
+        
+        for tagItem in tagItems {
+            appendItem(tagItem: tagItem, position: position)
+        }
+    }
     
     func removeItem(tagItem: MyTagItemProtocol) {
         items.removeAll { $0.identifier == tagItem.identifier }
+        reloadTags()
     }
     
     func removeItems(tagItems: [MyTagItemProtocol]) {
+        defer { reloadTags() }
         items.removeAll {
             for tagItem in tagItems where $0.identifier == tagItem.identifier {
                 return true
             }
             return false
         }
+    }
+    
+    func reloadTags() {
+        guard let viewDelegate else { return }
+        viewDelegate.viewModel(viewModel: self, requestAction: .reload)
     }
 }

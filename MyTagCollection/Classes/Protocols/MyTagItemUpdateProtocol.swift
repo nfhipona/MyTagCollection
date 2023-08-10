@@ -9,5 +9,7 @@ import Foundation
 
 public
 protocol MyTagItemUpdateProtocol: NSObjectProtocol {
-    func childItem(tagItem: MyTagItemProtocol, tagView: MyTagItemViewProtocol, receiveUpdateSelection isSelected: Bool)
+    func childItem(tagItem: MyTagItemProtocol,
+                   tagView: MyTagItemViewProtocol,
+                   receiveUpdateSelection isSelected: Bool)
 }

@@ -176,6 +176,12 @@ extension MyTagCollectionView {
             rows[idx].configure(item: item)
         }
     }
+    
+    // force reload tags
+    func reloadTags() {
+        guard let viewModel else { return }
+        prepareTags(items: viewModel.items)
+    }
 }
 
 extension MyTagCollectionView: MyTagItemUpdateProtocol {
@@ -193,24 +199,22 @@ extension MyTagCollectionView: MyTagItemUpdateProtocol {
     }
 }
 
+extension MyTagCollectionView: MyTagCollectionUpdateProtocol {
+    public func viewModel(viewModel: MyTagCollectionViewModelProtocol, requestAction action: MyTagCollectionUpdateAction) {
+        switch action {
+        case .reload:
+            prepareTags(items: viewModel.items)
+        }
+    }
+}
+
 public
 extension MyTagCollectionView {
     func configure(viewModel: MyTagCollectionViewModelProtocol) {
         guard let vm = viewModel as? MyTagCollectionViewModel else { return }
+        vm.viewDelegate = self
         self.viewModel = vm
         
         prepareTags(items: viewModel.items)
-    }
-    
-    // force reload tags
-    func reloadTags() {
-        guard let viewModel else { return }
-        prepareTags(items: viewModel.items)
-    }
-    
-    func reloadTags(with alignment: MyTagSection.Alignment) {
-        guard let viewModel else { return }
-        viewModel.alignment = alignment
-        reloadTags()
     }
 }

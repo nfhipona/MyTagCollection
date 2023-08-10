@@ -18,6 +18,7 @@ protocol MyTagCollectionViewModelProtocol {
     var alignment: Alignment { get set }
     var isAppendable: Bool { get set }
     var isMultiSelection: Bool { get set }
+    var viewDelegate: MyTagCollectionUpdateProtocol? { get set }
     
     init(identifier: String,
          items: [MyTagItemProtocol],
