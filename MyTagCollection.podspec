@@ -36,9 +36,9 @@ Pod::Spec.new do |s|
     
     s.source_files = 'MyTagCollection/Classes/**/*'
     
-    #    s.resource_bundles = {
-    #        'MyTagCollection' => ['MyTagCollection/Assets/*.png']
-    #    }
+    s.resource_bundles = {
+        'MyTagCollection' => ['MyTagCollection/Assets/**/*']
+    }
     
     # s.public_header_files = 'Pod/Classes/**/*.h'
     # s.frameworks = 'UIKit', 'MapKit'

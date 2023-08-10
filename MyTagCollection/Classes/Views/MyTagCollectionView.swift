@@ -39,7 +39,8 @@ extension MyTagCollectionView {
         }
     }
     
-    func addRowItem(toSection: MyTagSection, tagItem: MyTagItemViewProtocol) {
+    func addRowItem(toSection: MyTagSection,
+                    tagItem: MyTagItemViewProtocol) {
         tagSections = tagSections.map { tagSection in
             if tagSection.section == toSection.section {
                 var rows = toSection.rows
@@ -73,7 +74,8 @@ extension MyTagCollectionView {
                 tagSections.append(tagSection)
                 
             } else if let tagSection = tagSections.last {
-                if tagItemView.shouldDrawInNewRow(itemsInRow: tagSection.rows, dimension: tagSection.dimension) {
+                if tagItemView.shouldDrawInNewRow(itemsInRow: tagSection.rows,
+                                                  dimension: tagSection.dimension) {
                     let newTagSection = MyTagSection(section: tagSection.section + 1,
                                                      rows: [tagItemView],
                                                      dimension: dimension,
@@ -182,10 +184,10 @@ extension MyTagCollectionView {
         guard let viewModel else { return }
         prepareTags(items: viewModel.items)
     }
-}
-
-extension MyTagCollectionView: MyTagItemUpdateProtocol {
-    public func childItem(tagItem: MyTagItemProtocol, tagView: MyTagItemViewProtocol, receiveUpdateSelection isSelected: Bool) {
+    
+    func updateTagItem(tagItem: MyTagItemProtocol,
+                       tagView: MyTagItemViewProtocol,
+                       state isSelected: Bool) {
         guard let viewModel else { return }
         var mutatedItem = tagItem
         mutatedItem.isSelected = isSelected
@@ -195,6 +197,20 @@ extension MyTagCollectionView: MyTagItemUpdateProtocol {
             tagView.configure(item: mutatedItem)
         } else {
             updateTagItemViews(for: viewModel.items)
+        }
+    }
+}
+
+extension MyTagCollectionView: MyTagItemUpdateProtocol {
+    public func childItem(tagItem: MyTagItemProtocol, tagView: MyTagItemViewProtocol, requestAction action: MyTagItemUpdateAction) {
+        switch action {
+        case .isSelected(let state):
+            updateTagItem(tagItem: tagItem,
+                          tagView: tagView,
+                          state: state)
+        case .remove:
+            guard let viewModel else { return }
+            viewModel.removeItem(tagItem: tagItem)
         }
     }
 }

@@ -44,9 +44,9 @@ struct MyTagItemAttribute: MyTagItemAttributeProtocol {
                 borderWidth: CGFloat,
                 borderColor: UIColor,
                 backgroundColor: UIColor,
-                selectedBorderColor: UIColor,
-                selectedBackgroundColor: UIColor,
-                fixedCanvas: CGSize?) {
+                selectedBorderColor: UIColor? = nil,
+                selectedBackgroundColor: UIColor? = nil,
+                fixedCanvas: CGSize? = nil) {
         self.topPadding = topPadding
         self.leftPadding = leftPadding
         self.rightPadding = rightPadding
@@ -62,8 +62,8 @@ struct MyTagItemAttribute: MyTagItemAttributeProtocol {
         
         self.borderColor = borderColor
         self.backgroundColor = backgroundColor
-        self.selectedBorderColor = selectedBorderColor
-        self.selectedBackgroundColor = selectedBackgroundColor
+        self.selectedBorderColor = selectedBorderColor ?? borderColor
+        self.selectedBackgroundColor = selectedBackgroundColor ?? backgroundColor
         
         self.fixedCanvas = fixedCanvas
     }

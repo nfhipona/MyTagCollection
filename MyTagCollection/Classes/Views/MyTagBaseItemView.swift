@@ -81,6 +81,7 @@ class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
         
         let interItemSpacing = dimension.columnSpacing * CGFloat(itemsInRow.count - 1)
         rowItemWidth += interItemSpacing
+        rowItemWidth += dimension.columnSpacing // pre/virtual spacing for new item
         rowItemWidth += dimension.horizontalPadding
         rowItemWidth += itemCanvas.width
         

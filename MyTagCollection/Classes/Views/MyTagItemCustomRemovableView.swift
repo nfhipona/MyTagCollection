@@ -1,14 +1,14 @@
 //
-//  MyTagItemCustomView.swift
+//  MyTagItemCustomRemovableView.swift
 //  MyTagCollection
 //
-//  Created by Neil Francis Hipona on 8/7/23.
+//  Created by Neil Francis Hipona on 8/10/23.
 //
 
 import Foundation
 
 public
-extension MyTagItemCustomView {
+extension MyTagItemCustomRemovableView {
     // MyTagItemAttribute.defaultStub
     enum CustomTagViewConstraint {
         static let verticalPadding: CGFloat = 11
@@ -18,7 +18,7 @@ extension MyTagItemCustomView {
 }
 
 public
-class MyTagItemCustomView: MyTagBaseItemView {
+class MyTagItemCustomRemovableView: MyTagBaseItemView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -29,6 +29,12 @@ class MyTagItemCustomView: MyTagBaseItemView {
     
     @objc private let tapAction: UIButton = {
         let button = UIButton()
+        let bundle = Bundle(for: MyTagItemCustomRemovableView.self)
+        let image = UIImage(named: "remove",
+                            in: bundle,
+                            compatibleWith: .none)
+        button.setImage(image, for: .normal)
+        button.clipsToBounds = true
         return button.usingAutolayout()
     }()
     
@@ -46,7 +52,7 @@ class MyTagItemCustomView: MyTagBaseItemView {
     
     private
     lazy var titleLabelTrailingAnchor: NSLayoutConstraint = {
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+        titleLabel.trailingAnchor.constraint(equalTo: tapAction.leadingAnchor,
                                              constant: -CustomTagViewConstraint.horizontalPadding)
     }()
     
@@ -76,11 +82,11 @@ class MyTagItemCustomView: MyTagBaseItemView {
             titleLabelTrailingAnchor,
             titleLabelBotAnchor,
             titleLabelHeightAnchor,
-            
-            tapAction.topAnchor.constraint(equalTo: topAnchor),
-            tapAction.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tapAction.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tapAction.bottomAnchor.constraint(equalTo: bottomAnchor)
+
+            tapAction.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            tapAction.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            tapAction.widthAnchor.constraint(equalToConstant: 30),
+            tapAction.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
@@ -109,9 +115,8 @@ class MyTagItemCustomView: MyTagBaseItemView {
     @objc
     private func tapAction(sender: UIButton) {
         guard let parent, let item else { return }
-        let state = !item.isSelected
         parent.childItem(tagItem: item,
                          tagView: self,
-                         requestAction: .isSelected(state: state))
+                         requestAction: .remove)
     }
 }

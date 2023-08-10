@@ -11,5 +11,5 @@ public
 protocol MyTagItemUpdateProtocol: NSObjectProtocol {
     func childItem(tagItem: MyTagItemProtocol,
                    tagView: MyTagItemViewProtocol,
-                   receiveUpdateSelection isSelected: Bool)
+                   requestAction action: MyTagItemUpdateAction)
 }

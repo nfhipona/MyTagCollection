@@ -10,6 +10,10 @@
 		087B4DF52A84934200C124A1 /* MyTagItemUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DF42A84934200C124A1 /* MyTagItemUpdateProtocol.swift */; };
 		087B4DF72A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DF62A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift */; };
 		087B4DF92A84C71300C124A1 /* MyTagCollectionUpdateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DF82A84C71300C124A1 /* MyTagCollectionUpdateAction.swift */; };
+		087B4DFB2A84DE2700C124A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 087B4DFA2A84DE2700C124A1 /* Assets.xcassets */; };
+		087B4DFD2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DFC2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift */; };
+		087B4DFF2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DFE2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift */; };
+		087B4E012A84E74C00C124A1 /* MyTagItemUpdateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */; };
 		088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */; };
 		088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */; };
 		08E126D72A7FBEC000063655 /* MyTagItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */; };
@@ -61,6 +65,10 @@
 		087B4DF42A84934200C124A1 /* MyTagItemUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemUpdateProtocol.swift; sourceTree = "<group>"; };
 		087B4DF62A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionUpdateProtocol.swift; sourceTree = "<group>"; };
 		087B4DF82A84C71300C124A1 /* MyTagCollectionUpdateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionUpdateAction.swift; sourceTree = "<group>"; };
+		087B4DFA2A84DE2700C124A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MyTagCollection/Assets/Assets.xcassets; sourceTree = "<group>"; };
+		087B4DFC2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomRemovableView.swift; sourceTree = "<group>"; };
+		087B4DFE2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomRemovableViewModel.swift; sourceTree = "<group>"; };
+		087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemUpdateAction.swift; sourceTree = "<group>"; };
 		088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomViewModel.swift; sourceTree = "<group>"; };
 		088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModel.swift; sourceTree = "<group>"; };
 		08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemProtocol.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 			children = (
 				08E126DE2A7FDD5500063655 /* MyTagBaseItemView.swift */,
 				08E126F72A80A50100063655 /* MyTagItemCustomView.swift */,
+				087B4DFC2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift */,
 				08E126ED2A7FF6C800063655 /* MyTagCollectionView.swift */,
 			);
 			name = Views;
@@ -176,6 +185,7 @@
 				08E126E42A7FDE4D00063655 /* MyTagSectionDimension.swift */,
 				08E126E82A7FF21400063655 /* MyTagSection.swift */,
 				088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */,
+				087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */,
 				087B4DF82A84C71300C124A1 /* MyTagCollectionUpdateAction.swift */,
 			);
 			name = Models;
@@ -187,6 +197,7 @@
 			children = (
 				08E126EB2A7FF49B00063655 /* MyTagBaseItemViewModel.swift */,
 				088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */,
+				087B4DFE2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift */,
 				08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */,
 			);
 			name = ViewModels;
@@ -202,6 +213,7 @@
 				08E126D32A7FBE1200063655 /* Protocols */,
 				2095BF9F8895AE72D19156FA58A4E739 /* Pod */,
 				AE0583FEE69ED8F476C3DB829C293515 /* Support Files */,
+				087B4DFA2A84DE2700C124A1 /* Assets.xcassets */,
 			);
 			name = MyTagCollection;
 			path = ../..;
@@ -444,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				087B4DFB2A84DE2700C124A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,11 +503,14 @@
 				08E126E92A7FF21400063655 /* MyTagSection.swift in Sources */,
 				D2DD62F0E46A58DA15EF887C4AE77808 /* MyTagCollection-dummy.m in Sources */,
 				087B4DF92A84C71300C124A1 /* MyTagCollectionUpdateAction.swift in Sources */,
+				087B4E012A84E74C00C124A1 /* MyTagItemUpdateAction.swift in Sources */,
 				08E126DD2A7FD8C200063655 /* MyTagItemAttributeProtocol.swift in Sources */,
+				087B4DFF2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift in Sources */,
 				08E126E52A7FDE4D00063655 /* MyTagSectionDimension.swift in Sources */,
 				08E126E12A7FDD7C00063655 /* MyTagItemViewProtocol.swift in Sources */,
 				088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */,
 				08E126F82A80A50100063655 /* MyTagItemCustomView.swift in Sources */,
+				087B4DFD2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift in Sources */,
 				088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */,
 				087B4DF72A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift in Sources */,
 				08E126EE2A7FF6C800063655 /* MyTagCollectionView.swift in Sources */,
