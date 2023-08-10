@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'MyTagCollection'
-    s.version          = '0.1.1'
+    s.version          = '0.2.0'
     s.swift_version    = '5'
     s.platform         = :ios, '12.0'
     s.summary          = 'MyTagCollection is a utility helper for handling and managing user`s custom tags'
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
     
     s.description      = <<-DESC
     
-    `MyTagCollection` is a utility helper for handling and managing user's tag in application with the ability to plug custom tag view as the user desires.
+    `MyTagCollection` is a utility helper allowing users to handle tags added in application with mix matching custom ui/ux for each tag items. Can't think of a good description please make a PR.
     
     DESC
     
