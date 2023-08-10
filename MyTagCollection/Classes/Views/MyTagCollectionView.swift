@@ -169,8 +169,12 @@ extension MyTagCollectionView {
         }
     }
     
-    func updateTagItemView() {
-        
+    func updateTagItemViews(for items: [MyTagItemProtocol]) {
+        let rows = tagSections.flatMap { $0.rows }
+        guard rows.count == items.count else { return }
+        for (idx, item) in items.enumerated() {
+            rows[idx].configure(item: item)
+        }
     }
 }
 
@@ -180,7 +184,12 @@ extension MyTagCollectionView: MyTagItemUpdateProtocol {
         var mutatedItem = tagItem
         mutatedItem.isSelected = isSelected
         viewModel.updateItem(with: mutatedItem)
-        tagView.configure(item: mutatedItem)
+        
+        if viewModel.isMultiSelection {
+            tagView.configure(item: mutatedItem)
+        } else {
+            updateTagItemViews(for: viewModel.items)
+        }
     }
 }
 

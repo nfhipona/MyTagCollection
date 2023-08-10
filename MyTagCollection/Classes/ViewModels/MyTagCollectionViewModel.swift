@@ -85,10 +85,9 @@ extension MyTagCollectionViewModel {
     
     func updateItem(with mutatedItem: MyTagItemProtocol) {
         items = items.map({ item in
-            if item.identifier == mutatedItem.identifier {
-                if isMultiSelection {
-                    return mutatedItem
-                }
+            if isMultiSelection {
+                let isMatched = item.identifier == mutatedItem.identifier
+                return isMatched ? mutatedItem : item
             }
             
             var mutatedItem = item
