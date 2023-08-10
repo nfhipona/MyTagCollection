@@ -182,10 +182,14 @@ class ViewController: UIViewController {
     
     @objc
     private func proceedButtonAction(sender: UIButton) {
-        let sampleItems = initialItems.map({ item in
-            MyTagItemCustomRemovableViewModel(identifier: item.identifier,
-                                              model: item.model,
-                                              attribute: MyTagCollectionViewController.removableViewStub)
+        let sampleItems: [MyTagItemProtocol] = initialItems.map({ item in
+            if arc4random_uniform(2) == 1 {
+                return item
+            } else {
+                return MyTagItemCustomRemovableViewModel(identifier: item.identifier,
+                                                         model: item.model,
+                                                         attribute: MyTagCollectionViewController.removableViewStub)
+            }
         })
         
         let viewController = MyTagCollectionViewController(alignment: selectedAlignment(),
