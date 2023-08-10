@@ -19,7 +19,8 @@ class MyTagCollectionContainerView: UIView {
         .init(identifier: UUID().uuidString,
               items: initialItems,
               dimension: .defaultStub,
-              alignment: alignment)
+              alignment: alignment,
+              isMultiSelection: false)
     }()
     
     private
@@ -63,5 +64,9 @@ class MyTagCollectionContainerView: UIView {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) { [unowned self] in
             myTagCollectionView.reloadTags(with: alignment)
         }
+    }
+    
+    func updateSelectionOption(isMultiSelection: Bool) {
+        myTagCollectionViewModel.isMultiSelection = isMultiSelection
     }
 }

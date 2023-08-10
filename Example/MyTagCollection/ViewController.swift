@@ -55,7 +55,13 @@ class ViewController: UIViewController {
         ]
     }()
     
-    private let segmentControl: UISegmentedControl = {
+    private let selectionControl: UISegmentedControl = {
+        let segmented = UISegmentedControl(items: ["Single Selection", "Multi Selection"])
+        segmented.selectedSegmentIndex = 0
+        return segmented.usingAutolayout()
+    }()
+    
+    private let alignmentControl: UISegmentedControl = {
         let segmented = UISegmentedControl(items: ["Left Align", "Center Align", "Right Align"])
         segmented.selectedSegmentIndex = 0
         return segmented.usingAutolayout()
@@ -70,7 +76,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.addSubviews([titleLabel, segmentControl, containerView, proceedButton])
+        view.addSubviews([titleLabel, selectionControl, alignmentControl, containerView, proceedButton])
         setConstraints()
         setBindings()
     }
@@ -93,11 +99,15 @@ class ViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
             
-            segmentControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            selectionControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            selectionControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            selectionControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            containerView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 20),
+            alignmentControl.topAnchor.constraint(equalTo: selectionControl.bottomAnchor, constant: 8),
+            alignmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            alignmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            containerView.topAnchor.constraint(equalTo: alignmentControl.bottomAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -100),
@@ -110,22 +120,33 @@ class ViewController: UIViewController {
     }
     
     private func setBindings() {
-        segmentControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
+        selectionControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
+        alignmentControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
         proceedButton.addTarget(self, action: #selector(proceedButtonAction(sender:)), for: .touchUpInside)
     }
     
     private func selectedAlignment() -> MyTagSection.Alignment {
-        switch segmentControl.selectedSegmentIndex {
+        switch alignmentControl.selectedSegmentIndex {
         case 1: return .center
         case 2: return .right
         default: return .left
         }
     }
     
+    private func selectionOption() -> Bool {
+        switch selectionControl.selectedSegmentIndex {
+        case 0: return false
+        default: return true
+        }
+    }
+    
     @objc
     private func segmentChange(sender: UISegmentedControl) {
-        let alignment = selectedAlignment()
-        containerView.updateAlignment(alignment: alignment)
+        if sender == selectionControl {
+            containerView.updateSelectionOption(isMultiSelection: selectionOption())
+        } else if sender == alignmentControl {
+            containerView.updateAlignment(alignment: selectedAlignment())
+        }
     }
     
     @objc
