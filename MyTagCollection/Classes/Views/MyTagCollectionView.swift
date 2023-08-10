@@ -198,4 +198,10 @@ extension MyTagCollectionView {
         guard let viewModel else { return }
         prepareTags(items: viewModel.items)
     }
+    
+    func reloadTags(with alignment: MyTagSection.Alignment) {
+        guard let viewModel else { return }
+        viewModel.alignment = alignment
+        reloadTags()
+    }
 }

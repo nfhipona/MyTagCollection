@@ -12,7 +12,7 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let identifier: String
     public var items: [MyTagItemProtocol]
     public let dimension: MyTagSectionDimension
-    public let alignment: Alignment
+    public var alignment: Alignment
     public var isAppendable: Bool
     public let isMultiSelection: Bool
     

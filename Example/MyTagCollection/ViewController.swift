@@ -62,26 +62,15 @@ class ViewController: UIViewController {
     }()
     
     private
-    lazy var containerViews: [MyTagCollectionContainerView] = {
-        [
-            .init(viewIndex: 0,
-                  alignment: .left,
-                  initialItems: initialItems),
-            .init(viewIndex: 1,
-                  alignment: .center,
-                  initialItems: initialItems),
-            .init(viewIndex: 2,
-                  alignment: .right,
-                  initialItems: initialItems)
-        ]
+    lazy var containerView: MyTagCollectionContainerView = {
+        .init(alignment: .left,
+              initialItems: initialItems)
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.addSubviews([titleLabel, segmentControl])
-        view.addSubviews(containerViews)
-        view.addSubview(proceedButton)
+        view.addSubviews([titleLabel, segmentControl, containerView, proceedButton])
         setConstraints()
         setBindings()
     }
@@ -106,20 +95,13 @@ class ViewController: UIViewController {
             
             segmentControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
-        
-        for (idx, containerView) in containerViews.enumerated() {
-            containerView.isHidden = idx != 0
-            NSLayoutConstraint.activate([
-                containerView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 20),
-                containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -100),
-            ])
-        }
-        
-        NSLayoutConstraint.activate([
+            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            containerView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 20),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -100),
+            
             proceedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             proceedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             proceedButton.widthAnchor.constraint(equalToConstant: 250),
@@ -143,10 +125,7 @@ class ViewController: UIViewController {
     @objc
     private func segmentChange(sender: UISegmentedControl) {
         let alignment = selectedAlignment()
-        for containerView in containerViews {
-            let isVisible = containerView.alignment == alignment
-            containerView.isHidden = !isVisible
-        }
+        containerView.updateAlignment(alignment: alignment)
     }
     
     @objc

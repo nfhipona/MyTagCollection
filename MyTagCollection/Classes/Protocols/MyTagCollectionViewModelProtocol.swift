@@ -15,7 +15,7 @@ protocol MyTagCollectionViewModelProtocol {
     var identifier: String { get }
     var items: [MyTagItemProtocol] { get }
     var dimension: MyTagSectionDimension { get }
-    var alignment: Alignment { get }
+    var alignment: Alignment { get set }
     var isAppendable: Bool { get }
     var isMultiSelection: Bool { get }
     
