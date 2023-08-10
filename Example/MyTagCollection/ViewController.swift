@@ -55,10 +55,26 @@ class ViewController: UIViewController {
         ]
     }()
     
+    private let selectionControlLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Set Selection Option:"
+        label.font = UIFont.systemFont(ofSize: 12,
+                                       weight: .bold)
+        return label.usingAutolayout()
+    }()
+    
     private let selectionControl: UISegmentedControl = {
         let segmented = UISegmentedControl(items: ["Single Selection", "Multi Selection"])
         segmented.selectedSegmentIndex = 0
         return segmented.usingAutolayout()
+    }()
+    
+    private let alignmentControlLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Set Alignment:"
+        label.font = UIFont.systemFont(ofSize: 12,
+                                       weight: .bold)
+        return label.usingAutolayout()
     }()
     
     private let alignmentControl: UISegmentedControl = {
@@ -76,7 +92,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.addSubviews([titleLabel, selectionControl, alignmentControl, containerView, proceedButton])
+        view.addSubviews([
+            titleLabel,
+            selectionControlLabel,
+            selectionControl,
+            alignmentControlLabel,
+            alignmentControl,
+            containerView,
+            proceedButton])
         setConstraints()
         setBindings()
     }
@@ -99,11 +122,19 @@ class ViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
             
-            selectionControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            selectionControlLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            selectionControlLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            selectionControlLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            selectionControl.topAnchor.constraint(equalTo: selectionControlLabel.bottomAnchor, constant: 8),
             selectionControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             selectionControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            alignmentControl.topAnchor.constraint(equalTo: selectionControl.bottomAnchor, constant: 8),
+            alignmentControlLabel.topAnchor.constraint(equalTo: selectionControl.bottomAnchor, constant: 15),
+            alignmentControlLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            alignmentControlLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            alignmentControl.topAnchor.constraint(equalTo: alignmentControlLabel.bottomAnchor, constant: 8),
             alignmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             alignmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
