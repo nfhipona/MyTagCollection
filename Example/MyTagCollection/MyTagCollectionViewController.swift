@@ -12,7 +12,7 @@ import MyTagCollection
 class MyTagCollectionViewController: UIViewController {
     private var alignment: MyTagSection.Alignment
     private var isMultiSelection: Bool
-    private var initialItems: [MyTagItemCustomRemovableViewModel]
+    private var initialItems: [MyTagItemProtocol]
     
     private
     lazy var titleLabel: UILabel = {
@@ -60,7 +60,7 @@ class MyTagCollectionViewController: UIViewController {
     
     init(alignment: MyTagSection.Alignment,
          isMultiSelection: Bool,
-         initialItems: [MyTagItemCustomRemovableViewModel]) {
+         initialItems: [MyTagItemProtocol]) {
         self.alignment = alignment
         self.isMultiSelection = isMultiSelection
         self.initialItems = initialItems
