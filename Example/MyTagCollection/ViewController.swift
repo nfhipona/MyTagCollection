@@ -55,33 +55,51 @@ class ViewController: UIViewController {
         ]
     }()
     
-    private let segmentControl: UISegmentedControl = {
+    private let selectionControlLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Set Selection Option:"
+        label.font = UIFont.systemFont(ofSize: 12,
+                                       weight: .bold)
+        return label.usingAutolayout()
+    }()
+    
+    private let selectionControl: UISegmentedControl = {
+        let segmented = UISegmentedControl(items: ["Single Selection", "Multi Selection"])
+        segmented.selectedSegmentIndex = 0
+        return segmented.usingAutolayout()
+    }()
+    
+    private let alignmentControlLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Set Alignment:"
+        label.font = UIFont.systemFont(ofSize: 12,
+                                       weight: .bold)
+        return label.usingAutolayout()
+    }()
+    
+    private let alignmentControl: UISegmentedControl = {
         let segmented = UISegmentedControl(items: ["Left Align", "Center Align", "Right Align"])
         segmented.selectedSegmentIndex = 0
         return segmented.usingAutolayout()
     }()
     
     private
-    lazy var containerViews: [MyTagCollectionContainerView] = {
-        [
-            .init(viewIndex: 0,
-                  alignment: .left,
-                  initialItems: initialItems),
-            .init(viewIndex: 1,
-                  alignment: .center,
-                  initialItems: initialItems),
-            .init(viewIndex: 2,
-                  alignment: .right,
-                  initialItems: initialItems)
-        ]
+    lazy var containerView: MyTagCollectionContainerView = {
+        .init(alignment: .left,
+              initialItems: initialItems)
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.addSubviews([titleLabel, segmentControl])
-        view.addSubviews(containerViews)
-        view.addSubview(proceedButton)
+        view.addSubviews([
+            titleLabel,
+            selectionControlLabel,
+            selectionControl,
+            alignmentControlLabel,
+            alignmentControl,
+            containerView,
+            proceedButton])
         setConstraints()
         setBindings()
     }
@@ -104,22 +122,27 @@ class ViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
             
-            segmentControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
-        
-        for (idx, containerView) in containerViews.enumerated() {
-            containerView.isHidden = idx != 0
-            NSLayoutConstraint.activate([
-                containerView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 20),
-                containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -100),
-            ])
-        }
-        
-        NSLayoutConstraint.activate([
+            selectionControlLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            selectionControlLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            selectionControlLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            selectionControl.topAnchor.constraint(equalTo: selectionControlLabel.bottomAnchor, constant: 8),
+            selectionControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            selectionControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            alignmentControlLabel.topAnchor.constraint(equalTo: selectionControl.bottomAnchor, constant: 15),
+            alignmentControlLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            alignmentControlLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            alignmentControl.topAnchor.constraint(equalTo: alignmentControlLabel.bottomAnchor, constant: 8),
+            alignmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            alignmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            containerView.topAnchor.constraint(equalTo: alignmentControl.bottomAnchor, constant: 20),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -100),
+            
             proceedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             proceedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             proceedButton.widthAnchor.constraint(equalToConstant: 250),
@@ -128,31 +151,46 @@ class ViewController: UIViewController {
     }
     
     private func setBindings() {
-        segmentControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
+        selectionControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
+        alignmentControl.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
         proceedButton.addTarget(self, action: #selector(proceedButtonAction(sender:)), for: .touchUpInside)
     }
     
     private func selectedAlignment() -> MyTagSection.Alignment {
-        switch segmentControl.selectedSegmentIndex {
+        switch alignmentControl.selectedSegmentIndex {
         case 1: return .center
         case 2: return .right
         default: return .left
         }
     }
     
+    private func selectionOption() -> Bool {
+        switch selectionControl.selectedSegmentIndex {
+        case 0: return false
+        default: return true
+        }
+    }
+    
     @objc
     private func segmentChange(sender: UISegmentedControl) {
-        let alignment = selectedAlignment()
-        for containerView in containerViews {
-            let isVisible = containerView.alignment == alignment
-            containerView.isHidden = !isVisible
+        if sender == selectionControl {
+            containerView.updateSelectionOption(isMultiSelection: selectionOption())
+        } else if sender == alignmentControl {
+            containerView.updateAlignment(alignment: selectedAlignment())
         }
     }
     
     @objc
     private func proceedButtonAction(sender: UIButton) {
+        let sampleItems = initialItems.map({ item in
+            MyTagItemCustomRemovableViewModel(identifier: item.identifier,
+                                              model: item.model,
+                                              attribute: MyTagCollectionViewController.removableViewStub)
+        })
+        
         let viewController = MyTagCollectionViewController(alignment: selectedAlignment(),
-                                                           initialItems: initialItems)
+                                                           isMultiSelection: selectionOption(),
+                                                           initialItems: sampleItems)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

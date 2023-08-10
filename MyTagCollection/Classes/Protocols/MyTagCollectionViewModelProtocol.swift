@@ -13,8 +13,17 @@ protocol MyTagCollectionViewModelProtocol {
     typealias Alignment = MyTagSection.Alignment
     
     var identifier: String { get }
-    var isAppendable: Bool { get }
     var items: [MyTagItemProtocol] { get }
     var dimension: MyTagSectionDimension { get }
-    var alignment: Alignment { get }
+    var alignment: Alignment { get set }
+    var isAppendable: Bool { get set }
+    var isMultiSelection: Bool { get set }
+    var viewDelegate: MyTagCollectionUpdateProtocol? { get set }
+    
+    init(identifier: String,
+         items: [MyTagItemProtocol],
+         dimension: MyTagSectionDimension,
+         alignment: Alignment,
+         isAppendable: Bool,
+         isMultiSelection: Bool)
 }

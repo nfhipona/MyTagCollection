@@ -12,32 +12,33 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let identifier: String
     public var items: [MyTagItemProtocol]
     public let dimension: MyTagSectionDimension
-    public let alignment: Alignment
+    public var alignment: Alignment {
+        didSet {
+            reloadTags()
+        }
+    }
     public var isAppendable: Bool
-
-    public init(identifier: String,
-                items: [MyTagItemProtocol],
-                dimension: MyTagSectionDimension,
-                alignment: Alignment,
-                isAppendable: Bool = true) {
+    public var isMultiSelection: Bool
+    unowned
+    public var viewDelegate: MyTagCollectionUpdateProtocol?
+    
+    public
+    required init(identifier: String,
+                  items: [MyTagItemProtocol],
+                  dimension: MyTagSectionDimension,
+                  alignment: Alignment,
+                  isAppendable: Bool = true,
+                  isMultiSelection: Bool = true) {
         self.identifier = identifier
         self.items = items
         self.dimension = dimension
         self.alignment = alignment
         self.isAppendable = isAppendable
+        self.isMultiSelection = isMultiSelection
     }
 }
 
-public
-extension MyTagCollectionViewModel {
-    enum ItemPosition {
-        case first
-        case last
-        case byIndex(index: Int)
-    }
-}
-
-public
+internal
 extension MyTagCollectionViewModel {
     func appendItem(tagItem: MyTagItemProtocol, position: ItemPosition) {
         guard isAppendable else { return }
@@ -53,13 +54,44 @@ extension MyTagCollectionViewModel {
         }
     }
     
+    func updateItem(with mutatedItem: MyTagItemProtocol) {
+        items = items.map({ item in
+            if item.identifier == mutatedItem.identifier {
+                return mutatedItem
+            }
+            
+            if isMultiSelection {
+                return item
+            } else {
+                var mutatedItem = item
+                mutatedItem.isSelected = false
+                return mutatedItem
+            }
+        })
+    }
+}
+
+public
+extension MyTagCollectionViewModel {
+    enum ItemPosition {
+        case first
+        case last
+        case byIndex(index: Int)
+    }
+}
+
+public
+extension MyTagCollectionViewModel {
     func setItems(tagItems: [MyTagItemProtocol]) {
         items = tagItems
+        reloadTags()
     }
     
     func addItem(tagItem: MyTagItemProtocol,
                  position: ItemPosition,
                  replaceOld: Bool) {
+        defer { reloadTags() }
+        
         if replaceOld {
             removeItem(tagItem: tagItem)
         }
@@ -70,6 +102,8 @@ extension MyTagCollectionViewModel {
     func addItems(tagItems: [MyTagItemProtocol],
                   position: ItemPosition,
                   replaceOld: Bool) {
+        defer { reloadTags() }
+        
         if replaceOld {
             removeItems(tagItems: tagItems)
         }
@@ -79,36 +113,23 @@ extension MyTagCollectionViewModel {
         }
     }
     
-    func updateItem(isMultiple: Bool,
-                    tagItem: MyTagItemProtocol,
-                    isSelected: Bool) {
-        items = items.map({ item in
-            if isMultiple {
-                if item.identifier == tagItem.identifier {
-                    var mutatedItem = item
-                    mutatedItem.isSelected = isSelected
-                    return mutatedItem
-                }
-            } else {
-                let isSelected = item.identifier == tagItem.identifier ? isSelected : false
-                var mutatedItem = item
-                mutatedItem.isSelected = isSelected
-                return mutatedItem
-            }
-            return item
-        })
-    }
-    
     func removeItem(tagItem: MyTagItemProtocol) {
         items.removeAll { $0.identifier == tagItem.identifier }
+        reloadTags()
     }
-
+    
     func removeItems(tagItems: [MyTagItemProtocol]) {
+        defer { reloadTags() }
         items.removeAll {
             for tagItem in tagItems where $0.identifier == tagItem.identifier {
                 return true
             }
             return false
         }
+    }
+    
+    func reloadTags() {
+        guard let viewDelegate else { return }
+        viewDelegate.viewModel(viewModel: self, requestAction: .reload)
     }
 }

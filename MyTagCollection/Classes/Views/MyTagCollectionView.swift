@@ -9,7 +9,7 @@ import Foundation
 
 public
 class MyTagCollectionView: UIView, MyTagCollectionViewProtocol {
-    public var viewModel: MyTagCollectionViewModelProtocol?
+    public var viewModel: MyTagCollectionViewModel?
     public var tagSections: [MyTagSection] = []
     
     override
@@ -39,7 +39,8 @@ extension MyTagCollectionView {
         }
     }
     
-    func addRowItem(toSection: MyTagSection, tagItem: MyTagItemViewProtocol) {
+    func addRowItem(toSection: MyTagSection,
+                    tagItem: MyTagItemViewProtocol) {
         tagSections = tagSections.map { tagSection in
             if tagSection.section == toSection.section {
                 var rows = toSection.rows
@@ -60,7 +61,8 @@ extension MyTagCollectionView {
         let dimension = viewModel.dimension
         
         for item in items {
-            let tagItemView = item.modelView.init(item: item,
+            let tagItemView = item.modelView.init(parent: self,
+                                                  item: item,
                                                   dimension: dimension)
                 .usingAutolayout()
             
@@ -72,7 +74,8 @@ extension MyTagCollectionView {
                 tagSections.append(tagSection)
                 
             } else if let tagSection = tagSections.last {
-                if tagItemView.shouldDrawInNewRow(itemsInRow: tagSection.rows, dimension: tagSection.dimension) {
+                if tagItemView.shouldDrawInNewRow(itemsInRow: tagSection.rows,
+                                                  dimension: tagSection.dimension) {
                     let newTagSection = MyTagSection(section: tagSection.section + 1,
                                                      rows: [tagItemView],
                                                      dimension: dimension,
@@ -167,19 +170,67 @@ extension MyTagCollectionView {
             }
         }
     }
-}
-
-public
-extension MyTagCollectionView {
-    func configure(viewModel: MyTagCollectionViewModelProtocol) {
-        self.viewModel = viewModel
-        
-        prepareTags(items: viewModel.items)
+    
+    func updateTagItemViews(for items: [MyTagItemProtocol]) {
+        let rows = tagSections.flatMap { $0.rows }
+        guard rows.count == items.count else { return }
+        for (idx, item) in items.enumerated() {
+            rows[idx].configure(item: item)
+        }
     }
     
     // force reload tags
     func reloadTags() {
         guard let viewModel else { return }
+        prepareTags(items: viewModel.items)
+    }
+    
+    func updateTagItem(tagItem: MyTagItemProtocol,
+                       tagView: MyTagItemViewProtocol,
+                       state isSelected: Bool) {
+        guard let viewModel else { return }
+        var mutatedItem = tagItem
+        mutatedItem.isSelected = isSelected
+        viewModel.updateItem(with: mutatedItem)
+        
+        if viewModel.isMultiSelection {
+            tagView.configure(item: mutatedItem)
+        } else {
+            updateTagItemViews(for: viewModel.items)
+        }
+    }
+}
+
+extension MyTagCollectionView: MyTagItemUpdateProtocol {
+    public func childItem(tagItem: MyTagItemProtocol, tagView: MyTagItemViewProtocol, requestAction action: MyTagItemUpdateAction) {
+        switch action {
+        case .isSelected(let state):
+            updateTagItem(tagItem: tagItem,
+                          tagView: tagView,
+                          state: state)
+        case .remove:
+            guard let viewModel else { return }
+            viewModel.removeItem(tagItem: tagItem)
+        }
+    }
+}
+
+extension MyTagCollectionView: MyTagCollectionUpdateProtocol {
+    public func viewModel(viewModel: MyTagCollectionViewModelProtocol, requestAction action: MyTagCollectionUpdateAction) {
+        switch action {
+        case .reload:
+            prepareTags(items: viewModel.items)
+        }
+    }
+}
+
+public
+extension MyTagCollectionView {
+    func configure(viewModel: MyTagCollectionViewModelProtocol) {
+        guard let vm = viewModel as? MyTagCollectionViewModel else { return }
+        vm.viewDelegate = self
+        self.viewModel = vm
+        
         prepareTags(items: viewModel.items)
     }
 }

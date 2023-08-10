@@ -19,7 +19,8 @@ class MyTagCollectionContainerView: UIView {
         .init(identifier: UUID().uuidString,
               items: initialItems,
               dimension: .defaultStub,
-              alignment: alignment)
+              alignment: alignment,
+              isMultiSelection: false)
     }()
     
     private
@@ -36,8 +37,7 @@ class MyTagCollectionContainerView: UIView {
     }
     
     required
-    convenience init(viewIndex: Int,
-                     alignment: MyTagSection.Alignment,
+    convenience init(alignment: MyTagSection.Alignment,
                      initialItems: [MyTagItemCustomViewModel]) {
         self.init(frame: .zero)
         self.alignment = alignment
@@ -58,5 +58,16 @@ class MyTagCollectionContainerView: UIView {
             myTagCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             myTagCollectionView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
         ])
+    }
+    
+    func updateAlignment(alignment: MyTagSection.Alignment) {
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) { [unowned self] in
+            myTagCollectionViewModel.alignment = alignment
+        }
+    }
+    
+    func updateSelectionOption(isMultiSelection: Bool) {
+        // the after
+        myTagCollectionViewModel.isMultiSelection = isMultiSelection
     }
 }

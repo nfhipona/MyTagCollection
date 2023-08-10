@@ -12,7 +12,7 @@ protocol MyTagItemViewProtocol {
     var item: MyTagItemProtocol? { get }
     var itemCanvas: CGSize { get }
     
-    init(frame: CGRect,
+    init(parent: MyTagItemUpdateProtocol,
          item: MyTagItemProtocol,
          dimension: MyTagSectionDimensionProtocol)
     

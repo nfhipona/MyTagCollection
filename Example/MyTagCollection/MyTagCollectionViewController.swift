@@ -11,13 +11,14 @@ import MyTagCollection
 
 class MyTagCollectionViewController: UIViewController {
     private var alignment: MyTagSection.Alignment
-    private var initialItems: [MyTagItemCustomViewModel]
+    private var isMultiSelection: Bool
+    private var initialItems: [MyTagItemCustomRemovableViewModel]
     
     private
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = alignment.description
-        label.font = UIFont.systemFont(ofSize: 30,
+        label.text = "\(selectionOptionDescription) - \(alignment.description)"
+        label.font = UIFont.systemFont(ofSize: 20,
                                        weight: .bold)
         return label.usingAutolayout()
     }()
@@ -43,7 +44,8 @@ class MyTagCollectionViewController: UIViewController {
         .init(identifier: UUID().uuidString,
               items: initialItems,
               dimension: .defaultStub,
-              alignment: alignment)
+              alignment: alignment,
+              isMultiSelection: isMultiSelection)
     }()
     
     private
@@ -52,8 +54,15 @@ class MyTagCollectionViewController: UIViewController {
         .usingAutolayout()
     }()
     
-    init(alignment: MyTagSection.Alignment, initialItems: [MyTagItemCustomViewModel]) {
+    private var selectionOptionDescription: String {
+        isMultiSelection ? "Multi Selection" : "Single Selection"
+    }
+    
+    init(alignment: MyTagSection.Alignment,
+         isMultiSelection: Bool,
+         initialItems: [MyTagItemCustomRemovableViewModel]) {
         self.alignment = alignment
+        self.isMultiSelection = isMultiSelection
         self.initialItems = initialItems
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .white
@@ -103,14 +112,37 @@ class MyTagCollectionViewController: UIViewController {
     @objc
     private func addTagAction() {
         guard inputTextField.cleanText().count > 0 else { return }
-        myTagCollectionViewModel.addItem(tagItem: MyTagItemCustomViewModel(identifier: UUID().uuidString,
-                                                                           model: MyTagItemModel(title: inputTextField.cleanText(),
-                                                                                                 value: inputTextField.cleanText()),
-                                                                           attribute: MyTagItemAttribute.defaultStub),
-                                         position: .last,
-                                         replaceOld: true)
-        myTagCollectionView.reloadTags()
+        myTagCollectionViewModel.addItem(
+            tagItem: MyTagItemCustomRemovableViewModel(identifier: UUID().uuidString,
+                                                       model: MyTagItemModel(title: inputTextField.cleanText(),
+                                                                             value: inputTextField.cleanText()),
+                                                       attribute: MyTagCollectionViewController.removableViewStub),
+            position: .last,
+            replaceOld: true)
         inputTextField.text = nil
     }
 }
 
+extension MyTagCollectionViewController {
+    static var removableViewStub: MyTagItemAttribute {
+        .init(topPadding: 11,
+              leftPadding: 20,
+              rightPadding: 8,
+              bottomPadding: 11,
+              
+              preDefinedConsumedSpace: 38, /* calculated space for | label padding | remove icon/button | padding 8 |*/
+              
+              titleLabelHeight: 18,
+              titleAttributes: [
+                .font: UIFont.systemFont(ofSize: 14,
+                                         weight: .regular)
+              ],
+              
+              cornerRadius: 20,
+              borderWidth: 1.5,
+              
+              borderColor: .gray,
+              backgroundColor: .lightGray)
+    }
+    
+}
