@@ -11,13 +11,14 @@ import MyTagCollection
 
 class MyTagCollectionViewController: UIViewController {
     private var alignment: MyTagSection.Alignment
+    private var isMultiSelection: Bool
     private var initialItems: [MyTagItemCustomViewModel]
     
     private
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = alignment.description
-        label.font = UIFont.systemFont(ofSize: 30,
+        label.text = "\(selectionOptionDescription) - \(alignment.description)"
+        label.font = UIFont.systemFont(ofSize: 20,
                                        weight: .bold)
         return label.usingAutolayout()
     }()
@@ -43,7 +44,8 @@ class MyTagCollectionViewController: UIViewController {
         .init(identifier: UUID().uuidString,
               items: initialItems,
               dimension: .defaultStub,
-              alignment: alignment)
+              alignment: alignment,
+              isMultiSelection: isMultiSelection)
     }()
     
     private
@@ -52,8 +54,15 @@ class MyTagCollectionViewController: UIViewController {
         .usingAutolayout()
     }()
     
-    init(alignment: MyTagSection.Alignment, initialItems: [MyTagItemCustomViewModel]) {
+    private var selectionOptionDescription: String {
+        isMultiSelection ? "Multi Selection" : "Single Selection"
+    }
+    
+    init(alignment: MyTagSection.Alignment,
+         isMultiSelection: Bool,
+         initialItems: [MyTagItemCustomViewModel]) {
         self.alignment = alignment
+        self.isMultiSelection = isMultiSelection
         self.initialItems = initialItems
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .white

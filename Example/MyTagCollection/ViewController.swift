@@ -183,6 +183,7 @@ class ViewController: UIViewController {
     @objc
     private func proceedButtonAction(sender: UIButton) {
         let viewController = MyTagCollectionViewController(alignment: selectedAlignment(),
+                                                           isMultiSelection: selectionOption(),
                                                            initialItems: initialItems)
         navigationController?.pushViewController(viewController, animated: true)
     }
