@@ -12,7 +12,7 @@ import MyTagCollection
 class MyTagCollectionViewController: UIViewController {
     private var alignment: MyTagSection.Alignment
     private var isMultiSelection: Bool
-    private var initialItems: [MyTagItemCustomViewModel]
+    private var initialItems: [MyTagItemCustomRemovableViewModel]
     
     private
     lazy var titleLabel: UILabel = {
@@ -60,7 +60,7 @@ class MyTagCollectionViewController: UIViewController {
     
     init(alignment: MyTagSection.Alignment,
          isMultiSelection: Bool,
-         initialItems: [MyTagItemCustomViewModel]) {
+         initialItems: [MyTagItemCustomRemovableViewModel]) {
         self.alignment = alignment
         self.isMultiSelection = isMultiSelection
         self.initialItems = initialItems
@@ -113,13 +113,36 @@ class MyTagCollectionViewController: UIViewController {
     private func addTagAction() {
         guard inputTextField.cleanText().count > 0 else { return }
         myTagCollectionViewModel.addItem(
-            tagItem: MyTagItemCustomViewModel(identifier: UUID().uuidString,
-                                              model: MyTagItemModel(title: inputTextField.cleanText(),
-                                                                    value: inputTextField.cleanText()),
-                                              attribute: MyTagItemAttribute.defaultStub),
+            tagItem: MyTagItemCustomRemovableViewModel(identifier: UUID().uuidString,
+                                                       model: MyTagItemModel(title: inputTextField.cleanText(),
+                                                                             value: inputTextField.cleanText()),
+                                                       attribute: MyTagCollectionViewController.removableViewStub),
             position: .last,
             replaceOld: true)
         inputTextField.text = nil
     }
 }
 
+extension MyTagCollectionViewController {
+    static var removableViewStub: MyTagItemAttribute {
+        .init(topPadding: 11,
+              leftPadding: 20,
+              rightPadding: 8,
+              bottomPadding: 11,
+              
+              preDefinedConsumedSpace: 38, /* calculated space for | label padding | remove icon/button | padding 8 |*/
+              
+              titleLabelHeight: 18,
+              titleAttributes: [
+                .font: UIFont.systemFont(ofSize: 14,
+                                         weight: .regular)
+              ],
+              
+              cornerRadius: 20,
+              borderWidth: 1.5,
+              
+              borderColor: .gray,
+              backgroundColor: .lightGray)
+    }
+    
+}
