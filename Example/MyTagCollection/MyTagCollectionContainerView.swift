@@ -62,11 +62,12 @@ class MyTagCollectionContainerView: UIView {
     
     func updateAlignment(alignment: MyTagSection.Alignment) {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) { [unowned self] in
-            myTagCollectionView.reloadTags(with: alignment)
+            myTagCollectionViewModel.alignment = alignment
         }
     }
     
     func updateSelectionOption(isMultiSelection: Bool) {
+        // the after
         myTagCollectionViewModel.isMultiSelection = isMultiSelection
     }
 }
