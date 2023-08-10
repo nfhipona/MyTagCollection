@@ -14,17 +14,21 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let dimension: MyTagSectionDimension
     public let alignment: Alignment
     public var isAppendable: Bool
-
-    public init(identifier: String,
-                items: [MyTagItemProtocol],
-                dimension: MyTagSectionDimension,
-                alignment: Alignment,
-                isAppendable: Bool = true) {
+    public let isMultiSelection: Bool
+    
+    public
+    required init(identifier: String,
+                  items: [MyTagItemProtocol],
+                  dimension: MyTagSectionDimension,
+                  alignment: Alignment,
+                  isAppendable: Bool = true,
+                  isMultiSelection: Bool = true) {
         self.identifier = identifier
         self.items = items
         self.dimension = dimension
         self.alignment = alignment
         self.isAppendable = isAppendable
+        self.isMultiSelection = isMultiSelection
     }
 }
 
@@ -79,30 +83,24 @@ extension MyTagCollectionViewModel {
         }
     }
     
-    func updateItem(isMultiple: Bool,
-                    tagItem: MyTagItemProtocol,
-                    isSelected: Bool) {
+    func updateItem(with mutatedItem: MyTagItemProtocol) {
         items = items.map({ item in
-            if isMultiple {
-                if item.identifier == tagItem.identifier {
-                    var mutatedItem = item
-                    mutatedItem.isSelected = isSelected
+            if item.identifier == mutatedItem.identifier {
+                if isMultiSelection {
                     return mutatedItem
                 }
-            } else {
-                let isSelected = item.identifier == tagItem.identifier ? isSelected : false
-                var mutatedItem = item
-                mutatedItem.isSelected = isSelected
-                return mutatedItem
             }
-            return item
+            
+            var mutatedItem = item
+            mutatedItem.isSelected = false
+            return mutatedItem
         })
     }
     
     func removeItem(tagItem: MyTagItemProtocol) {
         items.removeAll { $0.identifier == tagItem.identifier }
     }
-
+    
     func removeItems(tagItems: [MyTagItemProtocol]) {
         items.removeAll {
             for tagItem in tagItems where $0.identifier == tagItem.identifier {

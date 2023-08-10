@@ -9,7 +9,7 @@ import Foundation
 
 public
 class MyTagCollectionView: UIView, MyTagCollectionViewProtocol {
-    public var viewModel: MyTagCollectionViewModelProtocol?
+    public var viewModel: MyTagCollectionViewModel?
     public var tagSections: [MyTagSection] = []
     
     override
@@ -60,7 +60,8 @@ extension MyTagCollectionView {
         let dimension = viewModel.dimension
         
         for item in items {
-            let tagItemView = item.modelView.init(item: item,
+            let tagItemView = item.modelView.init(parent: self,
+                                                  item: item,
                                                   dimension: dimension)
                 .usingAutolayout()
             
@@ -167,12 +168,27 @@ extension MyTagCollectionView {
             }
         }
     }
+    
+    func updateTagItemView() {
+        
+    }
+}
+
+extension MyTagCollectionView: MyTagItemUpdateProtocol {
+    public func childItem(tagItem: MyTagItemProtocol, tagView: MyTagItemViewProtocol, receiveUpdateSelection isSelected: Bool) {
+        guard let viewModel else { return }
+        var mutatedItem = tagItem
+        mutatedItem.isSelected = isSelected
+        viewModel.updateItem(with: mutatedItem)
+        tagView.configure(item: mutatedItem)
+    }
 }
 
 public
 extension MyTagCollectionView {
     func configure(viewModel: MyTagCollectionViewModelProtocol) {
-        self.viewModel = viewModel
+        guard let vm = viewModel as? MyTagCollectionViewModel else { return }
+        self.viewModel = vm
         
         prepareTags(items: viewModel.items)
     }

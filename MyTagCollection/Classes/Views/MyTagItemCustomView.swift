@@ -27,7 +27,7 @@ class MyTagItemCustomView: MyTagBaseItemView {
         return label.usingAutolayout()
     }()
     
-    private let tapAction: UIButton = {
+    @objc private let tapAction: UIButton = {
         let button = UIButton()
         return button.usingAutolayout()
     }()
@@ -98,6 +98,17 @@ class MyTagItemCustomView: MyTagBaseItemView {
         titleLabelBotAnchor.constant = -item.attribute.bottomPadding
         titleLabelHeightAnchor.constant = item.attribute.titleLabelHeight
         
+        setBindings()
         layoutIfNeeded()
+    }
+    
+    private func setBindings() {
+        tapAction.addTarget(self, action: #selector(tapAction(sender:)), for: .touchUpInside)
+    }
+    
+    @objc
+    private func tapAction(sender: UIButton) {
+        guard let parent, let item else { return }
+        parent.childItem(tagItem: item, tagView: self, receiveUpdateSelection: !item.isSelected)
     }
 }

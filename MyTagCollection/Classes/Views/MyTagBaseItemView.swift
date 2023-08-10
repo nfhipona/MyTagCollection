@@ -9,6 +9,7 @@ import Foundation
 
 public
 class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
+    public unowned var parent: MyTagItemUpdateProtocol?
     public var item: MyTagItemProtocol?
     public var itemCanvas: CGSize = .zero
     
@@ -21,11 +22,11 @@ class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
     }
     
     public required
-    convenience init(frame: CGRect = .zero,
+    convenience init(parent: MyTagItemUpdateProtocol,
                      item: MyTagItemProtocol,
                      dimension: MyTagSectionDimensionProtocol) {
-        self.init(frame: frame)
-        
+        self.init(frame: .zero)
+        self.parent = parent
         configure(item: item)
         sizeInCanvas(dimension: dimension)
     }
