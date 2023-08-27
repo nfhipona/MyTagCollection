@@ -9,6 +9,7 @@ import Foundation
 
 public
 protocol MyTagItemViewProtocol {
+    var section: Int { get set }
     var item: MyTagItemProtocol? { get }
     var itemCanvas: CGSize { get }
     

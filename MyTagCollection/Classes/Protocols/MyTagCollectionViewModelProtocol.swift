@@ -9,7 +9,6 @@ import Foundation
 
 public
 protocol MyTagCollectionViewModelProtocol {
-    typealias ItemPosition = MyTagCollectionViewModel.ItemPosition
     typealias Alignment = MyTagSection.Alignment
     
     var identifier: String { get }

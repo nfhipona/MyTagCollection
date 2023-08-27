@@ -1,14 +1,14 @@
 //
-//  MyTagSection.swift
+//  MyTagExpandedSection.swift
 //  MyTagCollection
 //
-//  Created by Neil Francis Hipona on 8/6/23.
+//  Created by Neil Francis Hipona on 8/27/23.
 //
 
 import Foundation
 
 public
-struct MyTagSection: MyTagSectionProtocol {
+struct MyTagExpandedSection: MyTagSectionProtocol {
     public let section: Int
     public var rows: [MyTagItemViewProtocol]
     public let dimension: MyTagSectionDimension
@@ -26,20 +26,9 @@ struct MyTagSection: MyTagSectionProtocol {
 }
 
 public
-extension MyTagSection {
-    var tallestItemInRow: MyTagItemViewProtocol? {
-        var tallestItem: MyTagItemViewProtocol? = rows.first
-        for rowItem in rows {
-            if let item = tallestItem, item.itemCanvas.height < rowItem.itemCanvas.height {
-                tallestItem = rowItem
-            }
-        }
-        return tallestItem
-    }
-    
-    var totalItemSpacing: CGFloat {
-        return dimension.columnSpacing * CGFloat(rows.count - 1)
-    }
+extension MyTagExpandedSection {
+    var tallestItemInRow: MyTagItemViewProtocol? { nil }
+    var totalItemSpacing: CGFloat { 0 }
     
     var centerItemPadding: CGFloat {
         let totalItemWidth = rows.reduce(CGFloat(0.0)) { partialResult, rowItem in

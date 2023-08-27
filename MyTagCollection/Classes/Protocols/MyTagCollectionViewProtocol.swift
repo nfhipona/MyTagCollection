@@ -9,7 +9,7 @@ import Foundation
 
 public
 protocol MyTagCollectionViewProtocol {
-    var tagSections: [MyTagSection] { get }
+    var tagSections: [MyTagSectionProtocol] { get }
     
     init(frame: CGRect,
          viewModel: MyTagCollectionViewModelProtocol)

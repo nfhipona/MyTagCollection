@@ -16,6 +16,9 @@
 		087B4E012A84E74C00C124A1 /* MyTagItemUpdateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */; };
 		088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */; };
 		088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */; };
+		08B767F52A9B5673001655AA /* MyTagSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */; };
+		08B767F72A9B577B001655AA /* MyTagSectionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */; };
+		08B767F92A9B58ED001655AA /* MyTagExpandedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F82A9B58ED001655AA /* MyTagExpandedSection.swift */; };
 		08E126D72A7FBEC000063655 /* MyTagItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */; };
 		08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */; };
 		08E126DB2A7FC18900063655 /* MyTagItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */; };
@@ -71,6 +74,9 @@
 		087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemUpdateAction.swift; sourceTree = "<group>"; };
 		088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomViewModel.swift; sourceTree = "<group>"; };
 		088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModel.swift; sourceTree = "<group>"; };
+		08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionProtocol.swift; sourceTree = "<group>"; };
+		08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionAlignment.swift; sourceTree = "<group>"; };
+		08B767F82A9B58ED001655AA /* MyTagExpandedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandedSection.swift; sourceTree = "<group>"; };
 		08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemProtocol.swift; sourceTree = "<group>"; };
 		08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModelProtocol.swift; sourceTree = "<group>"; };
 		08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemAttribute.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				08E126E22A7FDE2000063655 /* MyTagSectionDimensionProtocol.swift */,
 				08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */,
 				08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */,
+				08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */,
 			);
 			name = Protocols;
 			path = MyTagCollection/Classes/Protocols;
@@ -184,6 +191,8 @@
 				08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */,
 				08E126E42A7FDE4D00063655 /* MyTagSectionDimension.swift */,
 				08E126E82A7FF21400063655 /* MyTagSection.swift */,
+				08B767F82A9B58ED001655AA /* MyTagExpandedSection.swift */,
+				08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */,
 				088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */,
 				087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */,
 				087B4DF82A84C71300C124A1 /* MyTagCollectionUpdateAction.swift */,
@@ -497,10 +506,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B767F72A9B577B001655AA /* MyTagSectionAlignment.swift in Sources */,
 				08E126D72A7FBEC000063655 /* MyTagItemProtocol.swift in Sources */,
 				08E126F22A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift in Sources */,
 				087B4DF52A84934200C124A1 /* MyTagItemUpdateProtocol.swift in Sources */,
 				08E126E92A7FF21400063655 /* MyTagSection.swift in Sources */,
+				08B767F52A9B5673001655AA /* MyTagSectionProtocol.swift in Sources */,
 				D2DD62F0E46A58DA15EF887C4AE77808 /* MyTagCollection-dummy.m in Sources */,
 				087B4DF92A84C71300C124A1 /* MyTagCollectionUpdateAction.swift in Sources */,
 				087B4E012A84E74C00C124A1 /* MyTagItemUpdateAction.swift in Sources */,
@@ -512,6 +523,7 @@
 				08E126F82A80A50100063655 /* MyTagItemCustomView.swift in Sources */,
 				087B4DFD2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift in Sources */,
 				088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */,
+				08B767F92A9B58ED001655AA /* MyTagExpandedSection.swift in Sources */,
 				087B4DF72A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift in Sources */,
 				08E126EE2A7FF6C800063655 /* MyTagCollectionView.swift in Sources */,
 				08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */,
