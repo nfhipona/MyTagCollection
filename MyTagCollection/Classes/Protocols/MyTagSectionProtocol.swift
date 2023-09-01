@@ -13,6 +13,7 @@ protocol MyTagSectionProtocol {
     
     var section: Int { get }
     var rows: [MyTagItemViewProtocol] { get set }
+    var expandedItems: [MyTagExpandedItemViewProtocol] { get set }
     var dimension: MyTagSectionDimension { get }
     var alignment: Alignment { get }
     

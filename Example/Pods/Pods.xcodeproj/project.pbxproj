@@ -16,6 +16,8 @@
 		087B4E012A84E74C00C124A1 /* MyTagItemUpdateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */; };
 		088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */; };
 		088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */; };
+		089BD0702AA213CA00415344 /* MyTagExpandedItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD06F2AA213CA00415344 /* MyTagExpandedItemProtocol.swift */; };
+		089BD0722AA213EE00415344 /* MyTagExpandedItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD0712AA213ED00415344 /* MyTagExpandedItemViewProtocol.swift */; };
 		08B767F52A9B5673001655AA /* MyTagSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */; };
 		08B767F72A9B577B001655AA /* MyTagSectionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */; };
 		08B767F92A9B58ED001655AA /* MyTagExpandedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F82A9B58ED001655AA /* MyTagExpandedSection.swift */; };
@@ -74,6 +76,8 @@
 		087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemUpdateAction.swift; sourceTree = "<group>"; };
 		088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomViewModel.swift; sourceTree = "<group>"; };
 		088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModel.swift; sourceTree = "<group>"; };
+		089BD06F2AA213CA00415344 /* MyTagExpandedItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandedItemProtocol.swift; sourceTree = "<group>"; };
+		089BD0712AA213ED00415344 /* MyTagExpandedItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandedItemViewProtocol.swift; sourceTree = "<group>"; };
 		08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionProtocol.swift; sourceTree = "<group>"; };
 		08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionAlignment.swift; sourceTree = "<group>"; };
 		08B767F82A9B58ED001655AA /* MyTagExpandedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandedSection.swift; sourceTree = "<group>"; };
@@ -158,7 +162,9 @@
 			isa = PBXGroup;
 			children = (
 				08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */,
+				089BD06F2AA213CA00415344 /* MyTagExpandedItemProtocol.swift */,
 				08E126E02A7FDD7C00063655 /* MyTagItemViewProtocol.swift */,
+				089BD0712AA213ED00415344 /* MyTagExpandedItemViewProtocol.swift */,
 				08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */,
 				08E126DC2A7FD8C200063655 /* MyTagItemAttributeProtocol.swift */,
 				087B4DF42A84934200C124A1 /* MyTagItemUpdateProtocol.swift */,
@@ -511,6 +517,7 @@
 				08E126F22A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift in Sources */,
 				087B4DF52A84934200C124A1 /* MyTagItemUpdateProtocol.swift in Sources */,
 				08E126E92A7FF21400063655 /* MyTagSection.swift in Sources */,
+				089BD0722AA213EE00415344 /* MyTagExpandedItemViewProtocol.swift in Sources */,
 				08B767F52A9B5673001655AA /* MyTagSectionProtocol.swift in Sources */,
 				D2DD62F0E46A58DA15EF887C4AE77808 /* MyTagCollection-dummy.m in Sources */,
 				087B4DF92A84C71300C124A1 /* MyTagCollectionUpdateAction.swift in Sources */,
@@ -533,6 +540,7 @@
 				08E126DB2A7FC18900063655 /* MyTagItemAttribute.swift in Sources */,
 				08E126DF2A7FDD5500063655 /* MyTagBaseItemView.swift in Sources */,
 				08E126F62A801AA500063655 /* MyTagHelper.swift in Sources */,
+				089BD0702AA213CA00415344 /* MyTagExpandedItemProtocol.swift in Sources */,
 				08E126EC2A7FF49B00063655 /* MyTagBaseItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

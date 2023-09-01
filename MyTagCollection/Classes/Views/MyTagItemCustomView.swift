@@ -7,7 +7,7 @@
 
 import Foundation
 
-public
+private
 extension MyTagItemCustomView {
     // MyTagItemAttribute.defaultStub
     enum CustomTagViewConstraint {
