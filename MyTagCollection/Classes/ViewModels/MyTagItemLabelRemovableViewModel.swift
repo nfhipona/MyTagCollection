@@ -9,6 +9,7 @@ import Foundation
 
 public
 struct MyTagItemLabelRemovableViewModel: MyTagItemProtocol {
+    public var type: MyTagItemType = .default
     public var modelView: MyTagBaseItemView.Type {
         MyTagItemLabelRemovableView.self
     }

@@ -70,7 +70,7 @@ extension MyTagCollectionView {
         tagSections[section] = tagSection.append(expanedItem: expandedItemView)
     }
     
-    func removeExpandedItem() {
+    func removeAllExpandedItem() {
         tagSections = tagSections.map({ tagSection in
             if var expandedSection = tagSection as? MyTagSection {
                 for tagView in expandedSection.expandedItems {
@@ -82,6 +82,25 @@ extension MyTagCollectionView {
             }
             return tagSection
         })
+    }
+    
+    func removeExpandedItem(in section: Int) {
+        guard section < tagSections.count,
+              var mutatedSection = tagSections[section] as? MyTagSection,
+              let viewModel
+        else { return }
+
+        for tagView in mutatedSection.expandedItems {
+            if let expanedView = tagView as? MyTagBaseExpandableItemView {
+                expanedView.removeFromSuperview()
+            }
+        }
+
+        let expandedItemCollection = mutatedSection.rows.filter { $0.item?.type == .expandable }
+            .compactMap { $0.item }
+        
+        viewModel.resetExpandedItems(in: expandedItemCollection)
+        tagSections[section] = mutatedSection.resetExpandedItems()
     }
     
     func prepareTags(items: [MyTagItemProtocol]) {
@@ -325,18 +344,25 @@ extension MyTagCollectionView: MyTagItemUpdateProtocol {
     public func childItem(tagItem: MyTagItemProtocol,
                           tagView: MyTagItemViewProtocol,
                           requestAction action: MyTagItemUpdateAction) {
+        guard let viewModel else { return }
+        
         switch action {
         case .isSelected(let state):
             updateTagItem(tagItem: tagItem,
                           tagView: tagView,
                           state: state)
         case .remove:
-            guard let viewModel else { return }
             viewModel.removeItem(tagItem: tagItem)
             
         case .expandWith(let expandedItem):
             guard !tagItem.isSelected else { return }
-            removeExpandedItem()
+            
+            if viewModel.isMultiSelection {
+                removeExpandedItem(in: tagView.section)
+            } else {
+                removeAllExpandedItem()
+            }
+            
             updateTagItem(tagItem: tagItem,
                           tagView: tagView,
                           state: true)
@@ -344,7 +370,7 @@ extension MyTagCollectionView: MyTagItemUpdateProtocol {
                             referenceSection: tagView.section)
             
         case .collapse:
-            removeExpandedItem()
+            removeExpandedItem(in: tagView.section)
             updateTagItem(tagItem: tagItem,
                           tagView: tagView,
                           state: false)

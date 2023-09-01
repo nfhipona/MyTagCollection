@@ -73,6 +73,17 @@ extension MyTagCollectionViewModel {
             }
         })
     }
+    
+    func resetExpandedItems(in collection: [MyTagItemProtocol]) {
+        items = items.map({ item in
+            for element in collection where element.identifier == item.identifier {
+                var mutatedItem = item
+                mutatedItem.isSelected = false
+                return mutatedItem
+            }
+            return item
+        })
+    }
 }
 
 public
