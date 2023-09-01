@@ -10,6 +10,7 @@ import Foundation
 import MyTagCollection
 
 struct ExpandableTagItemViewModel: MyTagItemProtocol {
+    public var type: MyTagItemType = .expandable
     var modelView: MyTagBaseItemView.Type {
         ExpandableTagItemView.self
     }

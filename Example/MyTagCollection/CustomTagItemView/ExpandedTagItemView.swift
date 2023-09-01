@@ -59,8 +59,9 @@ class ExpandedTagItemView: MyTagBaseExpandableItemView {
         ])
     }
     
-    func configure(item: ExpandedTagItemViewModel) {
+    override func configure(item: MyTagExpandableItemProtocol) {
         super.configure(item: item)
+        guard let item = item as? ExpandedTagItemViewModel else { return }
         titleLabel.text = item.model.title
         titleLabel.accessibilityLabel = item.model.title
         tapAction.accessibilityLabel = "Tag Action"
