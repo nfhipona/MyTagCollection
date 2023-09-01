@@ -11,4 +11,5 @@ public
 protocol MyTagExpandableItemProtocol {
     var identifier: String { get }
     var modelView: MyTagBaseExpandableItemView.Type { get }
+    var attribute: MyTagExpandableItemAttribute { get }
 }

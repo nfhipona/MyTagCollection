@@ -14,4 +14,12 @@ struct MyTagBaseExpandableItemViewModel: MyTagExpandableItemProtocol {
     }
     
     public var identifier: String
+    public var attribute: MyTagExpandableItemAttribute
+    
+    public
+    init(identifier: String,
+         attribute: MyTagExpandableItemAttribute) {
+        self.identifier = identifier
+        self.attribute = attribute
+    }
 }

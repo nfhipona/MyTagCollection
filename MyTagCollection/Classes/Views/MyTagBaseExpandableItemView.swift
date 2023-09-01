@@ -12,7 +12,6 @@ class MyTagBaseExpandableItemView: UIView, MyTagExpandableItemViewProtocol {
     public unowned var parent: MyTagItemUpdateProtocol?
     public var section: Int = 0
     public var item: MyTagExpandableItemProtocol?
-    public var itemCanvas: CGSize = .zero
     
     public
     override init(frame: CGRect) {

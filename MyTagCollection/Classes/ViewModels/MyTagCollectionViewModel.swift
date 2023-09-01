@@ -19,6 +19,8 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     }
     public var isAppendable: Bool
     public var isMultiSelection: Bool
+    public let isExpandable: Bool
+    
     unowned
     public var viewDelegate: MyTagCollectionUpdateProtocol?
     
@@ -28,13 +30,15 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
                   dimension: MyTagSectionDimension,
                   alignment: Alignment,
                   isAppendable: Bool = true,
-                  isMultiSelection: Bool = true) {
+                  isMultiSelection: Bool = true,
+                  isExpandable: Bool = false) {
         self.identifier = identifier
         self.items = items
         self.dimension = dimension
         self.alignment = alignment
         self.isAppendable = isAppendable
         self.isMultiSelection = isMultiSelection
+        self.isExpandable = isExpandable
     }
 }
 

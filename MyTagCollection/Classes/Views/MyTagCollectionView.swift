@@ -45,8 +45,6 @@ extension MyTagCollectionView {
             if tagSection.section == toSection.section {
                 if var mutatedSection = toSection as? MyTagSection {
                     return mutatedSection.append(item: tagItem)
-                } else if var mutatedSection = toSection as? MyTagExpandableSection {
-                    return mutatedSection.append(item: tagItem)
                 }
             }
             return tagSection
@@ -56,22 +54,23 @@ extension MyTagCollectionView {
     func addExpandedItem(item: MyTagExpandableItemProtocol,
                          referenceSection section: Int) {
         guard section < tagSections.count,
-              var tagSection = tagSections[section] as? MyTagExpandableSection
+              var tagSection = tagSections[section] as? MyTagSection
         else { return }
         
         let expandedItemView = item.modelView.init(parent: self,
                                                    item: item)
             .usingAutolayout()
         
-        drawExpandedTag(tagSection: tagSection,
-                        expanedItemView: expandedItemView,
-                        referenceSection: section)
+        drawExpandedTagView(tagSection: tagSection,
+                            expandedItem: item,
+                            expanedItemView: expandedItemView,
+                            referenceSection: section)
         tagSections[section] = tagSection.append(expanedItem: expandedItemView)
     }
     
     func removeExpandedItem() {
         tagSections = tagSections.map({ tagSection in
-            if var expandedSection = tagSection as? MyTagExpandableSection {
+            if var expandedSection = tagSection as? MyTagSection {
                 for tagView in expandedSection.expandedItems {
                     if let expanedView = tagView as? MyTagBaseExpandableItemView {
                         expanedView.removeFromSuperview()
@@ -118,10 +117,10 @@ extension MyTagCollectionView {
             }
         }
         
-        drawTags()
+        drawTagViews()
     }
     
-    func drawTags() {
+    func drawTagViews() {
         var tagSectionsTmp: [MyTagSectionProtocol] = []
         for (index, tagSection) in tagSections.enumerated() {
             let dimension = tagSection.dimension
@@ -215,30 +214,31 @@ extension MyTagCollectionView {
         }
     }
     
-    func drawExpandedTag(tagSection: MyTagSectionProtocol,
-                         expanedItemView: MyTagBaseExpandableItemView,
-                         referenceSection section: Int) {
+    func drawExpandedTagView(tagSection: MyTagSectionProtocol,
+                             expandedItem: MyTagExpandableItemProtocol,
+                             expanedItemView: MyTagBaseExpandableItemView,
+                             referenceSection section: Int) {
         addSubview(expanedItemView)
+        let attribute = expandedItem.attribute
         
         NSLayoutConstraint.activate([
             expanedItemView.widthAnchor
-                .constraint(equalToConstant: expanedItemView.itemCanvas.width),
+                .constraint(equalToConstant: attribute.contentCanvas.width),
             expanedItemView.heightAnchor
-                .constraint(equalToConstant: expanedItemView.itemCanvas.height)
+                .constraint(equalToConstant: attribute.contentCanvas.height)
         ])
         
-        let dimension = tagSection.dimension
         if tagSections.count == 0 {
             expanedItemView.topAnchor
                 .constraint(equalTo: topAnchor,
-                            constant: dimension.inset.top)
+                            constant: attribute.inset.top)
                 .isActive = true
         } else {
             let referenceTagSection = tagSections[section]
             if let tallestTagItemView = referenceTagSection.tallestItemInRow as? MyTagBaseItemView {
                 expanedItemView.topAnchor
                     .constraint(equalTo: tallestTagItemView.bottomAnchor,
-                                constant: dimension.rowSpacing)
+                                constant: attribute.inset.top)
                     .isActive = true
             }
         }
@@ -246,7 +246,7 @@ extension MyTagCollectionView {
         if tagSections.isLastItem(with: section) {
             expanedItemView.bottomAnchor
                 .constraint(equalTo: bottomAnchor,
-                            constant: -dimension.inset.bottom)
+                            constant: -attribute.inset.bottom)
                 .isActive = true
         } else {
             let nextTagSectionIndex = section + 1
@@ -254,7 +254,7 @@ extension MyTagCollectionView {
             if let nextTagItemView = nextTagSection.rows.first as? MyTagBaseItemView {
                 expanedItemView.bottomAnchor
                     .constraint(equalTo: nextTagItemView.topAnchor,
-                                constant: -dimension.rowSpacing)
+                                constant: -attribute.inset.bottom)
                     .isActive = true
             }
         }
@@ -264,10 +264,10 @@ extension MyTagCollectionView {
             NSLayoutConstraint.activate([
                 expanedItemView.leadingAnchor
                     .constraint(equalTo: leadingAnchor,
-                                constant: dimension.inset.left),
+                                constant: attribute.inset.left),
                 expanedItemView.trailingAnchor
                     .constraint(lessThanOrEqualTo: trailingAnchor,
-                                constant: -dimension.inset.right)
+                                constant: -attribute.inset.right)
             ])
             
         case .center:
@@ -279,10 +279,10 @@ extension MyTagCollectionView {
             NSLayoutConstraint.activate([
                 expanedItemView.leadingAnchor
                     .constraint(greaterThanOrEqualTo: leadingAnchor,
-                                constant: dimension.inset.left),
+                                constant: attribute.inset.left),
                 expanedItemView.trailingAnchor
                     .constraint(equalTo: trailingAnchor,
-                                constant: -dimension.inset.right)
+                                constant: -attribute.inset.right)
             ])
         }
     }
