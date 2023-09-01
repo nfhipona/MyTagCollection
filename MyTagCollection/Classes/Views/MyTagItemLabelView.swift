@@ -1,5 +1,5 @@
 //
-//  MyTagItemCustomView.swift
+//  MyTagItemLabelView.swift
 //  MyTagCollection
 //
 //  Created by Neil Francis Hipona on 8/7/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 private
-extension MyTagItemCustomView {
+extension MyTagItemLabelView {
     // MyTagItemAttribute.defaultStub
     enum CustomTagViewConstraint {
         static let verticalPadding: CGFloat = 11
@@ -18,7 +18,7 @@ extension MyTagItemCustomView {
 }
 
 public
-class MyTagItemCustomView: MyTagBaseItemView {
+class MyTagItemLabelView: MyTagBaseItemView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0

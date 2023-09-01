@@ -1,5 +1,5 @@
 //
-//  MyTagItemCustomViewModel.swift
+//  MyTagItemLabelViewModel.swift
 //  MyTagCollection
 //
 //  Created by Neil Francis Hipona on 8/7/23.
@@ -8,9 +8,9 @@
 import Foundation
 
 public
-struct MyTagItemCustomViewModel: MyTagItemProtocol {
+struct MyTagItemLabelViewModel: MyTagItemProtocol {
     public var modelView: MyTagBaseItemView.Type {
-        MyTagItemCustomView.self
+        MyTagItemLabelView.self
     }
     
     public let identifier: String
