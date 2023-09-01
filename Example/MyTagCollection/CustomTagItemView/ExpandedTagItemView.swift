@@ -34,6 +34,9 @@ class ExpandedTagItemView: MyTagBaseExpandableItemView {
     }()
 
     override func setViews() {
+        backgroundColor = .gray
+        layer.cornerRadius = 20
+        clipsToBounds = true
         addSubviews([imageView, titleLabel, tapAction])
     }
     

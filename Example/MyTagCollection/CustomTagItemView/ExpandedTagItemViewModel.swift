@@ -9,17 +9,20 @@
 import Foundation
 import MyTagCollection
 
-class ExpandedTagItemViewModel: MyTagExpandableItemProtocol {
+struct ExpandedTagItemViewModel: MyTagExpandableItemProtocol {
     var modelView: MyTagBaseExpandableItemView.Type {
         ExpandedTagItemView.self
     }
     
     let identifier: String
     let model: MyTagItemModelProtocol
+    let attribute: MyTagExpandableItemAttributeProtocol
     
     init(identifier: String,
-         model: MyTagItemModelProtocol) {
+         model: MyTagItemModelProtocol,
+         attribute: MyTagExpandableItemAttributeProtocol) {
         self.identifier = identifier
         self.model = model
+        self.attribute = attribute
     }
 }

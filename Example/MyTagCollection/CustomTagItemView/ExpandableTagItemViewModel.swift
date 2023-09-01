@@ -35,6 +35,12 @@ extension ExpandableTagItemViewModel {
         .init(identifier: UUID().uuidString,
               model: ExpandedTagItemModel(id: UUID().uuidString,
                                           title: model.title,
-                                          value: "Expanded Item Value"))
+                                          value: "Expanded Item Value"),
+              attribute: MyTagExpandableItemAttribute(itemCanvas: .init(width: UIScreen.main.bounds.size.width - 80,
+                                                                           height: 200),
+                                                      inset: .init(top: 11,
+                                                                   left: 0,
+                                                                   bottom: 11,
+                                                                   right: 0)))
     }
 }
