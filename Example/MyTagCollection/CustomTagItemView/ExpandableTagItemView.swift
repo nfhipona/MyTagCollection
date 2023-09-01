@@ -60,16 +60,6 @@ class ExpandableTagItemView: MyTagBaseItemView {
     lazy var titleLabelHeightAnchor: NSLayoutConstraint = {
         titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: CustomTagViewConstraint.titleLabelHeight)
     }()
-    
-    required
-    convenience init(parent: MyTagItemUpdateProtocol,
-                              item: MyTagItemProtocol,
-                              dimension: MyTagSectionDimensionProtocol) {
-        self.init(frame: .zero)
-        self.parent = parent
-        configure(item: item)
-        sizeInCanvas(dimension: dimension)
-    }
 
     override func setViews() {
         addSubviews([titleLabel, tapAction])
