@@ -33,6 +33,8 @@ class MyTagCollectionContainerView: UIScrollView {
         self.alignment = .center
         self.initialItems = []
         super.init(frame: frame)
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
         usingAutolayout()
     }
     
