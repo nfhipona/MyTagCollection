@@ -202,7 +202,7 @@ class ViewController: UIViewController {
             if arc4random_uniform(2) == 1 {
                 return item
             } else {
-                return MyTagItemCustomRemovableViewModel(identifier: item.identifier,
+                return MyTagItemLabelRemovableViewModel(identifier: item.identifier,
                                                          model: item.model,
                                                          attribute: MyTagCollectionViewController.removableViewStub)
             }

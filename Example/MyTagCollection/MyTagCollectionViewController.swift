@@ -113,7 +113,7 @@ class MyTagCollectionViewController: UIViewController {
     private func addTagAction() {
         guard inputTextField.cleanText().count > 0 else { return }
         myTagCollectionViewModel.addItem(
-            tagItem: MyTagItemCustomRemovableViewModel(identifier: UUID().uuidString,
+            tagItem: MyTagItemLabelRemovableViewModel(identifier: UUID().uuidString,
                                                        model: MyTagItemModel(title: inputTextField.cleanText(),
                                                                              value: inputTextField.cleanText()),
                                                        attribute: MyTagCollectionViewController.removableViewStub),

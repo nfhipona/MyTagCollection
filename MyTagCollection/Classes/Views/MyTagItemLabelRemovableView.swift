@@ -1,5 +1,5 @@
 //
-//  MyTagItemCustomRemovableView.swift
+//  MyTagItemLabelRemovableView.swift
 //  MyTagCollection
 //
 //  Created by Neil Francis Hipona on 8/10/23.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-public
-extension MyTagItemCustomRemovableView {
+private
+extension MyTagItemLabelRemovableView {
     // MyTagItemAttribute.defaultStub
     enum CustomTagViewConstraint {
         static let verticalPadding: CGFloat = 11
@@ -18,7 +18,7 @@ extension MyTagItemCustomRemovableView {
 }
 
 public
-class MyTagItemCustomRemovableView: MyTagBaseItemView {
+class MyTagItemLabelRemovableView: MyTagBaseItemView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -29,7 +29,7 @@ class MyTagItemCustomRemovableView: MyTagBaseItemView {
     
     @objc private let tapAction: UIButton = {
         let button = UIButton()
-        let bundle = Bundle(for: MyTagItemCustomRemovableView.self)
+        let bundle = Bundle(for: MyTagItemLabelRemovableView.self)
         let image = UIImage(named: "remove",
                             in: bundle,
                             compatibleWith: .none)
