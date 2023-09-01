@@ -63,7 +63,7 @@ extension MyTagCollectionView {
         
         drawExpandedTagView(tagSection: tagSection,
                             expandedItem: item,
-                            expanedItemView: expandedItemView,
+                            expandedItemView: expandedItemView,
                             referenceSection: section)
         tagSections[section] = tagSection.append(expanedItem: expandedItemView)
     }
@@ -216,27 +216,27 @@ extension MyTagCollectionView {
     
     func drawExpandedTagView(tagSection: MyTagSectionProtocol,
                              expandedItem: MyTagExpandableItemProtocol,
-                             expanedItemView: MyTagBaseExpandableItemView,
+                             expandedItemView: MyTagBaseExpandableItemView,
                              referenceSection section: Int) {
-        addSubview(expanedItemView)
+        addSubview(expandedItemView)
         let attribute = expandedItem.attribute
         
         NSLayoutConstraint.activate([
-            expanedItemView.widthAnchor
+            expandedItemView.widthAnchor
                 .constraint(equalToConstant: attribute.contentCanvas.width),
-            expanedItemView.heightAnchor
+            expandedItemView.heightAnchor
                 .constraint(equalToConstant: attribute.contentCanvas.height)
         ])
         
         if tagSections.count == 0 {
-            expanedItemView.topAnchor
+            expandedItemView.topAnchor
                 .constraint(equalTo: topAnchor,
                             constant: attribute.inset.top)
                 .isActive = true
         } else {
             let referenceTagSection = tagSections[section]
             if let tallestTagItemView = referenceTagSection.tallestItemInRow as? MyTagBaseItemView {
-                expanedItemView.topAnchor
+                expandedItemView.topAnchor
                     .constraint(equalTo: tallestTagItemView.bottomAnchor,
                                 constant: attribute.inset.top)
                     .isActive = true
@@ -244,7 +244,7 @@ extension MyTagCollectionView {
         }
         
         if tagSections.isLastItem(with: section) {
-            expanedItemView.bottomAnchor
+            expandedItemView.bottomAnchor
                 .constraint(equalTo: bottomAnchor,
                             constant: -attribute.inset.bottom)
                 .isActive = true
@@ -252,7 +252,7 @@ extension MyTagCollectionView {
             let nextTagSectionIndex = section + 1
             let nextTagSection = tagSections[nextTagSectionIndex]
             if let nextTagItemView = nextTagSection.rows.first as? MyTagBaseItemView {
-                expanedItemView.bottomAnchor
+                expandedItemView.bottomAnchor
                     .constraint(equalTo: nextTagItemView.topAnchor,
                                 constant: -attribute.inset.bottom)
                     .isActive = true
@@ -262,25 +262,25 @@ extension MyTagCollectionView {
         switch tagSection.alignment {
         case .left:
             NSLayoutConstraint.activate([
-                expanedItemView.leadingAnchor
+                expandedItemView.leadingAnchor
                     .constraint(equalTo: leadingAnchor,
                                 constant: attribute.inset.left),
-                expanedItemView.trailingAnchor
+                expandedItemView.trailingAnchor
                     .constraint(lessThanOrEqualTo: trailingAnchor,
                                 constant: -attribute.inset.right)
             ])
             
         case .center:
-            expanedItemView.centerXAnchor
+            expandedItemView.centerXAnchor
                 .constraint(equalTo: centerXAnchor)
                 .isActive = true
             
         case .right:
             NSLayoutConstraint.activate([
-                expanedItemView.leadingAnchor
+                expandedItemView.leadingAnchor
                     .constraint(greaterThanOrEqualTo: leadingAnchor,
                                 constant: attribute.inset.left),
-                expanedItemView.trailingAnchor
+                expandedItemView.trailingAnchor
                     .constraint(equalTo: trailingAnchor,
                                 constant: -attribute.inset.right)
             ])
