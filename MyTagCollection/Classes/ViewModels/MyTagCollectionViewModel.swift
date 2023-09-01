@@ -14,7 +14,7 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let dimension: MyTagSectionDimension
     public var alignment: Alignment {
         didSet {
-            reloadTags()
+            reloadTags(action: .reloadAndReset)
         }
     }
     public var isAppendable: Bool
@@ -132,8 +132,17 @@ extension MyTagCollectionViewModel {
         }
     }
     
-    func reloadTags() {
+    func resetItems() {
+        items = items.map({ item in
+            var mutatedItem = item
+            mutatedItem.isSelected = false
+            return mutatedItem
+        })
+    }
+    
+    func reloadTags(action: MyTagCollectionUpdateAction = .reload) {
         guard let viewDelegate else { return }
-        viewDelegate.viewModel(viewModel: self, requestAction: .reload)
+        viewDelegate.viewModel(viewModel: self,
+                               requestAction: action)
     }
 }

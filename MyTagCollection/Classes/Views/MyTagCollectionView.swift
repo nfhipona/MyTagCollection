@@ -357,9 +357,13 @@ extension MyTagCollectionView: MyTagItemUpdateProtocol {
 extension MyTagCollectionView: MyTagCollectionUpdateProtocol {
     public func viewModel(viewModel: MyTagCollectionViewModelProtocol,
                           requestAction action: MyTagCollectionUpdateAction) {
+        guard let vm = viewModel as? MyTagCollectionViewModel else { return }
         switch action {
         case .reload:
-            prepareTags(items: viewModel.items)
+            prepareTags(items: vm.items)
+        case .reloadAndReset:
+            vm.resetItems()
+            prepareTags(items: vm.items)
         }
     }
 }
