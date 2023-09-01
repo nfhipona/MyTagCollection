@@ -18,6 +18,8 @@
 		088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */; };
 		089BD0702AA213CA00415344 /* MyTagExpandedItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD06F2AA213CA00415344 /* MyTagExpandedItemProtocol.swift */; };
 		089BD0722AA213EE00415344 /* MyTagExpandedItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD0712AA213ED00415344 /* MyTagExpandedItemViewProtocol.swift */; };
+		089BD0762AA21B4500415344 /* MyTagExpandableSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD0752AA21B4500415344 /* MyTagExpandableSectionProtocol.swift */; };
+		089BD0782AA21B9100415344 /* MyTagBaseSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD0772AA21B9100415344 /* MyTagBaseSectionProtocol.swift */; };
 		08B767F52A9B5673001655AA /* MyTagSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */; };
 		08B767F72A9B577B001655AA /* MyTagSectionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */; };
 		08B767F92A9B58ED001655AA /* MyTagExpandedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F82A9B58ED001655AA /* MyTagExpandedSection.swift */; };
@@ -78,6 +80,8 @@
 		088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModel.swift; sourceTree = "<group>"; };
 		089BD06F2AA213CA00415344 /* MyTagExpandedItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandedItemProtocol.swift; sourceTree = "<group>"; };
 		089BD0712AA213ED00415344 /* MyTagExpandedItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandedItemViewProtocol.swift; sourceTree = "<group>"; };
+		089BD0752AA21B4500415344 /* MyTagExpandableSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandableSectionProtocol.swift; sourceTree = "<group>"; };
+		089BD0772AA21B9100415344 /* MyTagBaseSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagBaseSectionProtocol.swift; sourceTree = "<group>"; };
 		08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionProtocol.swift; sourceTree = "<group>"; };
 		08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionAlignment.swift; sourceTree = "<group>"; };
 		08B767F82A9B58ED001655AA /* MyTagExpandedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandedSection.swift; sourceTree = "<group>"; };
@@ -172,7 +176,9 @@
 				08E126E22A7FDE2000063655 /* MyTagSectionDimensionProtocol.swift */,
 				08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */,
 				08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */,
+				089BD0772AA21B9100415344 /* MyTagBaseSectionProtocol.swift */,
 				08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */,
+				089BD0752AA21B4500415344 /* MyTagExpandableSectionProtocol.swift */,
 			);
 			name = Protocols;
 			path = MyTagCollection/Classes/Protocols;
@@ -536,10 +542,12 @@
 				08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */,
 				08E126F42A800F1E00063655 /* MyTagCollectionViewProtocol.swift in Sources */,
 				08E126F02A80059300063655 /* MyTagCollectionViewModel.swift in Sources */,
+				089BD0762AA21B4500415344 /* MyTagExpandableSectionProtocol.swift in Sources */,
 				08E126E32A7FDE2000063655 /* MyTagSectionDimensionProtocol.swift in Sources */,
 				08E126DB2A7FC18900063655 /* MyTagItemAttribute.swift in Sources */,
 				08E126DF2A7FDD5500063655 /* MyTagBaseItemView.swift in Sources */,
 				08E126F62A801AA500063655 /* MyTagHelper.swift in Sources */,
+				089BD0782AA21B9100415344 /* MyTagBaseSectionProtocol.swift in Sources */,
 				089BD0702AA213CA00415344 /* MyTagExpandedItemProtocol.swift in Sources */,
 				08E126EC2A7FF49B00063655 /* MyTagBaseItemViewModel.swift in Sources */,
 			);

@@ -8,15 +8,7 @@
 import Foundation
 
 public
-protocol MyTagSectionProtocol {
-    typealias Alignment = MyTagSectionAlignment
-    
-    var section: Int { get }
-    var rows: [MyTagItemViewProtocol] { get set }
-    var expandedItems: [MyTagExpandedItemViewProtocol] { get set }
-    var dimension: MyTagSectionDimension { get }
-    var alignment: Alignment { get }
-    
+protocol MyTagSectionProtocol: MyTagBaseSectionProtocol {
     var tallestItemInRow: MyTagItemViewProtocol? { get }
     var totalItemSpacing: CGFloat { get }
     var centerItemPadding: CGFloat { get }    
