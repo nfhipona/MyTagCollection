@@ -14,11 +14,11 @@ struct MyTagBaseExpandableItemViewModel: MyTagExpandableItemProtocol {
     }
     
     public var identifier: String
-    public var attribute: MyTagExpandableItemAttribute
+    public var attribute: MyTagExpandableItemAttributeProtocol
     
     public
     init(identifier: String,
-         attribute: MyTagExpandableItemAttribute) {
+         attribute: MyTagExpandableItemAttributeProtocol) {
         self.identifier = identifier
         self.attribute = attribute
     }

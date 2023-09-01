@@ -9,6 +9,6 @@ import Foundation
 
 public
 protocol MyTagExpandableItemAttributeProtocol {
-    var contentCanvas: CGSize { get }
+    var itemCanvas: CGSize { get }
     var inset: UIEdgeInsets { get }
 }

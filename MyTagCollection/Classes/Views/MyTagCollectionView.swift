@@ -54,11 +54,13 @@ extension MyTagCollectionView {
     func addExpandedItem(item: MyTagExpandableItemProtocol,
                          referenceSection section: Int) {
         guard section < tagSections.count,
-              var tagSection = tagSections[section] as? MyTagSection
+              var tagSection = tagSections[section] as? MyTagSection,
+              let viewModel
         else { return }
         
         let expandedItemView = item.modelView.init(parent: self,
-                                                   item: item)
+                                                   item: item,
+                                                   dimension: viewModel.dimension)
             .usingAutolayout()
         
         drawExpandedTagView(tagSection: tagSection,
@@ -223,9 +225,9 @@ extension MyTagCollectionView {
         
         NSLayoutConstraint.activate([
             expandedItemView.widthAnchor
-                .constraint(equalToConstant: attribute.contentCanvas.width),
+                .constraint(equalToConstant: expandedItemView.itemCanvas.width),
             expandedItemView.heightAnchor
-                .constraint(equalToConstant: attribute.contentCanvas.height)
+                .constraint(equalToConstant: expandedItemView.itemCanvas.height)
         ])
         
         if tagSections.count == 0 {

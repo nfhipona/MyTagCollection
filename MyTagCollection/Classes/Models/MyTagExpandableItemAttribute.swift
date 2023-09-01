@@ -11,12 +11,12 @@ import Foundation
 /// - this is for the item dimension within item canvas
 public
 struct MyTagExpandableItemAttribute: MyTagExpandableItemAttributeProtocol {
-    public let contentCanvas: CGSize
+    public let itemCanvas: CGSize
     public let inset: UIEdgeInsets
     
-    public init(contentCanvas: CGSize,
+    public init(itemCanvas: CGSize,
                 inset: UIEdgeInsets) {
-        self.contentCanvas = contentCanvas
+        self.itemCanvas = itemCanvas
         self.inset = inset
     }
 }
