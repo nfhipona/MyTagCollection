@@ -35,7 +35,6 @@ extension ExpandableTagItemViewModel {
         .init(identifier: UUID().uuidString,
               model: ExpandedTagItemModel(id: UUID().uuidString,
                                           title: model.title,
-                                          value: "Expanded Item Value"),
-              attribute: ExpandedTagItemViewModel.attritube)
+                                          value: "Expanded Item Value"))
     }
 }

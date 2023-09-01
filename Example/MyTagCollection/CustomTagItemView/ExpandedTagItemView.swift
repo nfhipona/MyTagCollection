@@ -9,16 +9,7 @@
 import Foundation
 import MyTagCollection
 
-extension ExpandedTagItemView {
-    // MyTagItemAttribute.defaultStub
-    enum CustomTagViewConstraint {
-        static let verticalPadding: CGFloat = 11
-        static let horizontalPadding: CGFloat = 20
-        static let titleLabelHeight: CGFloat = 18
-    }
-}
-
-class ExpandedTagItemView: MyTagBaseItemView {
+class ExpandedTagItemView: MyTagBaseExpandableItemView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -41,35 +32,6 @@ class ExpandedTagItemView: MyTagBaseItemView {
         let button = UIButton()
         return button.usingAutolayout()
     }()
-    
-    private
-    lazy var titleLabelTopAnchor: NSLayoutConstraint = {
-        titleLabel.topAnchor.constraint(equalTo: topAnchor,
-                                        constant: CustomTagViewConstraint.verticalPadding)
-    }()
-    
-    private
-    lazy var titleLabelLeadingAnchor: NSLayoutConstraint = {
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                            constant: CustomTagViewConstraint.horizontalPadding)
-    }()
-    
-    private
-    lazy var titleLabelTrailingAnchor: NSLayoutConstraint = {
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                             constant: -CustomTagViewConstraint.horizontalPadding)
-    }()
-    
-    private
-    lazy var titleLabelBotAnchor: NSLayoutConstraint = {
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor,
-                                           constant: -CustomTagViewConstraint.horizontalPadding)
-    }()
-    
-    private
-    lazy var titleLabelHeightAnchor: NSLayoutConstraint = {
-        titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: CustomTagViewConstraint.titleLabelHeight)
-    }()
 
     override func setViews() {
         addSubviews([imageView, titleLabel, tapAction])
@@ -82,11 +44,10 @@ class ExpandedTagItemView: MyTagBaseItemView {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            titleLabelTopAnchor,
-            titleLabelLeadingAnchor,
-            titleLabelTrailingAnchor,
-            titleLabelBotAnchor,
-            titleLabelHeightAnchor,
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
             
             tapAction.topAnchor.constraint(equalTo: topAnchor),
             tapAction.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -95,18 +56,11 @@ class ExpandedTagItemView: MyTagBaseItemView {
         ])
     }
     
-    override func configure(item: MyTagItemProtocol) {
+    func configure(item: ExpandedTagItemViewModel) {
         super.configure(item: item)
-        
         titleLabel.text = item.model.title
         titleLabel.accessibilityLabel = item.model.title
         tapAction.accessibilityLabel = "Tag Action"
-        
-        titleLabelTopAnchor.constant = item.attribute.topPadding
-        titleLabelLeadingAnchor.constant = item.attribute.leftPadding
-        titleLabelTrailingAnchor.constant = -item.attribute.rightPadding
-        titleLabelBotAnchor.constant = -item.attribute.bottomPadding
-        titleLabelHeightAnchor.constant = item.attribute.titleLabelHeight
         
         setBindings()
         layoutIfNeeded()
