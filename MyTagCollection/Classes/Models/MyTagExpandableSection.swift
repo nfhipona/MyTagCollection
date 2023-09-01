@@ -1,5 +1,5 @@
 //
-//  MyTagExpandedSection.swift
+//  MyTagExpandableSection.swift
 //  MyTagCollection
 //
 //  Created by Neil Francis Hipona on 8/27/23.
@@ -8,16 +8,16 @@
 import Foundation
 
 public
-struct MyTagExpandedSection: MyTagSectionProtocol {
+struct MyTagExpandableSection: MyTagExpandableSectionProtocol {
     public let section: Int
     public var rows: [MyTagItemViewProtocol]
-    public var expandedItems: [MyTagExpandedItemViewProtocol]
+    public var expandedItems: [MyTagExpandableItemViewProtocol]
     public let dimension: MyTagSectionDimension
     public let alignment: Alignment
     
     public init(section: Int,
                 rows: [MyTagItemViewProtocol],
-                expandedItems: [MyTagExpandedItemViewProtocol] = [],
+                expandedItems: [MyTagExpandableItemViewProtocol] = [],
                 dimension: MyTagSectionDimension = .defaultStub,
                 alignment: Alignment = .center) {
         self.section = section
@@ -29,7 +29,7 @@ struct MyTagExpandedSection: MyTagSectionProtocol {
 }
 
 public
-extension MyTagExpandedSection {
+extension MyTagExpandableSection {
     var tallestItemInRow: MyTagItemViewProtocol? { nil }
     var totalItemSpacing: CGFloat { 0 }
     
@@ -42,7 +42,21 @@ extension MyTagExpandedSection {
         return contentWidth / 2
     }
     
-    mutating func append(item: MyTagItemViewProtocol) {
+    @discardableResult
+    mutating func append(item: MyTagItemViewProtocol) -> Self {
         rows.append(item)
+        return self
+    }
+    
+    @discardableResult
+    mutating func append(expanedItem: MyTagExpandableItemViewProtocol) -> Self {
+        expandedItems.append(expanedItem)
+        return self
+    }
+    
+    @discardableResult
+    mutating func resetExpandedItems() -> Self {
+        expandedItems = []
+        return self
     }
 }

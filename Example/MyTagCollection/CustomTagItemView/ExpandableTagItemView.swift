@@ -109,9 +109,9 @@ class ExpandableTagItemView: MyTagBaseItemView {
                              tagView: self,
                              requestAction: .collapse)
         } else {
-            parent.childItem(tagItem: item,
-                             tagView: self,
-                             requestAction: .expandWith(expandedItem: item.expandedItem))
+//            parent.childItem(tagItem: item,
+//                             tagView: self,
+//                             requestAction: .expandWith(expandedItem: item.expandedItem))
         }
     }
 }

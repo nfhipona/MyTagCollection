@@ -8,6 +8,6 @@
 import Foundation
 
 public
-protocol MyTagExpandableSectionProtocol {
-    var expandedItems: [MyTagExpandedItemViewProtocol] { get set }
+protocol MyTagExpandableSectionProtocol: MyTagSectionProtocol {
+    var expandedItems: [MyTagExpandableItemViewProtocol] { get set }
 }

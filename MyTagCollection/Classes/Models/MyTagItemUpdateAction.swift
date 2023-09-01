@@ -11,6 +11,6 @@ public
 enum MyTagItemUpdateAction {
     case isSelected(state: Bool)
     case remove
-    case expandWith(expandedItem: MyTagItemProtocol)
+    case expandWith(expandedItem: MyTagExpandableItemProtocol)
     case collapse
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 public
-class MyTagCollectionView: UIView, MyTagCollectionViewProtocol {
+class MyTagCollectionView: UIView {
     public var viewModel: MyTagCollectionViewModel?
     public var tagSections: [MyTagSectionProtocol] = []
     
@@ -43,46 +43,43 @@ extension MyTagCollectionView {
                     tagItem: MyTagItemViewProtocol) {
         tagSections = tagSections.map { tagSection in
             if tagSection.section == toSection.section {
-                var rows = toSection.rows
-                rows.append(tagItem)
-                return MyTagSection(section: tagSection.section,
-                                    rows: rows,
-                                    dimension: tagSection.dimension,
-                                    alignment: tagSection.alignment)
-            } else {
-                return tagSection
+                if var mutatedSection = toSection as? MyTagSection {
+                    return mutatedSection.append(item: tagItem)
+                } else if var mutatedSection = toSection as? MyTagExpandableSection {
+                    return mutatedSection.append(item: tagItem)
+                }
             }
+            return tagSection
         }
     }
     
-    func addExpandedItem(item: MyTagItemProtocol,
+    func addExpandedItem(item: MyTagExpandableItemProtocol,
                          referenceSection section: Int) {
-        guard let viewModel else { return }
-        let dimension = viewModel.dimension
+        guard section < tagSections.count,
+              var tagSection = tagSections[section] as? MyTagExpandableSection
+        else { return }
         
-        let tagItemView = item.modelView.init(parent: self,
-                                              item: item,
-                                              dimension: dimension)
+        let expandedItemView = item.modelView.init(parent: self,
+                                                   item: item)
             .usingAutolayout()
         
-        let tagSection = MyTagExpandedSection(section: section,
-                                              rows: [tagItemView],
-                                              dimension: dimension,
-                                              alignment: viewModel.alignment)
         drawExpandedTag(tagSection: tagSection,
+                        expanedItemView: expandedItemView,
                         referenceSection: section)
-        tagSections.insert(tagSection, at: section)
+        tagSections[section] = tagSection.append(expanedItem: expandedItemView)
     }
     
     func removeExpandedItem() {
-        tagSections = tagSections.filter({ section in
-            if let expandedSection = section as? MyTagExpandedSection {
-                if let tagView = expandedSection.rows.first as? MyTagBaseItemView {
-                    tagView.removeFromSuperview()
+        tagSections = tagSections.map({ tagSection in
+            if var expandedSection = tagSection as? MyTagExpandableSection {
+                for tagView in expandedSection.expandedItems {
+                    if let expanedView = tagView as? MyTagBaseExpandableItemView {
+                        expanedView.removeFromSuperview()
+                    }
                 }
-                return false
+                return expandedSection.resetExpandedItems()
             }
-            return true
+            return tagSection
         })
     }
     
@@ -134,62 +131,74 @@ extension MyTagCollectionView {
                 addSubview(tagItemView)
                 
                 NSLayoutConstraint.activate([
-                    tagItemView.widthAnchor.constraint(equalToConstant: tagItem.itemCanvas.width),
-                    tagItemView.heightAnchor.constraint(equalToConstant: tagItem.itemCanvas.height)
+                    tagItemView.widthAnchor
+                        .constraint(equalToConstant: tagItem.itemCanvas.width),
+                    tagItemView.heightAnchor
+                        .constraint(equalToConstant: tagItem.itemCanvas.height)
                 ])
                 
                 if let previousItemView = rowsTmp.last {
                     NSLayoutConstraint.activate([
-                        tagItemView.topAnchor.constraint(equalTo: previousItemView.topAnchor),
-                        tagItemView.leadingAnchor.constraint(equalTo: previousItemView.trailingAnchor,
-                                                             constant: dimension.columnSpacing)
+                        tagItemView.topAnchor
+                            .constraint(equalTo: previousItemView.topAnchor),
+                        tagItemView.leadingAnchor
+                            .constraint(equalTo: previousItemView.trailingAnchor,
+                                        constant: dimension.columnSpacing)
                     ])
                 } else {
                     if let tagSectionTmp = tagSectionsTmp.last,
                        let tallestTagItemView = tagSectionTmp.tallestItemInRow as? MyTagBaseItemView {
-                        tagItemView.topAnchor.constraint(greaterThanOrEqualTo: tallestTagItemView.bottomAnchor,
-                                                         constant: dimension.rowSpacing)
-                        .isActive = true
+                        tagItemView.topAnchor
+                            .constraint(greaterThanOrEqualTo: tallestTagItemView.bottomAnchor,
+                                        constant: dimension.rowSpacing)
+                            .isActive = true
                     } else {
-                        tagItemView.topAnchor.constraint(equalTo: topAnchor,
-                                                         constant: dimension.inset.top)
-                        .isActive = true
+                        tagItemView.topAnchor
+                            .constraint(equalTo: topAnchor,
+                                        constant: dimension.inset.top)
+                            .isActive = true
                     }
                     
                     switch tagSection.alignment {
                     case .left:
-                        tagItemView.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                             constant: dimension.inset.left)
-                        .isActive = true
+                        tagItemView.leadingAnchor
+                            .constraint(equalTo: leadingAnchor,
+                                        constant: dimension.inset.left)
+                            .isActive = true
                         
                     case .center:
-                        tagItemView.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                             constant: tagSection.centerItemPadding)
-                        .isActive = true
+                        tagItemView.leadingAnchor
+                            .constraint(equalTo: leadingAnchor,
+                                        constant: tagSection.centerItemPadding)
+                            .isActive = true
                         
                     case .right:
-                        tagItemView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor,
-                                                             constant: dimension.inset.left)
-                        .isActive = true
+                        tagItemView.leadingAnchor
+                            .constraint(greaterThanOrEqualTo: leadingAnchor,
+                                        constant: dimension.inset.left)
+                            .isActive = true
                     }
                 }
                 
                 if tagSection.rows.isLastItem(with: index) {
                     switch tagSection.alignment {
                     case .left:
-                        tagItemView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor,
-                                                              constant: -dimension.inset.right)
-                        .isActive = true
+                        tagItemView.trailingAnchor
+                            .constraint(lessThanOrEqualTo: trailingAnchor,
+                                        constant: -dimension.inset.right)
+                            .isActive = true
                         
                     case .center:
-                        tagItemView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                              constant: -tagSection.centerItemPadding)
-                        .isActive = true
+                        tagItemView.trailingAnchor
+                            .constraint(equalTo: trailingAnchor,
+                                        constant: -tagSection.centerItemPadding)
+                            .isActive = true
                         
                     case .right:
-                        tagItemView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                              constant: -dimension.inset.right)
-                        .isActive = true
+                        tagItemView.trailingAnchor
+                            .constraint(equalTo: trailingAnchor,
+                                        constant: -dimension.inset.right)
+                            .isActive = true
                     }
                 }
                 rowsTmp.append(tagItemView)
@@ -198,74 +207,82 @@ extension MyTagCollectionView {
             
             if tagSections.isLastItem(with: index),
                let tallestTagItemView = tagSection.tallestItemInRow as? MyTagBaseItemView {
-                tallestTagItemView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor,
-                                                           constant: -dimension.inset.bottom)
-                .isActive = true
+                tallestTagItemView.bottomAnchor
+                    .constraint(lessThanOrEqualTo: bottomAnchor,
+                                constant: -dimension.inset.bottom)
+                    .isActive = true
             }
         }
     }
     
     func drawExpandedTag(tagSection: MyTagSectionProtocol,
+                         expanedItemView: MyTagBaseExpandableItemView,
                          referenceSection section: Int) {
-        guard let tagItemView = tagSection.rows.first as? MyTagBaseItemView else { return }
-        addSubview(tagItemView)
+        addSubview(expanedItemView)
         
         NSLayoutConstraint.activate([
-            tagItemView.widthAnchor.constraint(equalToConstant: tagItemView.itemCanvas.width),
-            tagItemView.heightAnchor.constraint(equalToConstant: tagItemView.itemCanvas.height)
+            expanedItemView.widthAnchor
+                .constraint(equalToConstant: expanedItemView.itemCanvas.width),
+            expanedItemView.heightAnchor
+                .constraint(equalToConstant: expanedItemView.itemCanvas.height)
         ])
         
         let dimension = tagSection.dimension
         if tagSections.count == 0 {
-            tagItemView.topAnchor.constraint(equalTo: topAnchor,
-                                             constant: dimension.inset.top)
-            .isActive = true
+            expanedItemView.topAnchor
+                .constraint(equalTo: topAnchor,
+                            constant: dimension.inset.top)
+                .isActive = true
         } else {
             let referenceTagSection = tagSections[section]
             if let tallestTagItemView = referenceTagSection.tallestItemInRow as? MyTagBaseItemView {
-                tagItemView.topAnchor.constraint(equalTo: tallestTagItemView.bottomAnchor,
-                                                 constant: dimension.rowSpacing)
-                .isActive = true
+                expanedItemView.topAnchor
+                    .constraint(equalTo: tallestTagItemView.bottomAnchor,
+                                constant: dimension.rowSpacing)
+                    .isActive = true
             }
         }
         
         if tagSections.isLastItem(with: section) {
-            tagItemView.bottomAnchor.constraint(equalTo: bottomAnchor,
-                                                constant: -dimension.inset.bottom)
-            .isActive = true
+            expanedItemView.bottomAnchor
+                .constraint(equalTo: bottomAnchor,
+                            constant: -dimension.inset.bottom)
+                .isActive = true
         } else {
             let nextTagSectionIndex = section + 1
             let nextTagSection = tagSections[nextTagSectionIndex]
             if let nextTagItemView = nextTagSection.rows.first as? MyTagBaseItemView {
-                tagItemView.bottomAnchor.constraint(equalTo: nextTagItemView.topAnchor,
-                                                    constant: -dimension.rowSpacing)
-                .isActive = true
+                expanedItemView.bottomAnchor
+                    .constraint(equalTo: nextTagItemView.topAnchor,
+                                constant: -dimension.rowSpacing)
+                    .isActive = true
             }
         }
         
         switch tagSection.alignment {
         case .left:
             NSLayoutConstraint.activate([
-                tagItemView.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                     constant: dimension.inset.left),
-                tagItemView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor,
-                                                      constant: -dimension.inset.right)
+                expanedItemView.leadingAnchor
+                    .constraint(equalTo: leadingAnchor,
+                                constant: dimension.inset.left),
+                expanedItemView.trailingAnchor
+                    .constraint(lessThanOrEqualTo: trailingAnchor,
+                                constant: -dimension.inset.right)
             ])
             
         case .center:
-            NSLayoutConstraint.activate([
-                tagItemView.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                     constant: tagSection.centerItemPadding),
-                tagItemView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                      constant: -tagSection.centerItemPadding)
-            ])
+            expanedItemView.centerXAnchor
+                .constraint(equalTo: centerXAnchor)
+                .isActive = true
             
         case .right:
             NSLayoutConstraint.activate([
-                tagItemView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor,
-                                                     constant: dimension.inset.left),
-                tagItemView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                      constant: -dimension.inset.right)
+                expanedItemView.leadingAnchor
+                    .constraint(greaterThanOrEqualTo: leadingAnchor,
+                                constant: dimension.inset.left),
+                expanedItemView.trailingAnchor
+                    .constraint(equalTo: trailingAnchor,
+                                constant: -dimension.inset.right)
             ])
         }
     }

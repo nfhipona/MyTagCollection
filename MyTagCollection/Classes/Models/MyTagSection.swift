@@ -11,18 +11,15 @@ public
 struct MyTagSection: MyTagSectionProtocol {
     public let section: Int
     public var rows: [MyTagItemViewProtocol]
-    public var expandedItems: [MyTagExpandedItemViewProtocol]
     public let dimension: MyTagSectionDimension
     public let alignment: Alignment
     
     public init(section: Int,
                 rows: [MyTagItemViewProtocol],
-                expandedItems: [MyTagExpandedItemViewProtocol] = [],
                 dimension: MyTagSectionDimension = .defaultStub,
                 alignment: Alignment = .center) {
         self.section = section
         self.rows = rows
-        self.expandedItems = expandedItems
         self.dimension = dimension
         self.alignment = alignment
     }
@@ -53,7 +50,9 @@ extension MyTagSection {
         return contentWidth / 2
     }
     
-    mutating func append(item: MyTagItemViewProtocol) {
+    @discardableResult
+    mutating func append(item: MyTagItemViewProtocol) -> Self {
         rows.append(item)
+        return self
     }
 }
