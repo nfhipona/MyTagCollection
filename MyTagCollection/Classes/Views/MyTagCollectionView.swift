@@ -96,9 +96,14 @@ extension MyTagCollectionView {
             }
         }
 
-        let expandedItemCollection = mutatedSection.rows.filter { $0.item?.type == .expandable }
-            .compactMap { $0.item }
+        let expandedItemViewCollection = mutatedSection.rows.filter { $0.item?.type == .expandable }
+        for itemView in expandedItemViewCollection {
+            guard var tmp = itemView.item else { continue }
+            tmp.isSelected = false
+            itemView.configure(item: tmp)
+        }
         
+        let expandedItemCollection = expandedItemViewCollection.compactMap { $0.item }
         viewModel.resetExpandedItems(in: expandedItemCollection)
         tagSections[section] = mutatedSection.resetExpandedItems()
     }
