@@ -54,6 +54,13 @@ class MyTagCollectionViewController: UIViewController {
         .usingAutolayout()
     }()
     
+    private
+    let myTagCollectionViewContainerView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView.usingAutolayout()
+    }()
+    
     private var selectionOptionDescription: String {
         isMultiSelection ? "Multi Selection" : "Single Selection"
     }
@@ -76,7 +83,13 @@ class MyTagCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubviews([titleLabel, inputTextField, addButton, myTagCollectionView])
+        myTagCollectionViewContainerView.addSubview(myTagCollectionView)
+        view.addSubviews([
+            titleLabel,
+            inputTextField,
+            addButton,
+            myTagCollectionViewContainerView
+        ])
         setConstraints()
         setBindings()
     }
@@ -98,10 +111,16 @@ class MyTagCollectionViewController: UIViewController {
             addButton.widthAnchor.constraint(equalToConstant: 40),
             addButton.heightAnchor.constraint(equalToConstant: 40),
             
-            myTagCollectionView.topAnchor.constraint(equalTo: inputTextField.bottomAnchor, constant: 40),
-            myTagCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            myTagCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            myTagCollectionView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
+            myTagCollectionViewContainerView.topAnchor.constraint(equalTo: inputTextField.bottomAnchor, constant: 40),
+            myTagCollectionViewContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            myTagCollectionViewContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            myTagCollectionViewContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            
+            myTagCollectionView.topAnchor.constraint(equalTo: myTagCollectionViewContainerView.topAnchor),
+            myTagCollectionView.leadingAnchor.constraint(equalTo: myTagCollectionViewContainerView.leadingAnchor),
+            myTagCollectionView.trailingAnchor.constraint(equalTo: myTagCollectionViewContainerView.trailingAnchor),
+            myTagCollectionView.bottomAnchor.constraint(equalTo: myTagCollectionViewContainerView.bottomAnchor),
+            myTagCollectionView.centerXAnchor.constraint(equalTo: myTagCollectionViewContainerView.centerXAnchor)
         ])
     }
     
