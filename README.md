@@ -10,6 +10,7 @@
 Suports:
 * Mix matching of tags
 * Add, Remove, Selection of tags
+* Action `Expand` and `Collapse` tag items with `Custom Expanded View`
 
 ## Example
 
@@ -31,7 +32,8 @@ pod 'MyTagCollection'
 
 ## Demo
 
-[YouTube Demo](https://youtu.be/_Myb303J_zo)
+[YouTube Demo v0.2.0](https://youtu.be/_Myb303J_zo)
+[YouTube Demo v1.0.0](https://youtu.be/qONkbqeXc50)
 
 <img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/daef48cc-a4af-4222-9dbe-b9e4fd6e5c1e" width="300" alt="ss-left-default"/>
 
