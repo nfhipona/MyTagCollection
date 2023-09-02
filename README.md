@@ -55,6 +55,18 @@ pod 'MyTagCollection'
 <img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/31f7daaf-77c7-47a3-a170-2dbdae60fe3a" width="300" alt="ss-input-center"/>
 <img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/8a6031ed-5b4e-4db6-ab0a-c0a8e5630424" width="300" alt="ss-input-right"/>
 
+<br/> <br/> <br/>
+
+<img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/727771c2-2036-4ea8-911a-a50a354bb19b" width="300" alt="ss-expanded-left"/>
+<img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/d6dd8f21-0839-445f-a230-08062b7369df" width="300" alt="ss-expanded-center"/>
+<img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/64e1f32e-7af7-444c-b34c-ef18b334946d" width="300" alt="ss-expanded-right"/>
+
+<br/>
+
+<img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/e0e9b802-6fc0-4ae6-99e5-bb60c568e473" width="300" alt="ss-expanded-multi-select-left"/>
+<img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/8f52ae3a-a61d-413d-ba22-39f8bf495004" width="300" alt="ss-expanded-multi-select-center"/>
+<img src="https://github.com/nfhipona/MyTagCollection/assets/8805997/ff2228fc-8b02-4330-8f30-e545a0ea2453" width="300" alt="ss-expanded-multi-select-right"/>
+
 ## Author
 
 Neil Francis Ramirez Hipona, enef.devops@protonmail.ch
