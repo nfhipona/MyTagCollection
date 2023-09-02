@@ -8,9 +8,10 @@
 import Foundation
 
 public
-struct MyTagSection {
+struct MyTagSection: MyTagSectionProtocol {
     public let section: Int
     public var rows: [MyTagItemViewProtocol]
+    public var expandedItems: [MyTagExpandableItemViewProtocol] = []
     public let dimension: MyTagSectionDimension
     public let alignment: Alignment
     
@@ -22,23 +23,6 @@ struct MyTagSection {
         self.rows = rows
         self.dimension = dimension
         self.alignment = alignment
-    }
-}
-
-public
-extension MyTagSection {
-    enum Alignment {
-        case left
-        case center
-        case right
-        
-        public var description: String {
-            switch self {
-            case .left: return "Left Align"
-            case .center: return "Center Align"
-            case .right: return "Right Align"
-            }
-        }
     }
 }
 
@@ -67,7 +51,21 @@ extension MyTagSection {
         return contentWidth / 2
     }
     
-    mutating func append(item: MyTagItemViewProtocol) {
+    @discardableResult
+    mutating func append(item: MyTagItemViewProtocol) -> Self {
         rows.append(item)
+        return self
+    }
+    
+    @discardableResult
+    mutating func append(expanedItem: MyTagExpandableItemViewProtocol) -> Self {
+        expandedItems.append(expanedItem)
+        return self
+    }
+    
+    @discardableResult
+    mutating func resetExpandedItems() -> Self {
+        expandedItems = []
+        return self
     }
 }

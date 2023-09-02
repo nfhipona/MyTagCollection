@@ -11,11 +11,20 @@
 		087B4DF72A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DF62A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift */; };
 		087B4DF92A84C71300C124A1 /* MyTagCollectionUpdateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DF82A84C71300C124A1 /* MyTagCollectionUpdateAction.swift */; };
 		087B4DFB2A84DE2700C124A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 087B4DFA2A84DE2700C124A1 /* Assets.xcassets */; };
-		087B4DFD2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DFC2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift */; };
-		087B4DFF2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DFE2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift */; };
+		087B4DFD2A84DEE900C124A1 /* MyTagItemLabelRemovableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DFC2A84DEE900C124A1 /* MyTagItemLabelRemovableView.swift */; };
+		087B4DFF2A84E12B00C124A1 /* MyTagItemLabelRemovableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4DFE2A84E12B00C124A1 /* MyTagItemLabelRemovableViewModel.swift */; };
 		087B4E012A84E74C00C124A1 /* MyTagItemUpdateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */; };
-		088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */; };
+		088F25282A80BE92008F0ED1 /* MyTagItemLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25272A80BE92008F0ED1 /* MyTagItemLabelViewModel.swift */; };
 		088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */; };
+		089BD0702AA213CA00415344 /* MyTagExpandableItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD06F2AA213CA00415344 /* MyTagExpandableItemProtocol.swift */; };
+		089BD0722AA213EE00415344 /* MyTagExpandableItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD0712AA213ED00415344 /* MyTagExpandableItemViewProtocol.swift */; };
+		089BD07A2AA21CD900415344 /* MyTagBaseExpandableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD0792AA21CD900415344 /* MyTagBaseExpandableItemView.swift */; };
+		089BD07C2AA21EFE00415344 /* MyTagBaseExpandableItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD07B2AA21EFE00415344 /* MyTagBaseExpandableItemViewModel.swift */; };
+		089BD07E2AA2315500415344 /* MyTagExpandableItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD07D2AA2315500415344 /* MyTagExpandableItemAttribute.swift */; };
+		089BD0802AA2317600415344 /* MyTagExpandableItemAttributeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD07F2AA2317600415344 /* MyTagExpandableItemAttributeProtocol.swift */; };
+		089BD0822AA2437C00415344 /* MyTagItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089BD0812AA2437C00415344 /* MyTagItemType.swift */; };
+		08B767F52A9B5673001655AA /* MyTagSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */; };
+		08B767F72A9B577B001655AA /* MyTagSectionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */; };
 		08E126D72A7FBEC000063655 /* MyTagItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */; };
 		08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */; };
 		08E126DB2A7FC18900063655 /* MyTagItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */; };
@@ -29,9 +38,8 @@
 		08E126EE2A7FF6C800063655 /* MyTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126ED2A7FF6C800063655 /* MyTagCollectionView.swift */; };
 		08E126F02A80059300063655 /* MyTagCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */; };
 		08E126F22A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */; };
-		08E126F42A800F1E00063655 /* MyTagCollectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */; };
 		08E126F62A801AA500063655 /* MyTagHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F52A801AA500063655 /* MyTagHelper.swift */; };
-		08E126F82A80A50100063655 /* MyTagItemCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F72A80A50100063655 /* MyTagItemCustomView.swift */; };
+		08E126F82A80A50100063655 /* MyTagItemLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E126F72A80A50100063655 /* MyTagItemLabelView.swift */; };
 		2D1717F9B21206707373011801675621 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		3A7C0DD4E1F957FF747B94025A6880BF /* Pods-MyTagCollection_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6171CE7548EC0DD4DAA77DB05C766AFA /* Pods-MyTagCollection_Example-dummy.m */; };
 		7B7D3B51A2B9CC1F32D1951B29DA905D /* Pods-MyTagCollection_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 222D4301EEF3C7CD517BC4FD9D89C66D /* Pods-MyTagCollection_Tests-dummy.m */; };
@@ -66,11 +74,20 @@
 		087B4DF62A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionUpdateProtocol.swift; sourceTree = "<group>"; };
 		087B4DF82A84C71300C124A1 /* MyTagCollectionUpdateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionUpdateAction.swift; sourceTree = "<group>"; };
 		087B4DFA2A84DE2700C124A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MyTagCollection/Assets/Assets.xcassets; sourceTree = "<group>"; };
-		087B4DFC2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomRemovableView.swift; sourceTree = "<group>"; };
-		087B4DFE2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomRemovableViewModel.swift; sourceTree = "<group>"; };
+		087B4DFC2A84DEE900C124A1 /* MyTagItemLabelRemovableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemLabelRemovableView.swift; sourceTree = "<group>"; };
+		087B4DFE2A84E12B00C124A1 /* MyTagItemLabelRemovableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemLabelRemovableViewModel.swift; sourceTree = "<group>"; };
 		087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemUpdateAction.swift; sourceTree = "<group>"; };
-		088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomViewModel.swift; sourceTree = "<group>"; };
+		088F25272A80BE92008F0ED1 /* MyTagItemLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemLabelViewModel.swift; sourceTree = "<group>"; };
 		088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModel.swift; sourceTree = "<group>"; };
+		089BD06F2AA213CA00415344 /* MyTagExpandableItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandableItemProtocol.swift; sourceTree = "<group>"; };
+		089BD0712AA213ED00415344 /* MyTagExpandableItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandableItemViewProtocol.swift; sourceTree = "<group>"; };
+		089BD0792AA21CD900415344 /* MyTagBaseExpandableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagBaseExpandableItemView.swift; sourceTree = "<group>"; };
+		089BD07B2AA21EFE00415344 /* MyTagBaseExpandableItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagBaseExpandableItemViewModel.swift; sourceTree = "<group>"; };
+		089BD07D2AA2315500415344 /* MyTagExpandableItemAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandableItemAttribute.swift; sourceTree = "<group>"; };
+		089BD07F2AA2317600415344 /* MyTagExpandableItemAttributeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagExpandableItemAttributeProtocol.swift; sourceTree = "<group>"; };
+		089BD0812AA2437C00415344 /* MyTagItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemType.swift; sourceTree = "<group>"; };
+		08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionProtocol.swift; sourceTree = "<group>"; };
+		08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagSectionAlignment.swift; sourceTree = "<group>"; };
 		08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemProtocol.swift; sourceTree = "<group>"; };
 		08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemModelProtocol.swift; sourceTree = "<group>"; };
 		08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemAttribute.swift; sourceTree = "<group>"; };
@@ -84,9 +101,8 @@
 		08E126ED2A7FF6C800063655 /* MyTagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionView.swift; sourceTree = "<group>"; };
 		08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewModel.swift; sourceTree = "<group>"; };
 		08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewModelProtocol.swift; sourceTree = "<group>"; };
-		08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagCollectionViewProtocol.swift; sourceTree = "<group>"; };
 		08E126F52A801AA500063655 /* MyTagHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagHelper.swift; sourceTree = "<group>"; };
-		08E126F72A80A50100063655 /* MyTagItemCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemCustomView.swift; sourceTree = "<group>"; };
+		08E126F72A80A50100063655 /* MyTagItemLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTagItemLabelView.swift; sourceTree = "<group>"; };
 		0F056B21D9D48A009EE1556B8F416C1A /* MyTagCollection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyTagCollection-prefix.pch"; sourceTree = "<group>"; };
 		13B26C1CB2A276C0E60250430DE7D687 /* MyTagCollection.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MyTagCollection.modulemap; sourceTree = "<group>"; };
 		1A3D3D56FB33462F6B492E714CEBD45C /* Pods-MyTagCollection_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyTagCollection_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -152,14 +168,17 @@
 			isa = PBXGroup;
 			children = (
 				08E126D62A7FBEC000063655 /* MyTagItemProtocol.swift */,
+				089BD06F2AA213CA00415344 /* MyTagExpandableItemProtocol.swift */,
 				08E126E02A7FDD7C00063655 /* MyTagItemViewProtocol.swift */,
+				089BD0712AA213ED00415344 /* MyTagExpandableItemViewProtocol.swift */,
 				08E126D82A7FBF2B00063655 /* MyTagItemModelProtocol.swift */,
 				08E126DC2A7FD8C200063655 /* MyTagItemAttributeProtocol.swift */,
+				089BD07F2AA2317600415344 /* MyTagExpandableItemAttributeProtocol.swift */,
 				087B4DF42A84934200C124A1 /* MyTagItemUpdateProtocol.swift */,
 				087B4DF62A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift */,
 				08E126E22A7FDE2000063655 /* MyTagSectionDimensionProtocol.swift */,
-				08E126F32A800F1E00063655 /* MyTagCollectionViewProtocol.swift */,
 				08E126F12A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift */,
+				08B767F42A9B5673001655AA /* MyTagSectionProtocol.swift */,
 			);
 			name = Protocols;
 			path = MyTagCollection/Classes/Protocols;
@@ -169,8 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				08E126DE2A7FDD5500063655 /* MyTagBaseItemView.swift */,
-				08E126F72A80A50100063655 /* MyTagItemCustomView.swift */,
-				087B4DFC2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift */,
+				08E126F72A80A50100063655 /* MyTagItemLabelView.swift */,
+				087B4DFC2A84DEE900C124A1 /* MyTagItemLabelRemovableView.swift */,
+				089BD0792AA21CD900415344 /* MyTagBaseExpandableItemView.swift */,
 				08E126ED2A7FF6C800063655 /* MyTagCollectionView.swift */,
 			);
 			name = Views;
@@ -182,11 +202,14 @@
 			children = (
 				08E126F52A801AA500063655 /* MyTagHelper.swift */,
 				08E126DA2A7FC18900063655 /* MyTagItemAttribute.swift */,
+				089BD07D2AA2315500415344 /* MyTagExpandableItemAttribute.swift */,
 				08E126E42A7FDE4D00063655 /* MyTagSectionDimension.swift */,
 				08E126E82A7FF21400063655 /* MyTagSection.swift */,
+				08B767F62A9B577B001655AA /* MyTagSectionAlignment.swift */,
 				088F25292A80BF37008F0ED1 /* MyTagItemModel.swift */,
 				087B4E002A84E74C00C124A1 /* MyTagItemUpdateAction.swift */,
 				087B4DF82A84C71300C124A1 /* MyTagCollectionUpdateAction.swift */,
+				089BD0812AA2437C00415344 /* MyTagItemType.swift */,
 			);
 			name = Models;
 			path = MyTagCollection/Classes/Models;
@@ -196,8 +219,9 @@
 			isa = PBXGroup;
 			children = (
 				08E126EB2A7FF49B00063655 /* MyTagBaseItemViewModel.swift */,
-				088F25272A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift */,
-				087B4DFE2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift */,
+				088F25272A80BE92008F0ED1 /* MyTagItemLabelViewModel.swift */,
+				087B4DFE2A84E12B00C124A1 /* MyTagItemLabelRemovableViewModel.swift */,
+				089BD07B2AA21EFE00415344 /* MyTagBaseExpandableItemViewModel.swift */,
 				08E126EF2A80059300063655 /* MyTagCollectionViewModel.swift */,
 			);
 			name = ViewModels;
@@ -497,30 +521,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B767F72A9B577B001655AA /* MyTagSectionAlignment.swift in Sources */,
 				08E126D72A7FBEC000063655 /* MyTagItemProtocol.swift in Sources */,
 				08E126F22A8005CF00063655 /* MyTagCollectionViewModelProtocol.swift in Sources */,
 				087B4DF52A84934200C124A1 /* MyTagItemUpdateProtocol.swift in Sources */,
 				08E126E92A7FF21400063655 /* MyTagSection.swift in Sources */,
+				089BD0722AA213EE00415344 /* MyTagExpandableItemViewProtocol.swift in Sources */,
+				08B767F52A9B5673001655AA /* MyTagSectionProtocol.swift in Sources */,
 				D2DD62F0E46A58DA15EF887C4AE77808 /* MyTagCollection-dummy.m in Sources */,
 				087B4DF92A84C71300C124A1 /* MyTagCollectionUpdateAction.swift in Sources */,
 				087B4E012A84E74C00C124A1 /* MyTagItemUpdateAction.swift in Sources */,
 				08E126DD2A7FD8C200063655 /* MyTagItemAttributeProtocol.swift in Sources */,
-				087B4DFF2A84E12B00C124A1 /* MyTagItemCustomRemovableViewModel.swift in Sources */,
+				089BD0822AA2437C00415344 /* MyTagItemType.swift in Sources */,
+				087B4DFF2A84E12B00C124A1 /* MyTagItemLabelRemovableViewModel.swift in Sources */,
+				089BD07E2AA2315500415344 /* MyTagExpandableItemAttribute.swift in Sources */,
 				08E126E52A7FDE4D00063655 /* MyTagSectionDimension.swift in Sources */,
 				08E126E12A7FDD7C00063655 /* MyTagItemViewProtocol.swift in Sources */,
-				088F25282A80BE92008F0ED1 /* MyTagItemCustomViewModel.swift in Sources */,
-				08E126F82A80A50100063655 /* MyTagItemCustomView.swift in Sources */,
-				087B4DFD2A84DEE900C124A1 /* MyTagItemCustomRemovableView.swift in Sources */,
+				088F25282A80BE92008F0ED1 /* MyTagItemLabelViewModel.swift in Sources */,
+				089BD0802AA2317600415344 /* MyTagExpandableItemAttributeProtocol.swift in Sources */,
+				08E126F82A80A50100063655 /* MyTagItemLabelView.swift in Sources */,
+				087B4DFD2A84DEE900C124A1 /* MyTagItemLabelRemovableView.swift in Sources */,
 				088F252A2A80BF37008F0ED1 /* MyTagItemModel.swift in Sources */,
 				087B4DF72A84C4DD00C124A1 /* MyTagCollectionUpdateProtocol.swift in Sources */,
 				08E126EE2A7FF6C800063655 /* MyTagCollectionView.swift in Sources */,
+				089BD07A2AA21CD900415344 /* MyTagBaseExpandableItemView.swift in Sources */,
 				08E126D92A7FBF2B00063655 /* MyTagItemModelProtocol.swift in Sources */,
-				08E126F42A800F1E00063655 /* MyTagCollectionViewProtocol.swift in Sources */,
 				08E126F02A80059300063655 /* MyTagCollectionViewModel.swift in Sources */,
 				08E126E32A7FDE2000063655 /* MyTagSectionDimensionProtocol.swift in Sources */,
 				08E126DB2A7FC18900063655 /* MyTagItemAttribute.swift in Sources */,
 				08E126DF2A7FDD5500063655 /* MyTagBaseItemView.swift in Sources */,
 				08E126F62A801AA500063655 /* MyTagHelper.swift in Sources */,
+				089BD0702AA213CA00415344 /* MyTagExpandableItemProtocol.swift in Sources */,
+				089BD07C2AA21EFE00415344 /* MyTagBaseExpandableItemViewModel.swift in Sources */,
 				08E126EC2A7FF49B00063655 /* MyTagBaseItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

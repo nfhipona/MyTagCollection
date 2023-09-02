@@ -30,28 +30,64 @@ class ViewController: UIViewController {
     }()
     
     private
-    lazy var initialItems: [MyTagItemCustomViewModel] = {
+    lazy var initialItems: [MyTagItemProtocol] = {
         [
-            .init(identifier: UUID().uuidString,
-                  model: MyTagItemModel(title: "Tag 1",
-                                        value: "Tag 1"),
-                  attribute: MyTagItemAttribute.defaultStub),
-            .init(identifier: UUID().uuidString,
-                  model: MyTagItemModel(title: "Tag 2",
-                                        value: "Tag 2"),
-                  attribute: MyTagItemAttribute.defaultStub),
-            .init(identifier: UUID().uuidString,
-                  model: MyTagItemModel(title: "Tag Long Title",
-                                        value: "Tag 3"),
-                  attribute: MyTagItemAttribute.defaultStub),
-            .init(identifier: UUID().uuidString,
-                  model: MyTagItemModel(title: "Tag Very Long Title",
-                                        value: "Tag 4"),
-                  attribute: MyTagItemAttribute.defaultStub),
-            .init(identifier: UUID().uuidString,
-                  model: MyTagItemModel(title: "Tag Very Very Very Very Long Title",
-                                        value: "Tag 5"),
-                  attribute: MyTagItemAttribute.defaultStub)
+            MyTagItemLabelViewModel(identifier: UUID().uuidString,
+                                    model: MyTagItemModel(title: "Tag 1",
+                                                          value: "Tag 1"),
+                                    attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand Me 1",
+                                                             value: "Expand Me 1"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand Me 1a",
+                                                             value: "Expand Me 1a"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            MyTagItemLabelViewModel(identifier: UUID().uuidString,
+                                    model: MyTagItemModel(title: "Tag 2",
+                                                          value: "Tag 2"),
+                                    attribute: MyTagItemAttribute.defaultStub),
+            MyTagItemLabelViewModel(identifier: UUID().uuidString,
+                                    model: MyTagItemModel(title: "Tag Long Title",
+                                                          value: "Tag 3"),
+                                    attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand Me 2",
+                                                             value: "Expand Me 2"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand Me 2a",
+                                                             value: "Expand Me 2a"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand Me 3",
+                                                             value: "Expand Me 3"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            MyTagItemLabelViewModel(identifier: UUID().uuidString,
+                                    model: MyTagItemModel(title: "Tag Very Long Title",
+                                                          value: "Tag 4"),
+                                    attribute: MyTagItemAttribute.defaultStub),
+            MyTagItemLabelViewModel(identifier: UUID().uuidString,
+                                    model: MyTagItemModel(title: "Tag Very Very Very Very Long Title",
+                                                          value: "Tag 5"),
+                                    attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand Me 4",
+                                                             value: "Expand Me 4"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand A",
+                                                             value: "Expand A"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand B",
+                                                             value: "Expand B"),
+                                       attribute: MyTagItemAttribute.defaultStub),
+            ExpandableTagItemViewModel(identifier: UUID().uuidString,
+                                       model: MyTagItemModel(title: "Expand C",
+                                                             value: "Expand C"),
+                                       attribute: MyTagItemAttribute.defaultStub)
         ]
     }()
     
@@ -141,7 +177,7 @@ class ViewController: UIViewController {
             containerView.topAnchor.constraint(equalTo: alignmentControl.bottomAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            containerView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -100),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             
             proceedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             proceedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
@@ -186,9 +222,9 @@ class ViewController: UIViewController {
             if arc4random_uniform(2) == 1 {
                 return item
             } else {
-                return MyTagItemCustomRemovableViewModel(identifier: item.identifier,
-                                                         model: item.model,
-                                                         attribute: MyTagCollectionViewController.removableViewStub)
+                return MyTagItemLabelRemovableViewModel(identifier: item.identifier,
+                                                        model: item.model,
+                                                        attribute: MyTagCollectionViewController.removableViewStub)
             }
         })
         

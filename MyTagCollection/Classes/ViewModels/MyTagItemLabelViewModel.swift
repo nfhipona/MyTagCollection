@@ -1,16 +1,17 @@
 //
-//  MyTagItemCustomRemovableViewModel.swift
+//  MyTagItemLabelViewModel.swift
 //  MyTagCollection
 //
-//  Created by Neil Francis Hipona on 8/10/23.
+//  Created by Neil Francis Hipona on 8/7/23.
 //
 
 import Foundation
 
 public
-struct MyTagItemCustomRemovableViewModel: MyTagItemProtocol {
+struct MyTagItemLabelViewModel: MyTagItemProtocol {
+    public var type: MyTagItemType = .default
     public var modelView: MyTagBaseItemView.Type {
-        MyTagItemCustomRemovableView.self
+        MyTagItemLabelView.self
     }
     
     public let identifier: String

@@ -9,7 +9,6 @@ import Foundation
 
 public
 protocol MyTagCollectionViewModelProtocol {
-    typealias ItemPosition = MyTagCollectionViewModel.ItemPosition
     typealias Alignment = MyTagSection.Alignment
     
     var identifier: String { get }
@@ -18,6 +17,7 @@ protocol MyTagCollectionViewModelProtocol {
     var alignment: Alignment { get set }
     var isAppendable: Bool { get set }
     var isMultiSelection: Bool { get set }
+    var isExpandable: Bool { get }
     var viewDelegate: MyTagCollectionUpdateProtocol? { get set }
     
     init(identifier: String,
@@ -25,5 +25,6 @@ protocol MyTagCollectionViewModelProtocol {
          dimension: MyTagSectionDimension,
          alignment: Alignment,
          isAppendable: Bool,
-         isMultiSelection: Bool)
+         isMultiSelection: Bool,
+         isExpandable: Bool)
 }

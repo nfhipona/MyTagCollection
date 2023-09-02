@@ -9,6 +9,7 @@ import Foundation
 
 public
 protocol MyTagItemProtocol {
+    var type: MyTagItemType { get }
     var identifier: String { get }
     var modelView: MyTagBaseItemView.Type { get }
     var model: MyTagItemModelProtocol { get }

@@ -7,14 +7,15 @@
 
 import Foundation
 
-public
+open
 class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
     public unowned var parent: MyTagItemUpdateProtocol?
+    public var section: Int = 0
     public var item: MyTagItemProtocol?
     public var itemCanvas: CGSize = .zero
     
-    override
-    init(frame: CGRect) {
+    public
+    override init(frame: CGRect) {
         super.init(frame: frame)
         usingAutolayout()
         setViews()
@@ -31,6 +32,7 @@ class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
         sizeInCanvas(dimension: dimension)
     }
     
+    public
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -88,15 +90,12 @@ class MyTagBaseItemView: UIView, MyTagItemViewProtocol {
         return rowItemWidth > dimension.contentCanvas.width
     }
     
-    public func setViews() {}
-    public func setConstraints() {}
+    open func setViews() {}
+    open func setConstraints() {}
     
-    public func configure(item: MyTagItemProtocol) {
-        defer {
-            setViewAttributes()
-        }
-        
+    open func configure(item: MyTagItemProtocol) {
         self.item = item
+        setViewAttributes()
     }
 }
 

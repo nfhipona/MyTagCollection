@@ -14,11 +14,13 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
     public let dimension: MyTagSectionDimension
     public var alignment: Alignment {
         didSet {
-            reloadTags()
+            reloadTags(action: .reloadAndReset)
         }
     }
     public var isAppendable: Bool
     public var isMultiSelection: Bool
+    public let isExpandable: Bool
+    
     unowned
     public var viewDelegate: MyTagCollectionUpdateProtocol?
     
@@ -28,13 +30,15 @@ class MyTagCollectionViewModel: MyTagCollectionViewModelProtocol {
                   dimension: MyTagSectionDimension,
                   alignment: Alignment,
                   isAppendable: Bool = true,
-                  isMultiSelection: Bool = true) {
+                  isMultiSelection: Bool = true,
+                  isExpandable: Bool = false) {
         self.identifier = identifier
         self.items = items
         self.dimension = dimension
         self.alignment = alignment
         self.isAppendable = isAppendable
         self.isMultiSelection = isMultiSelection
+        self.isExpandable = isExpandable
     }
 }
 
@@ -67,6 +71,17 @@ extension MyTagCollectionViewModel {
                 mutatedItem.isSelected = false
                 return mutatedItem
             }
+        })
+    }
+    
+    func resetExpandedItems(in collection: [MyTagItemProtocol]) {
+        items = items.map({ item in
+            for element in collection where element.identifier == item.identifier {
+                var mutatedItem = item
+                mutatedItem.isSelected = false
+                return mutatedItem
+            }
+            return item
         })
     }
 }
@@ -128,8 +143,17 @@ extension MyTagCollectionViewModel {
         }
     }
     
-    func reloadTags() {
+    func resetItems() {
+        items = items.map({ item in
+            var mutatedItem = item
+            mutatedItem.isSelected = false
+            return mutatedItem
+        })
+    }
+    
+    func reloadTags(action: MyTagCollectionUpdateAction = .reload) {
         guard let viewDelegate else { return }
-        viewDelegate.viewModel(viewModel: self, requestAction: .reload)
+        viewDelegate.viewModel(viewModel: self,
+                               requestAction: action)
     }
 }

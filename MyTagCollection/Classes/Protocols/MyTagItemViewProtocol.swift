@@ -9,13 +9,10 @@ import Foundation
 
 public
 protocol MyTagItemViewProtocol {
+    var section: Int { get set }
     var item: MyTagItemProtocol? { get }
     var itemCanvas: CGSize { get }
-    
-    init(parent: MyTagItemUpdateProtocol,
-         item: MyTagItemProtocol,
-         dimension: MyTagSectionDimensionProtocol)
-    
+        
     @discardableResult
     func sizeInCanvas(dimension: MyTagSectionDimensionProtocol) -> CGSize
     func shouldDrawInNewRow(itemsInRow: [MyTagItemViewProtocol],

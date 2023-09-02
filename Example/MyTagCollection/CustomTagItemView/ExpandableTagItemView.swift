@@ -1,14 +1,15 @@
 //
-//  MyTagItemCustomView.swift
-//  MyTagCollection
+//  ExpandableTagItemView.swift
+//  MyTagCollection_Example
 //
-//  Created by Neil Francis Hipona on 8/7/23.
+//  Created by Neil Francis Hipona on 8/27/23.
+//  Copyright © 2023 CocoaPods. All rights reserved.
 //
 
 import Foundation
+import MyTagCollection
 
-public
-extension MyTagItemCustomView {
+extension ExpandableTagItemView {
     // MyTagItemAttribute.defaultStub
     enum CustomTagViewConstraint {
         static let verticalPadding: CGFloat = 11
@@ -17,8 +18,7 @@ extension MyTagItemCustomView {
     }
 }
 
-public
-class MyTagItemCustomView: MyTagBaseItemView {
+class ExpandableTagItemView: MyTagBaseItemView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -60,16 +60,12 @@ class MyTagItemCustomView: MyTagBaseItemView {
     lazy var titleLabelHeightAnchor: NSLayoutConstraint = {
         titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: CustomTagViewConstraint.titleLabelHeight)
     }()
-    
-    public
+
     override func setViews() {
-        super.setViews()
         addSubviews([titleLabel, tapAction])
     }
     
-    public
     override func setConstraints() {
-        super.setConstraints()
         NSLayoutConstraint.activate([
             titleLabelTopAnchor,
             titleLabelLeadingAnchor,
@@ -84,7 +80,6 @@ class MyTagItemCustomView: MyTagBaseItemView {
         ])
     }
     
-    public
     override func configure(item: MyTagItemProtocol) {
         super.configure(item: item)
         
@@ -108,10 +103,15 @@ class MyTagItemCustomView: MyTagBaseItemView {
     
     @objc
     private func tapAction(sender: UIButton) {
-        guard let parent, let item else { return }
-        let state = !item.isSelected
-        parent.childItem(tagItem: item,
-                         tagView: self,
-                         requestAction: .isSelected(state: state))
+        guard let parent, let item = item as? ExpandableTagItemViewModel else { return }
+        if item.isSelected {
+            parent.childItem(tagItem: item,
+                             tagView: self,
+                             requestAction: .collapse)
+        } else {
+            parent.childItem(tagItem: item,
+                             tagView: self,
+                             requestAction: .expandWith(expandedItem: item.expandedItem))
+        }
     }
 }

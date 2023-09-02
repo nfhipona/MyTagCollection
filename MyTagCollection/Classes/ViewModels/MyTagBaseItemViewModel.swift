@@ -9,6 +9,7 @@ import Foundation
 
 public
 struct MyTagBaseItemViewModel: MyTagItemProtocol {
+    public var type: MyTagItemType = .default
     public var modelView: MyTagBaseItemView.Type {
         MyTagBaseItemView.self
     }

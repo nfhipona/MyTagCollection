@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import MyTagCollection
 
-class MyTagCollectionContainerView: UIView {
+class MyTagCollectionContainerView: UIScrollView {
     var alignment: MyTagSection.Alignment
-    private var initialItems: [MyTagItemCustomViewModel]
+    private var initialItems: [MyTagItemProtocol]
 
     private
     lazy var myTagCollectionViewModel: MyTagCollectionViewModel = {
@@ -33,12 +33,14 @@ class MyTagCollectionContainerView: UIView {
         self.alignment = .center
         self.initialItems = []
         super.init(frame: frame)
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
         usingAutolayout()
     }
     
     required
     convenience init(alignment: MyTagSection.Alignment,
-                     initialItems: [MyTagItemCustomViewModel]) {
+                     initialItems: [MyTagItemProtocol]) {
         self.init(frame: .zero)
         self.alignment = alignment
         self.initialItems = initialItems
@@ -56,7 +58,8 @@ class MyTagCollectionContainerView: UIView {
             myTagCollectionView.topAnchor.constraint(equalTo: topAnchor),
             myTagCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             myTagCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            myTagCollectionView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            myTagCollectionView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+            myTagCollectionView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
     
