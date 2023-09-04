@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## MyTagCollection
 
-Copyright (c) 2023 Neil Francis Ramirez Hipona <enef.devops@protonmail.ch>
+Copyright (c) 2023 Neil Francis Ramirez Hipona <nfhipona@outlook.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

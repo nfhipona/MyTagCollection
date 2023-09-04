@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'https://github.com/nfhipona/MyTagCollection'
 #    s.screenshots     = 'https://github.com/nfhipona/MyTagCollection/blob/main/Example/MyTagCollection/Demo/ss-center', 'https://github.com/nfhipona/MyTagCollection/blob/main/Example/MyTagCollection/Demo/ss-left', 'https://github.com/nfhipona/MyTagCollection/blob/main/Example/MyTagCollection/Demo/ss-right'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
-    s.author           = { 'Neil Francis Ramirez Hipona' => 'enef.devops@protonmail.ch' }
+    s.author           = { 'Neil Francis Ramirez Hipona' => 'nfhipona@outlook.com' }
     s.source           = { :git => 'https://github.com/nfhipona/MyTagCollection.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
     

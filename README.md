@@ -69,7 +69,7 @@ pod 'MyTagCollection'
 
 ## Author
 
-Neil Francis Ramirez Hipona, enef.devops@protonmail.ch
+Neil Francis Ramirez Hipona, nfhipona@outlook.com
 
 ## License
 
